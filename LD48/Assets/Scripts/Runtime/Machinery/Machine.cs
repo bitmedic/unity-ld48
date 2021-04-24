@@ -1,20 +1,22 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using static LD48.Production;
 
 namespace LD48
 {
+    [Serializable]
     public class Machine
     {
-        public string name;
+        public MachineInfo info;
+        public Vector2Int position;
+
         public List<Port> inputPorts;
         public List<Port> outputPorts;
         public List<Package> inputStorage;
         public List<Package> tempStorage; // production during tick
         public List<Package> outputStorage;
-        public List<Production> production;
-        public Dictionary<string, int> inputCapacity;
-        public Dictionary<string, int> outputCapacity;
 
         private bool fetchingDone;
         private bool productionDone;
@@ -26,14 +28,17 @@ namespace LD48
             inputStorage = new List<Package>();
             tempStorage = new List<Package>();
             outputStorage = new List<Package>();
-            production = new List<Production>();
-            inputCapacity = new Dictionary<string, int>();
-            outputCapacity = new Dictionary<string, int>();
         }
 
-        public Machine(string name) : this()
+        public Machine(MachineInfo info) : this()
         {
-            this.name = name;
+            this.info = info;
+
+            inputPorts.Clear();
+            outputPorts.Clear();
+
+            info.inputPorts.ForEach(p => inputPorts.Add(new Port(p)));
+            info.outputPorts.ForEach(p => outputPorts.Add(new Port(p)));
         }
 
         public Machine PrepareTick()
@@ -75,7 +80,7 @@ namespace LD48
                     if (port.connectedMachine.outputStorage.Count == 0) continue;
                     Package input = port.connectedMachine.outputStorage[0];
 
-                    int capacity = inputCapacity.ContainsKey(input.material) ? inputCapacity[input.material] : 0;
+                    int capacity = info.inputCapacity.ContainsKey(input.material) ? info.inputCapacity[input.material] : 0;
                     if (capacity == 0 || capacity > inputStorage.Count(s => s.material == input.material))
                     {
                         inputStorage.Add(input);
@@ -89,7 +94,7 @@ namespace LD48
             // Step 2: produce, fill output storage
             if (!productionDone)
             {
-                foreach (Production p in production)
+                foreach (Production p in info.production)
                 {
                     switch (p.strategy)
                     {
@@ -108,7 +113,7 @@ namespace LD48
                         case Strategy.Formula:
                             p.Produce()?.ForEach(m =>
                             {
-                                int capacity = outputCapacity.ContainsKey(m) ? outputCapacity[m] : 0;
+                                int capacity = info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0;
                                 if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
 
                                 tempStorage.Add(new Package(m));
@@ -136,27 +141,9 @@ namespace LD48
             return this;
         }
 
-        public Machine WithInputCapacity(string material, int capacity)
-        {
-            inputCapacity.Add(material, capacity);
-            return this;
-        }
-
-        public Machine WithOutputCapacity(string material, int capacity)
-        {
-            outputCapacity.Add(material, capacity);
-            return this;
-        }
-
-        public Machine WithProduction(Production production)
-        {
-            this.production.Add(production);
-            return this;
-        }
-
         public override string ToString()
         {
-            return $"Machine {name}";
+            return $"Machine {info.name}";
         }
     }
 }
