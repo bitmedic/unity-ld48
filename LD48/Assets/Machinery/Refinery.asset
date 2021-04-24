@@ -23,8 +23,6 @@ MonoBehaviour:
     amount: 1
     strategy: 1
     tickCost: 5
-<<<<<<< HEAD
-=======
     formula:
       reorderableList:
         canAdd: 1
@@ -53,7 +51,6 @@ MonoBehaviour:
       _keys:
       - Gas
       _values: 02000000
->>>>>>> 08f458081e32cc154bcf9e627755191dd417ff44
   inputCapacity:
     reorderableList:
       canAdd: 1
