@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,13 @@ namespace LD48
         [SerializeField]
         List<Button> buildButtons;
 
+        [SerializeField]
+        TileBase emptyFillerTile;
+
         TileBase tileToPlace;
+        int buildingWidth;
+        int buildingHeight;
+
 
         Vector2 mousePosition;
         Vector3 worldPosition;
@@ -60,12 +67,12 @@ namespace LD48
                 // if the tile exists on the asteroid
                 //terrainTile = tilemapTerrain.GetTile(cell);
 
-                if (!tilemapFactory.HasTile(cell))
+                if (this.CheckCanBuild(cell))
                 {
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
-                        tilemapFactory.SetTile(cell, this.tileToPlace);
+                        this.BuildBuildting(this.tileToPlace, cell);
                     }
                     else if (tileToPlace != null)
                     {
@@ -76,11 +83,60 @@ namespace LD48
             }
         }
 
-        public void SetBuildingSelected(TileBase buildingTile)
+        public void SetBuildingSelected(BuildingSizeSO buildingSO)
         {
             this.ResetAllBuildButtons(); // new button was selected
-            this.tileToPlace = buildingTile;
+            this.tileToPlace = buildingSO.tile;
+            this.buildingWidth = buildingSO.width;
+            this.buildingHeight = buildingSO.height;
         }
+
+        private bool CheckCanBuild(Vector3Int cell)
+        {
+            for (int x = 0; x < this.buildingWidth; x++)
+            {
+                for (int y = 0; y < this.buildingHeight; y++)
+                {
+                    Vector3Int currentCell = new Vector3Int(cell.x + x, cell.y + y, cell.z);
+
+
+                    // check if cell does has a terrain field
+                    if (!tilemapTerrain.HasTile(currentCell))
+                    {
+                        return false;
+                    }
+
+                    // check if cell has no factory on it
+                    if (tilemapFactory.HasTile(currentCell))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true; // if no other object was found
+        }
+
+        private void BuildBuildting(TileBase tileToPlace, Vector3Int cellLocation)
+        {
+            tilemapFactory.SetTile(cellLocation, this.tileToPlace);
+
+            // if the building is larger than 1x1, then place something at the other positions
+            for (int x = 0; x < this.buildingWidth; x++)
+            {
+                for (int y = 0; y < this.buildingHeight; y++)
+                {
+                    if (x != 0 || y != 0) // if not the base spawn cell
+                    {
+                        Vector3Int currentCell = new Vector3Int(cell.x + x, cell.y + y, cell.z);
+
+                        // place something here
+                        tilemapFactory.SetTile(currentCell, this.emptyFillerTile);
+                    }
+                }
+            }
+        }
+
 
         private void ResetAllBuildButtons()
         {

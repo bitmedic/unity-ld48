@@ -27,7 +27,6 @@ namespace LD48
                 image.color = new Color(59f/255, 221f/255, 39f/255);
                 this.isSelected = true;
             }
-
         }
 
         public void SetUnselected()
