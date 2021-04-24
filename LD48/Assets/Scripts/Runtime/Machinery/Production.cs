@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LD48
 {
@@ -17,11 +18,13 @@ namespace LD48
         public int amount;
         public Strategy strategy = Strategy.Time;
         public int tickCost;
+        public StringIntDictionary formula;
 
         private int tickCounter;
 
         public Production()
         {
+            formula = new StringIntDictionary();
         }
 
         public Production(Strategy strategy) : this()
@@ -38,13 +41,31 @@ namespace LD48
             strategy = Strategy.Time;
         }
 
-        public List<string> Produce()
+        public List<string> Produce(List<Package> inputs)
         {
             tickCounter++;
             if (tickCounter < tickCost) return null;
             tickCounter = 0;
 
             List<string> result = new List<string>();
+
+            if (strategy == Strategy.Formula)
+            {
+                // iteration 1: check formula constraints
+                foreach (KeyValuePair<string, int> req in formula)
+                {
+                    if (inputs.Count(i => i.material == req.Key) < req.Value) return result;
+                }
+
+                // iteration 2: remove inputs
+                foreach (KeyValuePair<string, int> req in formula)
+                {
+                    for (int i = 0; i < req.Value; i++)
+                    {
+                        inputs.RemoveAt(inputs.FindIndex(input => input.material == req.Key));
+                    }
+                }
+            }
             for (int i = 0; i < amount; i++)
             {
                 result.Add(material);

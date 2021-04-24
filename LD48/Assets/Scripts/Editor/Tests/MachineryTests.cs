@@ -57,6 +57,36 @@ namespace LD48
         }
 
         [Test]
+        public void TestMultiInputProduction()
+        {
+            MachineInfo info = new MachineInfo("m1");
+            Machine machine = new Machine(info);
+
+            Production production = new Production("mat3");
+            production.strategy = Strategy.Formula;
+            production.formula.Add("mat1", 2);
+            production.formula.Add("mat2", 1);
+            info.production.Add(production);
+
+            machine.FullTick();
+            Assert.AreEqual(0, machine.outputStorage.Count);
+
+            machine.inputStorage.Add(new Package("mat2"));
+            machine.FullTick();
+            Assert.AreEqual(0, machine.outputStorage.Count);
+
+            machine.inputStorage.Add(new Package("mat1"));
+            machine.FullTick();
+            Assert.AreEqual(0, machine.outputStorage.Count);
+
+            machine.inputStorage.Add(new Package("mat1"));
+            machine.FullTick();
+            Assert.AreEqual(1, machine.outputStorage.Count);
+            Assert.AreEqual(0, machine.inputStorage.Count);
+            Assert.AreEqual("mat3", machine.outputStorage[0].material);
+        }
+
+        [Test]
         public void TestStorageCapacity()
         {
             MachineInfo info = new MachineInfo("m1").WithProduction(new Production("mat1")).WithOutputCapacity("mat1", 2);
