@@ -15,7 +15,7 @@ namespace LD48
         private void Start()
         {
             CreateModel();
-            DebugConnect();
+            //DebugConnect();
         }
 
         private void DebugConnect()
@@ -168,19 +168,27 @@ namespace LD48
 
             if (neighbour != null)
             {
-                parentMachine.inputPorts.Add(new Port(neighbour));
+                parentMachine.outputPorts.Add(new Port(neighbour));
+                this.MatchNeighbourInput(neighbour, parentMachine);
+            }
+            else
+            {
+                Vector2Int alternativeSearchPostion = new Vector2Int(searchPosition.x - 1, searchPosition.y);
+                if (this.MatchNeighbourInput(this.GetMachineAtPosition(alternativeSearchPostion), parentMachine))
+                {
+                    return;
+                }
 
-                if (neighbour.info.key.Equals(key_drill))
+                alternativeSearchPostion = new Vector2Int(searchPosition.x, searchPosition.y - 1);
+                if (this.MatchNeighbourInput(this.GetMachineAtPosition(alternativeSearchPostion), parentMachine))
                 {
-                    neighbour.outputPorts.Add(new Port(parentMachine));
+                    return;
                 }
-                else if (neighbour.info.key.Equals(key_refinery))
+
+                alternativeSearchPostion = new Vector2Int(searchPosition.x - 1, searchPosition.y - 1);
+                if (this.MatchNeighbourInput(this.GetMachineAtPosition(alternativeSearchPostion), parentMachine))
                 {
-                    neighbour.outputPorts.Add(new Port(parentMachine));
-                }
-                else if (neighbour.info.key.Equals(key_refinery2))
-                {
-                    neighbour.outputPorts.Add(new Port(parentMachine));
+                    return;
                 }
             }
         }
@@ -192,21 +200,82 @@ namespace LD48
             if (neighbour != null)
             {
                 parentMachine.outputPorts.Add(new Port(neighbour));
+                MatchNeighbourOutput(neighbour, parentMachine);
+            }
+            else 
+            {
+                Vector2Int alternativeSearchPostion = new Vector2Int(searchPosition.x - 1, searchPosition.y);
+                if (this.MatchNeighbourOutput(this.GetMachineAtPosition(alternativeSearchPostion), parentMachine))
+                {
+                    return;
+                }
 
-                if (neighbour.info.key.Equals(key_drill))
+                alternativeSearchPostion = new Vector2Int(searchPosition.x, searchPosition.y - 1);
+                if (this.MatchNeighbourOutput(this.GetMachineAtPosition(alternativeSearchPostion), parentMachine))
                 {
-                    neighbour.inputPorts.Add(new Port(parentMachine));
+                    return;
                 }
-                else if (neighbour.info.key.Equals(key_refinery))
+
+                alternativeSearchPostion = new Vector2Int(searchPosition.x - 1, searchPosition.y - 1);
+                if (this.MatchNeighbourOutput(this.GetMachineAtPosition(alternativeSearchPostion), parentMachine))
                 {
-                    neighbour.inputPorts.Add(new Port(parentMachine));
-                }
-                else if (neighbour.info.key.Equals(key_refinery2))
-                {
-                    neighbour.inputPorts.Add(new Port(parentMachine));
+                    return;
                 }
             }
         }
+
+        private bool MatchNeighbourInput(Machine neighbour, Machine parentMachine)
+        {
+            if (neighbour != null)
+            {
+                if (neighbour.info.key.Equals(key_drill))
+                {
+                    parentMachine.inputPorts.Add(new Port(neighbour));
+                    neighbour.outputPorts.Add(new Port(parentMachine));
+                    return true;
+                }
+                else if (neighbour.info.key.Equals(key_refinery))
+                {
+                    parentMachine.inputPorts.Add(new Port(neighbour));
+                    neighbour.outputPorts.Add(new Port(parentMachine));
+                    return true;
+                }
+                else if (neighbour.info.key.Equals(key_refinery2))
+                {
+                    parentMachine.inputPorts.Add(new Port(neighbour));
+                    neighbour.outputPorts.Add(new Port(parentMachine));
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool MatchNeighbourOutput(Machine neighbour, Machine parentMachine)
+        {
+            if (neighbour != null)
+            {
+                if (neighbour.info.key.Equals(key_drill))
+                {
+                    parentMachine.outputPorts.Add(new Port(neighbour));
+                    neighbour.inputPorts.Add(new Port(parentMachine));
+                    return true;
+                }
+                else if (neighbour.info.key.Equals(key_refinery))
+                {
+                    parentMachine.outputPorts.Add(new Port(neighbour));
+                    neighbour.inputPorts.Add(new Port(parentMachine));
+                    return true;
+                }
+                else if (neighbour.info.key.Equals(key_refinery2))
+                {
+                    parentMachine.outputPorts.Add(new Port(neighbour));
+                    neighbour.inputPorts.Add(new Port(parentMachine));
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         private Machine GetMachineAtPosition(Vector2Int position)
         {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584561476}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AssemblyManager, LD48.Runtime
         m_MethodName: CreateModel
         m_Mode: 1
@@ -349,89 +349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465886238}
   m_CullTransparentMesh: 1
---- !u!1 &584561475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 584561477}
-  - component: {fileID: 584561476}
-  m_Layer: 0
-  m_Name: AssemblyManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &584561476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584561475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a618725399890ad45b4e720eaa050151, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 1296802874}
-  machinery:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 1
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 1
-    _keyValues:
-    - drill_0
-    - conveyors_nesw
-    - factory_0
-    _keys:
-    - drill_0
-    - conveyors_nesw
-    - factory_0
-    _values:
-    - {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
-    - {fileID: 11400000, guid: b9c4206dddb769f4b99791f9853cf2e9, type: 2}
-    - {fileID: 11400000, guid: 347807e5fd056a44a86c9f59590d6d42, type: 2}
-  ignoreTileTypes:
-  - terrain_0
-  assembly:
-    machines: []
---- !u!4 &584561477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584561475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1076962957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,6 +2331,129 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1442217944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1442217946}
+  - component: {fileID: 1442217945}
+  m_Layer: 0
+  m_Name: AssemblyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1442217945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442217944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a618725399890ad45b4e720eaa050151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1296802874}
+  machinery:
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 1
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 1
+    _keyValues:
+    - drill_0
+    - conveyors_nenw
+    - factory_0
+    - conveyors_nesw
+    - conveyors_nese
+    - conveyors_nwne
+    - conveyors_nwse
+    - conveyors_nwsw
+    - conveyors_sene
+    - conveyors_sen
+    - conveyors_senw
+    - conveyors_swne
+    - conveyors_swnw
+    - conveyors_swse
+    _keys:
+    - drill_0
+    - conveyors_nenw
+    - factory_0
+    - conveyors_nesw
+    - conveyors_nese
+    - conveyors_nwne
+    - conveyors_nwse
+    - conveyors_nwsw
+    - conveyors_sene
+    - conveyors_sen
+    - conveyors_senw
+    - conveyors_swne
+    - conveyors_swnw
+    - conveyors_swse
+    _values:
+    - {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
+    - {fileID: 11400000, guid: b9c4206dddb769f4b99791f9853cf2e9, type: 2}
+    - {fileID: 11400000, guid: 347807e5fd056a44a86c9f59590d6d42, type: 2}
+    - {fileID: 11400000, guid: 7820ac96888c05540a9c2af76993d72b, type: 2}
+    - {fileID: 11400000, guid: 084406499f629ff46b71b24c168958d1, type: 2}
+    - {fileID: 11400000, guid: 2fa09c3696a1be04cb5831323307c4d6, type: 2}
+    - {fileID: 11400000, guid: a846c25e5161157498858eb947a23ef5, type: 2}
+    - {fileID: 11400000, guid: f58f0921e1be0364e8bfe6ef148e685c, type: 2}
+    - {fileID: 11400000, guid: 2a43a97deda60d84496e10605321d83e, type: 2}
+    - {fileID: 11400000, guid: d93a732e924e8394ba6585c8816ceae7, type: 2}
+    - {fileID: 11400000, guid: d93a732e924e8394ba6585c8816ceae7, type: 2}
+    - {fileID: 11400000, guid: 9eaba938437b7eb4cae20a95cadb4708, type: 2}
+    - {fileID: 11400000, guid: a009d8115ab71b94493033f162256cf4, type: 2}
+    - {fileID: 11400000, guid: d028c24b05231ff4c9aafcbdca092de2, type: 2}
+  ignoreTileTypes:
+  - terrain_0
+  assembly:
+    machines:
+    - info: {fileID: 0}
+      position: {x: 0, y: 0}
+      inputPorts: []
+      outputPorts: []
+      inputStorage: []
+      tempStorage: []
+      outputStorage: []
+--- !u!4 &1442217946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442217944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738521655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,7 +2781,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584561476}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AssemblyManager, LD48.Runtime
         m_MethodName: Tick
         m_Mode: 1
