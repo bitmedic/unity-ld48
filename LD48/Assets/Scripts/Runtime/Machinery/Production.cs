@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace LD48
 {
+    [Serializable]
     public class Production
     {
         public enum Strategy

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace LD48
 {
+    [Serializable]
     public class Package
     {
         public string material;

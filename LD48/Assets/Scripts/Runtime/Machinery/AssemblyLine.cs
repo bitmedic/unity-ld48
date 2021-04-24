@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LD48
 {
+    [Serializable]
     public class AssemblyLine
     {
         public List<Machine> machines;
