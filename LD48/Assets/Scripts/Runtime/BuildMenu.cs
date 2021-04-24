@@ -125,12 +125,6 @@ namespace LD48
                     {
                         return false;
                     }
-
-                    // check if cell has no factory on it
-                    if (tilemapFactory.HasTile(currentCell))
-                    {
-                        return false;
-                    }
                 }
             }
 
