@@ -51,9 +51,19 @@ namespace LD48
 
             if (strategy == Strategy.Formula)
             {
+                // iteration 1: check formula constraints
                 foreach (KeyValuePair<string, int> req in formula)
                 {
                     if (inputs.Count(i => i.material == req.Key) < req.Value) return result;
+                }
+
+                // iteration 2: remove inputs
+                foreach (KeyValuePair<string, int> req in formula)
+                {
+                    for (int i = 0; i < req.Value; i++)
+                    {
+                        inputs.RemoveAt(inputs.FindIndex(input => input.material == req.Key));
+                    }
                 }
             }
             for (int i = 0; i < amount; i++)

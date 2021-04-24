@@ -82,6 +82,7 @@ namespace LD48
             machine.inputStorage.Add(new Package("mat1"));
             machine.FullTick();
             Assert.AreEqual(1, machine.outputStorage.Count);
+            Assert.AreEqual(0, machine.inputStorage.Count);
             Assert.AreEqual("mat3", machine.outputStorage[0].material);
         }
 
