@@ -1,20 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using static LD48.Production;
 
 namespace LD48
 {
-    public class Machine
+    [CreateAssetMenu(fileName = "Machine", menuName = "ScriptableObjects/Machine", order = 1)]
+    public class Machine : ScriptableObject
     {
         public string name;
         public List<Port> inputPorts;
         public List<Port> outputPorts;
-        public List<Package> inputStorage;
-        public List<Package> tempStorage; // production during tick
-        public List<Package> outputStorage;
         public List<Production> production;
         public Dictionary<string, int> inputCapacity;
         public Dictionary<string, int> outputCapacity;
+
+        [HideInInspector] public List<Package> inputStorage;
+        [HideInInspector] public List<Package> tempStorage; // production during tick
+        [HideInInspector] public List<Package> outputStorage;
 
         private bool fetchingDone;
         private bool productionDone;
