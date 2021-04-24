@@ -11,9 +11,6 @@ public class TilemapMouseInput_MG : MonoBehaviour
     Tilemap tilemapTerrain;
 
     [SerializeField]
-    IsometricRuleTile tileToPlace;
-
-    [SerializeField]
     Vector2 mousePosition;
     [SerializeField]
     Vector3 worldPosition;
@@ -44,28 +41,15 @@ public class TilemapMouseInput_MG : MonoBehaviour
         worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         worldPosition.z = 0;
         cell = tilemapTerrain.WorldToCell(worldPosition);
-        cell.x--;
-        cell.y--;
-        cell.z = 0;
-
-        tilemapFactory.ClearAllEditorPreviewTiles();
 
         if (tilemapTerrain.HasTile(cell))
         { 
             // if the tile exists on the asteroid
             terrainTile = tilemapTerrain.GetTile(cell);
 
-            if (!tilemapFactory.HasTile(cell))
+            if (tilemapFactory.HasTile(cell))
             {
-                // if nothing is placed here on the factory layer
-                if (tryPlace)
-                {
-                    tilemapFactory.SetTile(cell, this.tileToPlace);
-                }
-                else
-                {
-                    tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace);
-                }
+                factoryTile = tilemapFactory.GetTile(cell);
             }
         }
     }
