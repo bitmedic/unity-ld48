@@ -13,6 +13,8 @@ namespace LD48
         Tilemap tilemapFactory;
         [SerializeField]
         Tilemap tilemapTerrain;
+        [SerializeField]
+        Tilemap tilemapDecoration;
 
         [SerializeField]
         List<Button> buildButtons;
@@ -69,29 +71,25 @@ namespace LD48
                 // if the tile exists on the asteroid
                 //terrainTile = tilemapTerrain.GetTile(cell);
 
-                if (this.CheckCanBuild(cell))
+                if (doBulldoze)
+                {
+                    if (clickedToPlace)
+                    {
+                        this.BulldozeBuilding(this.tileToPlace, cell);
+                    }
+                }
+                else if (this.CheckCanBuild(cell))
                 {
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
-                        this.BuildBuildting(this.tileToPlace, cell);
+                        this.BuildBuilding(this.tileToPlace, cell);
                     }
                     else if (tileToPlace != null)
                     {
                         tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace);
                     }
                     // else do nothing for now
-                }
-                else if (doBulldoze)
-                {
-                    if (clickedToPlace)
-                    {
-                        this.BuildBuildting(this.tileToPlace, cell);
-                    }
-                    else
-                    {
-                        tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace);
-                    }
                 }
             }
         }
@@ -122,7 +120,6 @@ namespace LD48
                 {
                     Vector3Int currentCell = new Vector3Int(cell.x + x, cell.y + y, cell.z);
 
-
                     // check if cell does has a terrain field
                     if (!tilemapTerrain.HasTile(currentCell))
                     {
@@ -140,10 +137,60 @@ namespace LD48
             return true; // if no other object was found
         }
 
-        private void BuildBuildting(TileBase tileToPlace, Vector3Int cellLocation)
+        private void BulldozeBuilding(TileBase tileToPlace, Vector3Int cellLocation)
+        {
+            // TODO: How to find Building if an emptyFiller was clicked??
+            TileBase clickedTile = tilemapFactory.GetTile(cellLocation);
+
+            if (this.emptyFillerTile.Equals(clickedTile))
+            {
+                // find building and demolish
+                if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x + 1, cellLocation.y, cellLocation.z))) &&
+                    this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x + 1, cellLocation.y - 1, cellLocation.z))))
+                {
+                    cellLocation = new Vector3Int(cellLocation.x, cellLocation.y - 1, cellLocation.z);
+                }
+                else if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x - 1, cellLocation.y, cellLocation.z))) &&
+                         this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x, cellLocation.y - 1, cellLocation.z))))
+                {
+                    cellLocation = new Vector3Int(cellLocation.x - 1, cellLocation.y - 1, cellLocation.z);
+                }
+                else if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x - 1, cellLocation.y + 1, cellLocation.z))) &&
+                         this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x, cellLocation.y - 1, cellLocation.z))))
+                {
+                    cellLocation = new Vector3Int(cellLocation.x - 1, cellLocation.y, cellLocation.z);
+                }
+            }
+
+
+            // if the building is larger than 1x1, then also remove the empty fillers
+            for (int x = 0; x < 2; x++)
+            {
+                for (int y = 0; y < 2; y++)
+                {
+                    if (x == 0 && y == 0) // if not the base spawn cell
+                    {
+                        //bulldoze
+                        tilemapFactory.SetTile(cellLocation, null);
+                    }
+                    else
+                    { 
+                        Vector3Int currentCell = new Vector3Int(cellLocation.x + x, cellLocation.y + y, cellLocation.z);
+
+                        if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(currentCell)))
+                        {
+                            tilemapFactory.SetTile(currentCell, null);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
         {
             // build
             tilemapFactory.SetTile(cellLocation, tileToPlace);
+            tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
 
             // if the building is larger than 1x1, then place something at the other positions
             for (int x = 0; x < this.buildingWidth; x++)
@@ -152,10 +199,13 @@ namespace LD48
                 {
                     if (x != 0 || y != 0) // if not the base spawn cell
                     {
-                        Vector3Int currentCell = new Vector3Int(cell.x + x, cell.y + y, cell.z);
+                        Vector3Int currentCell = new Vector3Int(cellLocation.x + x, cellLocation.y + y, cellLocation.z);
 
                         // place something here
                         tilemapFactory.SetTile(currentCell, this.emptyFillerTile);
+                        tilemapDecoration.SetTile(currentCell, this.emptyFillerTile);
+
+                        this.clickedToPlace = false; // only every build 1 large building
                     }
                 }
             }
