@@ -22,21 +22,9 @@ public class TilemapMouseInput_MG : MonoBehaviour
     TileBase factoryTile;
 
 
-    bool tryPlace = false;
-
     // Update is called once per frame
     void Update()
     {
-        // go into placing mode as long as mouse button 0 is down
-        if (Input.GetMouseButtonDown(0))
-        {
-            tryPlace = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            tryPlace = false;
-        }
-
         mousePosition = Input.mousePosition;
         worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         worldPosition.z = 0;
