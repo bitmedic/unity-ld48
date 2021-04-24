@@ -11,7 +11,7 @@ public class TilemapMouseInput_MG : MonoBehaviour
     Tilemap tilemapTerrain;
 
     [SerializeField]
-    Tile tileToPlace;
+    IsometricRuleTile tileToPlace;
 
     [SerializeField]
     Vector2 mousePosition;
@@ -44,6 +44,8 @@ public class TilemapMouseInput_MG : MonoBehaviour
         worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         worldPosition.z = 0;
         cell = tilemapTerrain.WorldToCell(worldPosition);
+        cell.x--;
+        cell.y--;
         cell.z = 0;
 
         tilemapFactory.ClearAllEditorPreviewTiles();
