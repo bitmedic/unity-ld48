@@ -9,7 +9,8 @@ namespace LD48
         [Test]
         public void TestNoProduction()
         {
-            Machine machine = new Machine("m1");
+            MachineInfo info = new MachineInfo("m1");
+            Machine machine = new Machine(info);
 
             Assert.AreEqual(0, machine.outputStorage.Count);
             machine.FullTick();
@@ -17,11 +18,22 @@ namespace LD48
         }
 
         [Test]
+        public void TestPortSetup()
+        {
+            MachineInfo info = new MachineInfo("m1").WithInputPort(new PortDefinition()).WithInputPort(new PortDefinition()).WithOutputPort(new PortDefinition());
+            Machine machine = new Machine(info);
+
+            Assert.AreEqual(2, machine.inputPorts.Count);
+            Assert.AreEqual(1, machine.outputPorts.Count);
+        }
+
+        [Test]
         public void TestProduction()
         {
-            Machine machine = new Machine("m1")
+            MachineInfo info = new MachineInfo("m1")
                 .WithProduction(new Production("mat1"))
                 .WithProduction(new Production("mat2", 3, 2));
+            Machine machine = new Machine(info);
 
             Assert.AreEqual(0, machine.outputStorage.Count);
 
@@ -47,7 +59,8 @@ namespace LD48
         [Test]
         public void TestStorageCapacity()
         {
-            Machine machine = new Machine("m1").WithProduction(new Production("mat1")).WithOutputCapacity("mat1", 2);
+            MachineInfo info = new MachineInfo("m1").WithProduction(new Production("mat1")).WithOutputCapacity("mat1", 2);
+            Machine machine = new Machine(info);
 
             machine.FullTick();
             machine.FullTick();
@@ -58,9 +71,12 @@ namespace LD48
         [Test]
         public void TestConveyor()
         {
-            Machine conv1 = new Machine("conv1").WithProduction(new Production(Strategy.Forward));
-            Machine machine1 = new Machine("m1").WithProduction(new Production("mat1")).WithOutputPort(new Port(conv1));
-            Machine machine2 = new Machine("m2").WithInputPort(new Port(conv1));
+            MachineInfo info = new MachineInfo("conv1").WithProduction(new Production(Strategy.Forward));
+            MachineInfo info2 = new MachineInfo("m1").WithProduction(new Production("mat1"));
+            MachineInfo info3 = new MachineInfo("m2").WithProduction(new Production("mat1")).WithOutputCapacity("mat1", 2);
+            Machine conv1 = new Machine(info);
+            Machine machine1 = new Machine(info2).WithOutputPort(new Port(conv1));
+            Machine machine2 = new Machine(info3).WithInputPort(new Port(conv1));
 
             AssemblyLine ass = new AssemblyLine().WithMachines(conv1, machine1, machine2);
 

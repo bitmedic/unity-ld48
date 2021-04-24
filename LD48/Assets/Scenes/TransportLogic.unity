@@ -379,6 +379,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1296802874}
+  machinery:
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 1
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 1
+    _keyValues:
+    - factory_0
+    - conveyors_1
+    _keys:
+    - factory_0
+    - conveyors_1
+    _values:
+    - {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
+    - {fileID: 11400000, guid: b9c4206dddb769f4b99791f9853cf2e9, type: 2}
+  assembly:
+    machines: []
 --- !u!4 &584561477
 Transform:
   m_ObjectHideFlags: 0

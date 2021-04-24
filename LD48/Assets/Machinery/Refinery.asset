@@ -15,15 +15,10 @@ MonoBehaviour:
   name: Refinery
   inputPorts:
   - position: {x: 0, y: 0}
-    connectedMachine: {fileID: 0}
   outputPorts:
   - position: {x: 0, y: 0}
-    connectedMachine: {fileID: 0}
   production:
   - material: Fuel
     amount: 1
     strategy: 1
-    tickCost: 3
-  inputStorage: []
-  tempStorage: []
-  outputStorage: []
+    tickCost: 5
