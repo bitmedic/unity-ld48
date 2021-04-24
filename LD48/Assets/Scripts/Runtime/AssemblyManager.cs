@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,6 +9,7 @@ namespace LD48
     {
         [Header("Static References")] public Tilemap tilemap;
         public StringMachineInfoDictionary machinery;
+        public List<string> ignoreTileTypes;
 
         [Header("Runtime Info")] public AssemblyLine assembly;
 
@@ -36,7 +38,7 @@ namespace LD48
                     machineTypes.Add(key);
                     if (!machinery.ContainsKey(key))
                     {
-                        unmappedMachineTypes.Add(key);
+                        if (!ignoreTileTypes.Contains(key)) unmappedMachineTypes.Add(key);
                         continue;
                     }
 
@@ -47,7 +49,7 @@ namespace LD48
             }
 
             Debug.Log("Detected the following tile types: " + string.Join(", ", machineTypes));
-            Debug.Log("Failed to map the following tile types: " + string.Join(", ", unmappedMachineTypes));
+            if (unmappedMachineTypes.Count > 0) Debug.LogError("Failed to map the following tile types: " + string.Join(", ", unmappedMachineTypes));
         }
 
         public void Tick()

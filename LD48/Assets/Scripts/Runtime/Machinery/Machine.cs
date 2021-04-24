@@ -111,7 +111,7 @@ namespace LD48
 
                         case Strategy.Time:
                         case Strategy.Formula:
-                            p.Produce()?.ForEach(m =>
+                            p.Produce(inputStorage)?.ForEach(m =>
                             {
                                 int capacity = info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0;
                                 if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
