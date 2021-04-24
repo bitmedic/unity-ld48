@@ -28,7 +28,8 @@ namespace LD48
         Vector2 mousePosition;
         Vector3 worldPosition;
         Vector3Int cell;
-        
+
+        bool doBulldoze = false;
         bool clickedToPlace = false;
 
         // Update is called once per frame
@@ -49,6 +50,7 @@ namespace LD48
             {
                 tileToPlace = null;
                 clickedToPlace = false;
+                doBulldoze = false;
                 this.ResetAllBuildButtons();
             }
 
@@ -80,6 +82,17 @@ namespace LD48
                     }
                     // else do nothing for now
                 }
+                else if (doBulldoze)
+                {
+                    if (clickedToPlace)
+                    {
+                        this.BuildBuildting(this.tileToPlace, cell);
+                    }
+                    else
+                    {
+                        tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace);
+                    }
+                }
             }
         }
 
@@ -87,6 +100,16 @@ namespace LD48
         {
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO.tile;
+
+            if (this.tileToPlace == null)
+            {
+                doBulldoze = true;
+            }
+            else
+            {
+                doBulldoze = false;
+            }
+
             this.buildingWidth = buildingSO.width;
             this.buildingHeight = buildingSO.height;
         }
@@ -119,7 +142,8 @@ namespace LD48
 
         private void BuildBuildting(TileBase tileToPlace, Vector3Int cellLocation)
         {
-            tilemapFactory.SetTile(cellLocation, this.tileToPlace);
+            // build
+            tilemapFactory.SetTile(cellLocation, tileToPlace);
 
             // if the building is larger than 1x1, then place something at the other positions
             for (int x = 0; x < this.buildingWidth; x++)
