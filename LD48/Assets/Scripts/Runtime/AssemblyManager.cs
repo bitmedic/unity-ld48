@@ -80,35 +80,85 @@ namespace LD48
         private static string key_refinery = "factory_0";
         private static string key_refinery2 = "_0"; //TODO umbennen
 
-        private static string key_conveyer_SO_NW = "";
-        private static string key_conveyer_SW_NO = "";
-        private static string key_conveyer_NW_SO = "";
-        private static string key_conveyer_NO_SW = "";
+
+        private static string key_conveyer_SW_NE = "conveyors_swne";
+        private static string key_conveyer_SW_NW = "conveyors_swnw";
+        private static string key_conveyer_SW_SE = "conveyors_swse";
+        private static string key_conveyer_SE_NW = "conveyors_senw";
+        private static string key_conveyer_SE_NE = "conveyors_sene";
+        private static string key_conveyer_SE_SW = "conveyors_sesw";
+        private static string key_conveyer_NW_SE = "conveyors_nwse";
+        private static string key_conveyer_NW_SW = "conveyors_nwsw";
+        private static string key_conveyer_NW_NE = "conveyors_nwne";
+        private static string key_conveyer_NE_SW = "conveyors_nesw";
+        private static string key_conveyer_NE_SE = "conveyors_nese";
+        private static string key_conveyer_NE_NW = "conveyors_nenw";
 
         private void MatchAllMachines(AssemblyLine assembly)
         {
             foreach (Machine m in assembly.machines)
             {
                 // TODO get name form scriptableObject?
-                if (m.info.key.Equals(key_conveyer_SO_NW))
+                if (m.info.key.Equals(key_conveyer_SE_NW))
                 {
                     this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
                     this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
                 }
-                else if (m.info.key.Equals(key_conveyer_SW_NO))
+                else if (m.info.key.Equals(key_conveyer_SW_NE))
                 {
                     this.SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
                     this.SetBuildingOutput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get going to machine
                 }
-                else if (m.info.key.Equals(key_conveyer_NW_SO))
+                else if (m.info.key.Equals(key_conveyer_NW_SE))
                 {
                     this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
                     this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
                 }
-                else if (m.info.key.Equals(key_conveyer_NO_SW))
+                else if (m.info.key.Equals(key_conveyer_NE_SW))
                 {
                     this.SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
                     this.SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                }
+
+                if (m.info.key.Equals(key_conveyer_SE_NE))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x +1 , m.position.y)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_SE_SW))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_SW_SE))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_SW_NW))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
+                }
+                if (m.info.key.Equals(key_conveyer_NW_NE))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_NW_SW))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_NE_SE))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_NE_NW))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
                 }
             }
         }
