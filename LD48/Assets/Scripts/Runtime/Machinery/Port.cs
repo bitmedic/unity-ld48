@@ -1,19 +1,23 @@
 using System;
-using UnityEngine;
 
 namespace LD48
 {
     [Serializable]
     public class Port
     {
-        public Vector2Int position = Vector2Int.zero; // zero = no position restriction
+        public PortDefinition definition;
         public Machine connectedMachine;
 
         public Port()
         {
         }
 
-        public Port(Machine connectedMachine)
+        public Port(PortDefinition definition) : this()
+        {
+            this.definition = definition;
+        }
+
+        public Port(Machine connectedMachine) : this()
         {
             this.connectedMachine = connectedMachine;
         }

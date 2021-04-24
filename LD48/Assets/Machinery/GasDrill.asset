@@ -16,12 +16,8 @@ MonoBehaviour:
   inputPorts: []
   outputPorts:
   - position: {x: 0, y: 0}
-    connectedMachine: {fileID: 0}
-  inputStorage: []
-  tempStorage: []
-  outputStorage: []
   production:
   - material: Gas
     amount: 1
     strategy: 0
-    tickCost: 1
+    tickCost: 2
