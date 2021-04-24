@@ -10,11 +10,17 @@ namespace LD48
         {
         }
 
-        public Storage(string material, int amount = 0, int capacity = 0) : this()
+        public Storage(string material, int capacity = 0, int amount = 0) : this()
         {
             this.material = material;
-            this.amount = amount;
             this.capacity = capacity;
+            this.amount = amount;
+        }
+
+        public override string ToString()
+        {
+            if (capacity > 0) return $"Storage of {material} ({amount}/{capacity})";
+            return $"Storage of {material} ({amount}/Unlimited)";
         }
     }
 }
