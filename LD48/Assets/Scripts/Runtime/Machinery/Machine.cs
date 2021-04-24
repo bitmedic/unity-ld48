@@ -9,10 +9,12 @@ namespace LD48
         public string name;
         public List<Port> inputPorts;
         public List<Port> outputPorts;
-        public Dictionary<string, Storage> inputStorage;
-        public Dictionary<string, Storage> tempStorage; // production during tick
-        public Dictionary<string, Storage> outputStorage;
+        public List<Package> inputStorage;
+        public List<Package> tempStorage; // production during tick
+        public List<Package> outputStorage;
         public List<Production> production;
+        public Dictionary<string, int> inputCapacity;
+        public Dictionary<string, int> outputCapacity;
 
         private bool fetchingDone;
         private bool productionDone;
@@ -21,10 +23,12 @@ namespace LD48
         {
             inputPorts = new List<Port>();
             outputPorts = new List<Port>();
-            inputStorage = new Dictionary<string, Storage>();
-            tempStorage = new Dictionary<string, Storage>();
-            outputStorage = new Dictionary<string, Storage>();
+            inputStorage = new List<Package>();
+            tempStorage = new List<Package>();
+            outputStorage = new List<Package>();
             production = new List<Production>();
+            inputCapacity = new Dictionary<string, int>();
+            outputCapacity = new Dictionary<string, int>();
         }
 
         public Machine(string name) : this()
@@ -48,12 +52,8 @@ namespace LD48
         public Machine EndTick()
         {
             // copy handled materials to output
-            foreach (KeyValuePair<string, Storage> temp in tempStorage)
-            {
-                if (!outputStorage.ContainsKey(temp.Key)) outputStorage.Add(temp.Key, new Storage(temp.Key));
-                outputStorage[temp.Key].amount += temp.Value.amount;
-                temp.Value.amount = 0;
-            }
+            outputStorage.AddRange(tempStorage);
+            tempStorage.Clear();
 
             return this;
         }
@@ -73,14 +73,13 @@ namespace LD48
                 foreach (Port port in inputPorts)
                 {
                     if (port.connectedMachine.outputStorage.Count == 0) continue;
-                    Storage input = port.connectedMachine.outputStorage.FirstOrDefault(s => s.Value.amount > 0).Value;
-                    if (input == null) continue;
+                    Package input = port.connectedMachine.outputStorage[0];
 
-                    if (!inputStorage.ContainsKey(input.material)) inputStorage.Add(input.material, new Storage(input.material));
-                    if (inputStorage[input.material].capacity == 0 || inputStorage[input.material].capacity > inputStorage[input.material].amount)
+                    int capacity = inputCapacity.ContainsKey(input.material) ? inputCapacity[input.material] : 0;
+                    if (capacity == 0 || capacity > inputStorage.Count(s => s.material == input.material))
                     {
-                        inputStorage[input.material].amount++;
-                        input.amount--;
+                        inputStorage.Add(input);
+                        port.connectedMachine.outputStorage.RemoveAt(0);
 
                         fetchingDone = true;
                     }
@@ -96,16 +95,11 @@ namespace LD48
                     {
                         case Strategy.Forward:
                             // check if there is any input and output is empty
-                            Storage input = inputStorage.FirstOrDefault(i => i.Value.amount > 0).Value;
-                            if (input != null)
+                            if (inputStorage.Count > 0 && outputStorage.Count == 0)
                             {
-                                if (tempStorage.All(o => o.Value.amount == 0))
-                                {
-                                    EnsureTempStorage(input.material);
-                                    input.amount--;
-                                    tempStorage[input.material].amount++;
-                                    productionDone = true;
-                                }
+                                tempStorage.Add(inputStorage[0]);
+                                inputStorage.RemoveAt(0);
+                                productionDone = true;
                             }
 
                             break;
@@ -114,10 +108,10 @@ namespace LD48
                         case Strategy.Formula:
                             p.Produce()?.ForEach(m =>
                             {
-                                EnsureTempStorage(m);
-                                if (outputStorage[m].capacity > 0 && outputStorage[m].amount >= outputStorage[m].capacity) return;
+                                int capacity = outputCapacity.ContainsKey(m) ? outputCapacity[m] : 0;
+                                if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
 
-                                tempStorage[m].amount++;
+                                tempStorage.Add(new Package(m));
                                 productionDone = true;
                             });
                             break;
@@ -126,13 +120,6 @@ namespace LD48
             }
 
             return this;
-        }
-
-        private void EnsureTempStorage(string material)
-        {
-            if (!tempStorage.ContainsKey(material)) tempStorage.Add(material, new Storage(material));
-            if (!outputStorage.ContainsKey(material)) outputStorage.Add(material, new Storage(material));
-            tempStorage[material].capacity = outputStorage[material].capacity;
         }
 
         public Machine WithInputPort(Port port)
@@ -149,15 +136,15 @@ namespace LD48
             return this;
         }
 
-        public Machine WithInputStorage(Storage storage)
+        public Machine WithInputCapacity(string material, int capacity)
         {
-            inputStorage.Add(storage.material, storage);
+            inputCapacity.Add(material, capacity);
             return this;
         }
 
-        public Machine WithOutputStorage(Storage storage)
+        public Machine WithOutputCapacity(string material, int capacity)
         {
-            outputStorage.Add(storage.material, storage);
+            outputCapacity.Add(material, capacity);
             return this;
         }
 
