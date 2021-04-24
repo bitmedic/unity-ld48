@@ -7,7 +7,8 @@ namespace LD48
         public enum Strategy
         {
             Time = 0,
-            Formula = 1
+            Formula = 1,
+            Forward = 2
         }
 
         public string material;
@@ -21,7 +22,12 @@ namespace LD48
         {
         }
 
-        public Production(string material, int amount, int tickCost) : this()
+        public Production(Strategy strategy) : this()
+        {
+            this.strategy = strategy;
+        }
+
+        public Production(string material, int amount = 1, int tickCost = 1) : this()
         {
             this.material = material;
             this.amount = amount;
@@ -43,6 +49,11 @@ namespace LD48
             }
 
             return result;
+        }
+
+        public override string ToString()
+        {
+            return $"Production of {material} ({amount}, {strategy})";
         }
     }
 }
