@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Conveyor
   m_EditorClassIdentifier: 
   name: Conveyor
+  key: conveyerruletile
   inputPorts:
   - position: {x: 0, y: 0}
   outputPorts:

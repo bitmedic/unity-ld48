@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Refinery
   m_EditorClassIdentifier: 
   name: Refinery
+  key: factory_0
   inputPorts:
   - position: {x: 0, y: 0}
   outputPorts:

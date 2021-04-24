@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7ab39b64972e9479c3b8ddba5ee72d, type: 3}
+  m_Name: ConveyerCurveRight
+  m_EditorClassIdentifier: 
+  tile: {fileID: 11400000, guid: 29c0fbcee0787324ab234b08eb3ba4e4, type: 2}
+  width: 1
+  height: 1
+  rotations:
+  - {fileID: 11400000, guid: 6aaf71e8f9760dc4d964fc9a10b0b2e8, type: 2}
+  - {fileID: 11400000, guid: 811f38931f64d6f4fa2994317b407c20, type: 2}
+  - {fileID: 11400000, guid: 9434aa43026012e4cb6cbb1f18c212e3, type: 2}

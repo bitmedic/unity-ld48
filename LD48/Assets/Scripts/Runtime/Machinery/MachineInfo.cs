@@ -7,6 +7,7 @@ namespace LD48
     public class MachineInfo : ScriptableObject
     {
         public string name;
+        public string key;
         public List<PortDefinition> inputPorts;
         public List<PortDefinition> outputPorts;
         public List<Production> production;
