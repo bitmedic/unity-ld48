@@ -46,12 +46,111 @@ namespace LD48
                 }
             }
 
+            this.MatchAllMachines(assembly);
+
             Debug.Log("Detected the following tile types: " + string.Join(", ", machineTypes));
             Debug.Log("Failed to map the following tile types: " + string.Join(", ", unmappedMachineTypes));
         }
 
         public void Tick()
         {
+        }
+
+        private static string key_drill = "drill_0";
+        private static string key_refinery = "factory_0";
+        private static string key_refinery2 = "_0"; //TODO umbennen
+
+        private static string key_conveyer_SO_NW = "";
+        private static string key_conveyer_SW_NO = "";
+        private static string key_conveyer_NW_SO = "";
+        private static string key_conveyer_NO_SW = "";
+
+        private void MatchAllMachines(AssemblyLine assembly)
+        {
+            foreach (Machine m in assembly.machines)
+            {
+                // TODO get name form scriptableObject?
+                if (m.info.key.Equals(key_conveyer_SO_NW))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_SW_NO))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_NW_SO))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
+                }
+                else if (m.info.key.Equals(key_conveyer_NO_SW))
+                {
+                    this.SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
+                    this.SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                }
+            }
+        }
+
+        private void SetBuildingInput(Machine parentMachine, Vector2Int searchPosition)
+        {
+            Machine neighbour = this.GetMachineAtPosition(searchPosition);
+
+            if (neighbour != null)
+            {
+                parentMachine.inputPorts.Add(new Port(neighbour));
+
+                if (neighbour.info.key.Equals(key_drill))
+                {
+                    neighbour.outputPorts.Add(new Port(parentMachine));
+                }
+                else if (neighbour.info.key.Equals(key_refinery))
+                {
+                    neighbour.outputPorts.Add(new Port(parentMachine));
+                }
+                else if (neighbour.info.key.Equals(key_refinery2))
+                {
+                    neighbour.outputPorts.Add(new Port(parentMachine));
+                }
+            }
+        }
+
+        private void SetBuildingOutput(Machine parentMachine, Vector2Int searchPosition)
+        {
+            Machine neighbour = this.GetMachineAtPosition(searchPosition);
+
+            if (neighbour != null)
+            {
+                parentMachine.outputPorts.Add(new Port(neighbour));
+
+                if (neighbour.info.key.Equals(key_drill))
+                {
+                    neighbour.inputPorts.Add(new Port(parentMachine));
+                }
+                else if (neighbour.info.key.Equals(key_refinery))
+                {
+                    neighbour.inputPorts.Add(new Port(parentMachine));
+                }
+                else if (neighbour.info.key.Equals(key_refinery2))
+                {
+                    neighbour.inputPorts.Add(new Port(parentMachine));
+                }
+            }
+        }
+
+        private Machine GetMachineAtPosition(Vector2Int position)
+        {
+            foreach (Machine m in assembly.machines)
+            {
+                if (m.position.Equals(position))
+                {
+                    return m;
+                }
+
+            }
+
+            return null;
         }
     }
 }

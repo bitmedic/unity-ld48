@@ -22,7 +22,7 @@ namespace LD48
         [SerializeField]
         TileBase emptyFillerTile;
 
-        TileBase tileToPlace;
+        BuildingSizeSO tileToPlace;
         int buildingWidth;
         int buildingHeight;
 
@@ -53,7 +53,13 @@ namespace LD48
                 tileToPlace = null;
                 clickedToPlace = false;
                 doBulldoze = false;
+                tileToPlace?.ResetRotate();
                 this.ResetAllBuildButtons();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
+            {
+                tileToPlace?.DoRotate();
             }
 
             mousePosition = Input.mousePosition;
@@ -75,7 +81,7 @@ namespace LD48
                 {
                     if (clickedToPlace)
                     {
-                        this.BulldozeBuilding(this.tileToPlace, cell);
+                        this.BulldozeBuilding(null, cell);
                     }
                 }
                 else if (this.CheckCanBuild(cell))
@@ -83,11 +89,11 @@ namespace LD48
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
-                        this.BuildBuilding(this.tileToPlace, cell);
+                        this.BuildBuilding(this.tileToPlace?.GetTileRotation(), cell);
                     }
                     else if (tileToPlace != null)
                     {
-                        tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace);
+                        tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace.GetTileRotation());
                     }
                     // else do nothing for now
                 }
@@ -97,7 +103,7 @@ namespace LD48
         public void SetBuildingSelected(BuildingSizeSO buildingSO)
         {
             this.ResetAllBuildButtons(); // new button was selected
-            this.tileToPlace = buildingSO.tile;
+            this.tileToPlace = buildingSO;
 
             if (this.tileToPlace == null)
             {
@@ -107,6 +113,8 @@ namespace LD48
             {
                 doBulldoze = false;
             }
+
+            this.tileToPlace?.ResetRotate();
 
             this.buildingWidth = buildingSO.width;
             this.buildingHeight = buildingSO.height;
