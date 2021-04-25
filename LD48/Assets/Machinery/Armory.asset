@@ -52,7 +52,7 @@ MonoBehaviour:
       - steel
       _values: 0500000002000000
   totalInputCapacity: 0
-  totalOutputCapacity: 50
+  totalOutputCapacity: 20
   inputCapacity:
     reorderableList:
       canAdd: 1
