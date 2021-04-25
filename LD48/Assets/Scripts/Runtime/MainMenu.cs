@@ -10,32 +10,33 @@ namespace LD48
         public Text StartText;
         public Animator animator;
         public StoryProgressor story;
+        public Transform earth;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-            story.SetMainMenu(this);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            earth.position = new Vector3(-347, -264, 0);
         }
 
         public void StartGame()
         {
             StartText.text = "Launch";
             
-
             animator.SetTrigger("startAnimation");
 
+            StartCoroutine(WaitAndStartStory());
+        }
+
+        IEnumerator WaitAndStartStory()
+        {
+            yield return new WaitForSeconds(2f);
+
+            story.SetMainMenu(this);
             story.TriggerStartIntro();
         }
 
         public void IntroIsDone()
         {
-            animator.SetTrigger("startLanding");
+            animator.SetBool("isLanding", true);
         }
     }
 }
