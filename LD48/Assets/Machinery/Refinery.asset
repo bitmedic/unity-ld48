@@ -49,6 +49,8 @@ MonoBehaviour:
       _keys:
       - Gas
       _values: 02000000
+  totalInputCapacity: 0
+  totalOutputCapacity: 50
   inputCapacity:
     reorderableList:
       canAdd: 1
