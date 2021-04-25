@@ -25,6 +25,7 @@ namespace LD48
 
         [HideInInspector]
         public Machine rocket;
+        private MainMenu mainMenu;
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
         private bool isTextShown = false;
@@ -155,6 +156,11 @@ namespace LD48
             }
         }
 
+        public void SetMainMenu(MainMenu mm)
+        {
+            this.mainMenu = mm;
+        }
+
         private void ShowNextText()
         {
             this.indexStoryText++;
@@ -172,6 +178,14 @@ namespace LD48
                 }
                 else
                 {
+                    if (this.hasIntroTriggered == true && this.hasLandingTriggered == false)
+                    {
+                        if (this.mainMenu != null)
+                        {
+                            this.mainMenu.IntroIsDone();
+                        }
+                    }
+
                     this.isTextShown = false;
                     this.frameTextArea.gameObject.SetActive(false);
                 }

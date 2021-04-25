@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: OreDrill
   m_EditorClassIdentifier: 
   name: Ore Drill
-  key: drill_0
+  key: drillanimtile
+  productionEffect: {fileID: 0}
   maxInputPorts: 0
   maxOutputPorts: 8
   production:
