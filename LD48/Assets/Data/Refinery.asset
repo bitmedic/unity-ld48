@@ -16,3 +16,4 @@ MonoBehaviour:
   width: 2
   height: 2
   rotations: []
+  machineInfo: {fileID: 11400000, guid: 347807e5fd056a44a86c9f59590d6d42, type: 2}

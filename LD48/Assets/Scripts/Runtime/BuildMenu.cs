@@ -40,6 +40,9 @@ namespace LD48
         [SerializeField]
         AssemblyManager assemblyManager;
 
+        [SerializeField]
+        BuidlingToolTip buidlingToolTip;
+
         BuildingSizeSO tileToPlace;
         int buildingWidth;
         int buildingHeight;
@@ -271,6 +274,11 @@ namespace LD48
         {
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO;
+
+            if (buildingSO.machineInfo != null && buildingSO.machineInfo.production.Count > 0)
+            {
+                this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo.name, buildingSO.machineInfo.production[0]);
+            }
 
             if (this.tileToPlace.tile == null)
             {

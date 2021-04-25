@@ -10,6 +10,7 @@ namespace LD48
         Image image;
         bool isSelected = false;
 
+
         private void Start()
         {
             this.image = this.GetComponent<Image>();

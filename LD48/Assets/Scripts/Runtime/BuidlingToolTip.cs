@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace LD48
+{
+    public class BuidlingToolTip : MonoBehaviour
+    {
+        public Text titleText;
+        public Text input1Text;
+        public Text input2Text;
+        public Text outputText;
+        public Text productionTime;
+
+        public void ShowToolTipp(string buildingName, Production production)
+        {
+            this.gameObject.SetActive(true);
+
+            this.titleText.text = buildingName;
+
+            if (production.formula.Count >= 1)
+            {
+                int index = 0;
+                foreach(var f in production.formula)
+                {
+                    if (index == 0)
+                    {
+                        this.input1Text.text = string.Format("{0} {1}", f.Value, f.Key);
+                    }
+                    index++;
+                }
+            }
+            else
+            {
+                this.input1Text.text = "";
+            }
+
+            if (production.formula.Count >= 2)
+            {
+                int index = 0;
+                foreach (var f in production.formula)
+                {
+                    if (index == 1)
+                    {
+                        this.input2Text.text = string.Format("{0} {1}", f.Value, f.Key);
+                    }
+                    index++;
+                }
+            }
+            else
+            {
+                this.input2Text.text = "";
+            }
+
+            this.outputText.text = string.Format("{0} {1}", (production.amount, production.material));
+            
+            this.productionTime.text = string.Format("{0}", (production.tickCost));
+        }
+
+        public void HideToolTipp()
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+}

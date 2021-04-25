@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
   m_Name: GasDrill
   m_EditorClassIdentifier: 
-  name: Hydrogen Drill
+  name: Resource Drill
   key: drill_0
   maxInputPorts: 0
   maxOutputPorts: 8
@@ -28,7 +28,7 @@ MonoBehaviour:
         draggable: 1
         expandable: 1
         multipleSelection: 1
-        isExpanded: 0
+        isExpanded: 1
         label:
           m_Text: Keys
           m_Image: {fileID: 0}
@@ -43,12 +43,12 @@ MonoBehaviour:
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
-      isExpanded: 0
+      isExpanded: 1
       _keyValues: []
       _keys: []
       _values: 
   totalInputCapacity: 0
-  totalOutputCapacity: 50
+  totalOutputCapacity: 0
   inputCapacity:
     reorderableList:
       canAdd: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 0
+      isExpanded: 1
       label:
         m_Text: Keys
         m_Image: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 0
+    isExpanded: 1
     _keyValues: []
     _keys: []
     _values: 
@@ -82,7 +82,7 @@ MonoBehaviour:
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 0
+      isExpanded: 1
       label:
         m_Text: Keys
         m_Image: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 0
+    isExpanded: 1
     _keyValues: []
     _keys: []
     _values: 
