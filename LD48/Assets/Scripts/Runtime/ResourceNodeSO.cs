@@ -10,5 +10,6 @@ namespace LD48
     {
         public string resourceName;
         public List<TileBase> resourceNodeTiles;
+        public MachineInfo machineInfo;
     }
 }

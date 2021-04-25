@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7ab39b64972e9479c3b8ddba5ee72d, type: 3}
   m_Name: Drill
   m_EditorClassIdentifier: 
+  buildingName: Resource Drill
   tile: {fileID: 11400000, guid: b9956f92adb3fbc45ac4219e1cd916d9, type: 2}
   width: 2
   height: 2
+  rotations: []
+  machineInfo: {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
