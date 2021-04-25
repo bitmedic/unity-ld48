@@ -126,6 +126,22 @@ namespace LD48
             this.titleTime.text = "Time:";
             this.productionTime.text = string.Format("{0}", production.tickCost);            
         }
+        
+        public void ShowToolTippConveyer()
+        {
+            this.gameObject.SetActive(true);
+
+            this.titleText.text = "Conveyer";
+            this.titleInput.text = "Use \"R\" to rotate";
+            this.titleOutput.text = "Blue Arrow shows";
+            this.titleTime.text = "direction";
+
+            this.input1Text.text = "";
+            this.input2Text.text = "";
+            this.outputText.text = "";
+
+            this.productionTime.text = string.Format("");
+        }
 
         public void HideToolTipp()
         {

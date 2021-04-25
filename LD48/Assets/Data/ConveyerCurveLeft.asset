@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b47c926300f052546ba9f2a16b9e01b2, type: 2}
   - {fileID: 11400000, guid: 1ca52753f2578054da10d0e6e10e4591, type: 2}
   - {fileID: 11400000, guid: 731fec60204998048b1ddffef5dec738, type: 2}
+  machineInfo: []

@@ -292,6 +292,11 @@ namespace LD48
                 {
                     this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
                 }
+                else if (buildingSO.rotations.Count == 3)
+                {
+                    // conveyers
+                    this.buidlingToolTip.ShowToolTippConveyer();
+                }
                 else if (buildingSO.tile == null)
                 {
                     this.buidlingToolTip.ShowToolTipp();
