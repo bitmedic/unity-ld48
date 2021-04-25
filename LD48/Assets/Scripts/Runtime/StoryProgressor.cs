@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,22 @@ namespace LD48
         public List<string> storyTextAfterTier3;
 
         [Header("Refrences")]
+        public AssemblyManager assemblyManager;
         public Image frameTextArea;
         public Text textArea;
         public Machine Rocket;
 
+        private Machine rocket;
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
         private bool isTextShown = false;
+
+
+        private void Start()
+        {
+            this.rocket = assemblyManager.GetRocket();
+            this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+        }
 
         private void Update()
         {
@@ -32,6 +42,10 @@ namespace LD48
             }            
         }
 
+        public void RocketOutputProduced(Machine machine, List<Package> packages)
+        {
+            Debug.Log("Output prodúced! " + machine + ", " + packages);
+        }
 
         public void TriggerStartIntro()
         {
