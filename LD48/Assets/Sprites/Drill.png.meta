@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -3010401151903113755
     second: Drill_0
+  - first:
+      213: -4556558838227070352
+    second: Drill_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -158,6 +161,27 @@ TextureImporter:
       bones: []
       spriteID: 5ed53652a18e836d0800000000000000
       internalID: -3010401151903113755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drill_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0721f49d0e9d3c0c0800000000000000
+      internalID: -4556558838227070352
       vertices: []
       indices: 
       edges: []
