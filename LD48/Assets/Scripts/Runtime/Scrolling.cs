@@ -11,11 +11,16 @@ namespace LD48
 
         [SerializeField]
         float minX = -7;
+        [SerializeField]
         float maxX = 10;
+        [SerializeField]
         float minY = -2;
+        [SerializeField]
         float maxY = 8;
-        float minZoom = 2;
-        float maxZoom = 10;
+        [SerializeField]
+        float minZoom = 0.5f;
+        [SerializeField]
+        float maxZoom = 3;
 
         private void Start()
         {
@@ -43,10 +48,12 @@ namespace LD48
             Vector2 mouseZoom = Input.mouseScrollDelta;
             if (mouseZoom.y != 0f)
             {
-                Camera.main.orthographicSize -= mouseZoom.y * 100 * Time.deltaTime;
+                float newScale = gridTransform.localScale.y + mouseZoom.y * 10 * Time.deltaTime;
 
-                Camera.main.orthographicSize = Math.Min(Camera.main.orthographicSize, maxZoom);
-                Camera.main.orthographicSize = Math.Max(Camera.main.orthographicSize, minZoom);
+                newScale = Math.Min(newScale, maxZoom);
+                newScale = Math.Max(newScale, minZoom);
+
+                gridTransform.localScale = new Vector3(newScale, newScale, 1);
             }
         }
     }

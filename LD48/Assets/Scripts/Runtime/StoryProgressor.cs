@@ -15,14 +15,16 @@ namespace LD48
         public List<string> storyTextAfterTier1;
         public List<string> storyTextAfterTier2;
         public List<string> storyTextAfterTier3;
+        public List<string> storyVictory;
+        public List<string> storyDefeat;
 
         [Header("Refrences")]
         public AssemblyManager assemblyManager;
         public Image frameTextArea;
         public Text textArea;
-        public Machine Rocket;
 
-        private Machine rocket;
+        [HideInInspector]
+        public Machine rocket;
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
         private bool isTextShown = false;
@@ -37,17 +39,18 @@ namespace LD48
 
         private void Start()
         {
-            this.rocket = assemblyManager.GetRocket();
-            this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+            this.TriggerAfterLanding();
         }
 
         private void Update()
         {
             if (rocket == null)
             {
-                assemblyManager.CreateModel();
                 this.rocket = assemblyManager.GetRocket();
-                this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+                this.rocket.OnOutputProduced += (machine, packages) =>
+                {
+                    RocketOutputProduced(machine, packages);
+                };
             }
 
             if (isTextShown && Input.anyKeyDown)
