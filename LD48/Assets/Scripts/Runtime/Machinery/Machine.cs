@@ -12,7 +12,7 @@ namespace LD48
     public class Machine
     {
         public MachineInfo info;
-        public Vector2Int position;
+        public Vector3Int position;
 
         public List<Port> inputPorts;
         public List<Port> outputPorts;

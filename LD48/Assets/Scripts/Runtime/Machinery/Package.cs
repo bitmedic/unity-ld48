@@ -8,7 +8,7 @@ namespace LD48
     {
         public string material;
         public string guid;
-        public GameObject gameObject;
+        public Vector3Int lastPosition;
 
         public Package()
         {
