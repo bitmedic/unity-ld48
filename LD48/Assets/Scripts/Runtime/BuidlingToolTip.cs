@@ -16,6 +16,23 @@ namespace LD48
         public Text productionTime;
         public Text titleTime;
 
+
+        public void ShowToolTipp()
+        {
+            this.gameObject.SetActive(true);
+
+            this.titleText.text = "Demolish";
+            this.titleInput.text = "";
+            this.titleOutput.text = "";
+
+            this.input1Text.text = ""; 
+            this.input2Text.text = "";
+            this.outputText.text = "";
+
+            this.productionTime.text = string.Format("");
+            this.titleTime.text = string.Format("");
+        }
+
         public void ShowToolTipp(List<MachineInfo> machineInfo)
         {
             string buildingName = machineInfo[0].name;
@@ -23,7 +40,7 @@ namespace LD48
             this.gameObject.SetActive(true);
 
             this.titleText.text = buildingName;
-            this.titleInput.text = "Output";
+            this.titleInput.text = "Output:";
             this.titleOutput.text = "";
 
 
@@ -51,7 +68,7 @@ namespace LD48
             }
             else
             {
-                this.input2Text.text = "";
+                this.outputText.text = "";
             }
 
             this.productionTime.text = string.Format("");
@@ -62,6 +79,9 @@ namespace LD48
         {
             string buildingName = machineInfo.name;
             Production production = machineInfo.production[0];
+
+            this.titleInput.text = "Input:";
+            this.titleOutput.text = "Output:";
 
             this.gameObject.SetActive(true);
 

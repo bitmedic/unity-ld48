@@ -28,6 +28,8 @@ namespace LD48
 
         [SerializeField] AssemblyManager assemblyManager;
 
+        [SerializeField] StoryProgressor storyProgressor;
+
         [SerializeField]
         BuidlingToolTip buidlingToolTip;
 
@@ -233,7 +235,7 @@ namespace LD48
                 }
             }
 
-            this.assemblyManager?.CreateModel();
+            this.UpdateMachines();
         }
 
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
@@ -244,7 +246,7 @@ namespace LD48
             tilemapFactory.SetTile(cellLocation, tileToPlace);
             tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
 
-            this.assemblyManager?.CreateModel();
+            this.UpdateMachines();
 
             // if the building is larger than 1x1, then place something at the other positions
             for (int x = 0; x < this.buildingWidth; x++)
@@ -285,10 +287,25 @@ namespace LD48
                 {
                     this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
                 }
+                else if (buildingSO.tile == null)
+                {
+                    this.buidlingToolTip.ShowToolTipp();
+                }
+                else
+                {
+                    this.buidlingToolTip.HideToolTipp();
+                }
             }
             else
             {
-                this.buidlingToolTip.HideToolTipp();
+                if (buildingSO.tile == null)
+                {
+                    this.buidlingToolTip.ShowToolTipp();
+                }
+                else
+                {
+                    this.buidlingToolTip.HideToolTipp();
+                }
             }
 
             if (this.tileToPlace.tile == null)
@@ -306,6 +323,14 @@ namespace LD48
             this.buildingHeight = buildingSO.height;
         }
 
+        private void UpdateMachines()
+        {
+            if (this.assemblyManager != null)
+            {
+                this.assemblyManager.CreateModel();
+                storyProgressor.rocket = null;
+            }
+        }
 
         private void ResetAllBuildButtons()
         {

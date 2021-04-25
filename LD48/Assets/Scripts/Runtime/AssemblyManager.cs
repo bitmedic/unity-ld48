@@ -229,6 +229,8 @@ namespace LD48
                     m.outputStorage = previousMachine.outputStorage;
                     m.tempStorage = previousMachine.tempStorage;
                     m.info = previousMachine.info;
+
+                    previousAssembly.machines.Remove(previousMachine);
                 }
             }
         }
