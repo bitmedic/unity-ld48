@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: 8677582162583586583
     second: Factory_0
+  - first:
+      213: -4102168524580681326
+    second: Factory_Smelter
+  - first:
+      213: -4203045798846300014
+    second: Factory_Armory
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -158,6 +164,48 @@ TextureImporter:
       bones: []
       spriteID: 7178f064007fc6870800000000000000
       internalID: 8677582162583586583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Factory_Smelter
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 299849b067b2217c0800000000000000
+      internalID: -4102168524580681326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Factory_Armory
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29081195d18cba5c0800000000000000
+      internalID: -4203045798846300014
       vertices: []
       indices: 
       edges: []
