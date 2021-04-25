@@ -8,8 +8,8 @@ namespace LD48
     {
         private static string key_drill = "drill_0";
         private static string key_refinery = "factory_0";
-        private static string key_smelter = "_0"; //TODO umbennen
-        private static string key_armory = "_0"; //TODO umbennen
+        private static string key_smelter = "_0"; // TODO umbennen
+        private static string key_armory = "_0"; // TODO umbennen
 
         private static string key_conveyer_SW_NE = "conveyors_swne";
         private static string key_conveyer_SW_NW = "conveyors_swnw";
@@ -27,10 +27,12 @@ namespace LD48
         [Header("Static References")] 
         public Tilemap tilemap;
         public Tilemap tilemapTerrain;
+        public Tilemap tilemapBoxes;
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
         
         public StringMachineInfoDictionary machinery;
+        public StringTileDictionary resources;
         public List<string> ignoreTileTypes;
         public List<ResourceNodeSO> resourceNodes;
 
@@ -41,23 +43,6 @@ namespace LD48
         {
             previousAssembly = new AssemblyLine();
             CreateModel();
-            // DebugConnect();
-        }
-
-        private void DebugConnect()
-        {
-            assembly.machines[6].outputPorts[0].connectedMachine = assembly.machines[5];
-            assembly.machines[5].inputPorts[0].connectedMachine = assembly.machines[6];
-            assembly.machines[5].outputPorts[0].connectedMachine = assembly.machines[4];
-            assembly.machines[4].inputPorts[0].connectedMachine = assembly.machines[5];
-            assembly.machines[4].outputPorts[0].connectedMachine = assembly.machines[3];
-            assembly.machines[3].inputPorts[0].connectedMachine = assembly.machines[4];
-            assembly.machines[3].outputPorts[0].connectedMachine = assembly.machines[2];
-            assembly.machines[2].inputPorts[0].connectedMachine = assembly.machines[3];
-            assembly.machines[2].outputPorts[0].connectedMachine = assembly.machines[1];
-            assembly.machines[1].inputPorts[0].connectedMachine = assembly.machines[2];
-            assembly.machines[1].outputPorts[0].connectedMachine = assembly.machines[0];
-            assembly.machines[0].inputPorts[0].connectedMachine = assembly.machines[1];
         }
 
         public void CreateModel()
@@ -102,6 +87,27 @@ namespace LD48
         public void Tick()
         {
             assembly.Tick();
+
+            UpdateBoxes();
+        }
+
+        private void UpdateBoxes()
+        {
+            tilemapBoxes.ClearAllTiles();
+            assembly.machines.ForEach(m =>
+            {
+                if (!m.info.key.Contains("conveyors")) return;
+
+                m.outputStorage.ForEach(o =>
+                {
+                    if (!resources.ContainsKey(o.material))
+                    {
+                        Debug.LogError("Unassigned resource found: " + o.material);
+                        return;
+                    }
+                    tilemapBoxes.SetTile(new Vector3Int(m.position.x, m.position.y, 0), resources[o.material]);
+                });
+            });
         }
 
         private void MatchAllMachines()

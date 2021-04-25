@@ -6,6 +6,8 @@ using static LD48.Production;
 
 namespace LD48
 {
+    public delegate void OutputProduced(Machine machine, List<Package> packages);
+
     [Serializable]
     public class Machine
     {
@@ -17,6 +19,8 @@ namespace LD48
         public List<Package> inputStorage;
         public List<Package> tempStorage; // production during tick
         public List<Package> outputStorage;
+
+        public event OutputProduced OnOutputProduced;
 
         private bool fetchingDone;
         private bool productionDone;
@@ -55,6 +59,8 @@ namespace LD48
         {
             // copy handled materials to output
             outputStorage.AddRange(tempStorage);
+
+            if (tempStorage.Count > 0) OnOutputProduced?.Invoke(this, new List<Package>(tempStorage));
             tempStorage.Clear();
 
             return this;
@@ -65,6 +71,11 @@ namespace LD48
             PrepareTick();
             Tick();
             EndTick();
+        }
+
+        public int GetMaterialQuantity(string key)
+        {
+            return outputStorage.Count(s => s.material == key);
         }
 
         public Machine Tick()
