@@ -30,12 +30,13 @@ namespace LD48
 
         private void Start()
         {
-            this.rocket = assemblyManager.GetRocket();
             this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
         }
 
         private void Update()
         {
+            this.rocket = assemblyManager.GetRocket();
+
             if (isTextShown && Input.anyKeyDown)
             {
                 this.ShowNextText();
