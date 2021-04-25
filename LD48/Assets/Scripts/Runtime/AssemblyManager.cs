@@ -25,13 +25,12 @@ namespace LD48
         private static string key_conveyer_NE_SE = "conveyors_nese";
         private static string key_conveyer_NE_NW = "conveyors_nenw";
 
-        [Header("Static References")] 
-        public Tilemap tilemap;
+        [Header("Static References")] public Tilemap tilemap;
         public Tilemap tilemapTerrain;
         public Tilemap tilemapBoxes;
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
-        
+
         public StringMachineInfoDictionary machinery;
         public StringTileDictionary resources;
         public List<string> ignoreTileTypes;
@@ -62,8 +61,8 @@ namespace LD48
                 {
                     if (tilemap.HasTile(new Vector3Int(x, y, 0)))
                     {
-                        TileBase tile = tilemap.GetTile(new Vector3Int(x, y, 0)); 
-                        
+                        TileBase tile = tilemap.GetTile(new Vector3Int(x, y, 0));
+
                         string key = tile.name.ToLowerInvariant();
                         machineTypes.Add(key);
                         if (!machinery.ContainsKey(key))
@@ -73,7 +72,7 @@ namespace LD48
                         }
 
                         Machine m = new Machine(machinery[key]);
-                        m.position = new Vector2Int(x, y);
+                        m.position = new Vector3Int(x, y, 0);
                         assembly.WithMachine(m);
                     }
                 }
@@ -106,7 +105,9 @@ namespace LD48
                         Debug.LogError("Unassigned resource found: " + o.material);
                         return;
                     }
-                    tilemapBoxes.SetTile(new Vector3Int(m.position.x, m.position.y, 0), resources[o.material]);
+                    Vector3Int newPos = m.position;
+                    tilemapBoxes.SetTile(newPos, resources[o.material]);
+                    o.lastPosition = newPos;
                 });
             });
         }
@@ -183,7 +184,7 @@ namespace LD48
                     TileBase resTile = tilemapTerrain.GetTile(new Vector3Int(m.position.x, m.position.y, 0));
 
                     // check the resource node
-                    foreach(ResourceNodeSO resNode in resourceNodes)
+                    foreach (ResourceNodeSO resNode in resourceNodes)
                     {
                         if (resNode.resourceNodeTiles.Contains(resTile))
                         {
@@ -193,7 +194,7 @@ namespace LD48
                 }
 
                 // check if machine was already in revious assembly and use its parameters
-                Machine previousMachine = GetMachineAtPosition(previousAssembly, m.position);
+                Machine previousMachine = GetMachineAtPosition(previousAssembly, new Vector2Int(m.position.x, m.position.y));
                 if (previousMachine != null && previousMachine.info.key.Equals(m.info.key))
                 {
                     m.inputStorage = previousMachine.inputStorage;
@@ -201,7 +202,6 @@ namespace LD48
                     m.tempStorage = previousMachine.tempStorage;
                     m.info = previousMachine.info;
                 }
-
             }
         }
 
