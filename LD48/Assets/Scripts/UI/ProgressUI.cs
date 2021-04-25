@@ -39,7 +39,7 @@ namespace LD48
             int depth = assMan.GetRocket().GetMaterialQuantity("depth") + 1;
             int stability = assMan.GetRocket().GetMaterialQuantity("stability") + 1;
 
-            drillProgress = depth * stability + Time.time * 100;
+            drillProgress = depth * stability;
             float drillProgressPct = Mathf.Floor(drillProgress / drillGoal * 100);
             drillProgressBar.rectTransform.sizeDelta = new Vector2(15f, drillProgressPct);
             drillProgressText.text = FormatDrillProgress(drillProgress);
