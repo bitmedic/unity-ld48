@@ -31,6 +31,9 @@ namespace LD48
         [SerializeField]
         BuidlingToolTip buidlingToolTip;
 
+        [SerializeField]
+        ClickSounds clickSoundAudioSource;
+
         BuildingSizeSO tileToPlace;
         int buildingWidth;
         int buildingHeight;
@@ -215,6 +218,7 @@ namespace LD48
                     if (x == 0 && y == 0) // if not the base spawn cell
                     {
                         //bulldoze
+                        clickSoundAudioSource.PlayBulldozeSound();
                         tilemapFactory.SetTile(cellLocation, null);
                     }
                     else
@@ -235,6 +239,8 @@ namespace LD48
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
         {
             // build
+            clickSoundAudioSource.PlayBuildSound();
+
             tilemapFactory.SetTile(cellLocation, tileToPlace);
             tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
 
@@ -261,6 +267,8 @@ namespace LD48
 
         public void SetBuildingSelected(BuildingSizeSO buildingSO)
         {
+            clickSoundAudioSource.PlaySelectSound();
+
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO;
 
