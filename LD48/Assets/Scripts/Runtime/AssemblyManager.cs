@@ -213,7 +213,7 @@ namespace LD48
                     }
                 }
 
-                // check if machine was already in revious assembly and use its parameters
+                // check if machine was already in previous assembly and use its parameters
                 Machine previousMachine = GetMachineAtPosition(previousAssembly, new Vector2Int(m.position.x, m.position.y));
                 if (previousMachine != null && previousMachine.info.key.Equals(m.info.key))
                 {
