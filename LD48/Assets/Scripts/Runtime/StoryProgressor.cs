@@ -38,21 +38,16 @@ namespace LD48
         private void Start()
         {
             this.rocket = assemblyManager.GetRocket();
-            if (rocket != null)
-            {
-                this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
-            }
+            this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
         }
 
         private void Update()
         {
             if (rocket == null)
             {
+                assemblyManager.CreateModel();
                 this.rocket = assemblyManager.GetRocket();
-                if (rocket != null)
-                {
-                    this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
-                }
+                this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
             }
 
             if (isTextShown && Input.anyKeyDown)

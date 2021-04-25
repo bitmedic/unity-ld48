@@ -154,7 +154,7 @@ namespace LD48
                         return false;
                     }
 
-                    if (this.tileToPlace != null && this.tileToPlace.Equals(this.drillTile))
+                    if (this.tileToPlace != null && this.tileToPlace.tile.Equals(this.drillTile))
                     {
                         bool foundResourceNode = false;
 
