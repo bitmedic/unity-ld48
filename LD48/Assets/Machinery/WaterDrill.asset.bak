@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
-  m_Name: GasDrill
+  m_Name: WaterDrill
   m_EditorClassIdentifier: 
-  name: Resource Drill
+  name: Water Pump
   key: drill_0
   maxInputPorts: 0
   maxOutputPorts: 8
   production:
-  - material: gas
+  - material: water
     amount: 1
     strategy: 0
     tickCost: 2
@@ -28,7 +28,7 @@ MonoBehaviour:
         draggable: 1
         expandable: 1
         multipleSelection: 1
-        isExpanded: 1
+        isExpanded: 0
         label:
           m_Text: Keys
           m_Image: {fileID: 0}
@@ -43,12 +43,12 @@ MonoBehaviour:
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
-      isExpanded: 1
+      isExpanded: 0
       _keyValues: []
       _keys: []
       _values: 
   totalInputCapacity: 0
-  totalOutputCapacity: 0
+  totalOutputCapacity: 50
   inputCapacity:
     reorderableList:
       canAdd: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 1
+      isExpanded: 0
       label:
         m_Text: Keys
         m_Image: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 1
+    isExpanded: 0
     _keyValues: []
     _keys: []
     _values: 
@@ -82,7 +82,7 @@ MonoBehaviour:
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 1
+      isExpanded: 0
       label:
         m_Text: Keys
         m_Image: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 1
+    isExpanded: 0
     _keyValues: []
     _keys: []
     _values: 
