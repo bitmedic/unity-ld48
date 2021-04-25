@@ -36,11 +36,13 @@ namespace LD48
         {
             impactTimeLeft = impactTimeTotal - Time.time; //TODO this must be moved to main game loop
 
-            drillProgress = assMan.GetRocket().GetMaterialQuantity("depth");
+            int depth = assMan.GetRocket().GetMaterialQuantity("depth") + 1;
+            int stability = assMan.GetRocket().GetMaterialQuantity("stability") + 1;
 
+            drillProgress = depth * stability + Time.time * 100;
             float drillProgressPct = Mathf.Floor(drillProgress / drillGoal * 100);
             drillProgressBar.rectTransform.sizeDelta = new Vector2(15f, drillProgressPct);
-            drillProgressText.text = string.Format("{0,2:00}m", drillProgressPct);
+            drillProgressText.text = FormatDrillProgress(drillProgress);
 
             tntProgress = assMan.GetRocket().GetMaterialQuantity("explosiveness");
             float tntProgressPct = Mathf.Floor(tntProgress / tntGoal * 100);
@@ -60,6 +62,18 @@ namespace LD48
         public void WinTheGame()
         {
             // Do Something
+        }
+
+        private string FormatDrillProgress(float progress)
+        {
+            if (progress < 1000) 
+            {
+                return string.Format("{0:F0}m", progress);
+            }
+            else
+            {
+                return string.Format("{0:F1}km", progress / 1000);
+            }
         }
     }
 }
