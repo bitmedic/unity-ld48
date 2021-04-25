@@ -9,8 +9,8 @@ namespace LD48
         private static string key_rocket = "baseanimtile";
         private static string key_drill = "drill_0";
         private static string key_refinery = "factory_0";
-        private static string key_smelter = "_0"; // TODO umbennen
-        private static string key_armory = "_0"; // TODO umbennen
+        private static string key_smelter = "factory_armory"; // TODO umbennen
+        private static string key_armory = "factory_smelter"; // TODO umbennen
 
         private static string key_conveyer_SW_NE = "conveyors_swne";
         private static string key_conveyer_SW_NW = "conveyors_swnw";

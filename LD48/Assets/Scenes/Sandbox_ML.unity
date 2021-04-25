@@ -1672,6 +1672,9 @@ MonoBehaviour:
   tilemapBoxes: {fileID: 0}
   minTilemapCoordinates: {x: -50, y: -30}
   maxTilemapCoordinates: {x: 50, y: 30}
+  waterDrill: {fileID: 0}
+  oreDrill: {fileID: 0}
+  phosphorDrill: {fileID: 0}
   machinery:
     reorderableList:
       canAdd: 1
@@ -3786,6 +3789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildArmoryButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5720066502403446700, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4203045798846300014, guid: 5d310d4a190ef3c448eb510c30b80349, type: 3}
     - target: {fileID: 9004587534601407215, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_text
       value: 4
@@ -5257,6 +5264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildSmelterButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5720066502403446700, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4102168524580681326, guid: 5d310d4a190ef3c448eb510c30b80349, type: 3}
     - target: {fileID: 9004587534601407215, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_text
       value: 3
@@ -8733,7 +8744,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -126.100006, y: 69.899994}
-  m_SizeDelta: {x: 225, y: 120}
+  m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595946257
 MonoBehaviour:
@@ -8748,8 +8759,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 274836166}
+  titleInput: {fileID: 0}
   input1Text: {fileID: 1824762722}
   input2Text: {fileID: 1354995188}
+  titleOutput: {fileID: 0}
   outputText: {fileID: 339545825}
   productionTime: {fileID: 626139578}
 --- !u!114 &1595946258
@@ -8772,7 +8785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9b4bff06e1de4b04ea93af58f01710a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9cc35d5a7699484d90b4890fe79b83d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

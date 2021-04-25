@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7ab39b64972e9479c3b8ddba5ee72d, type: 3}
   m_Name: Smelter
   m_EditorClassIdentifier: 
-  buildingName: Smelter
-  tile: {fileID: 11400000, guid: 548fd86006a3e4049a8694e7b73ff470, type: 2}
+  tile: {fileID: 11400000, guid: 642fa889cf73bd146996e7fd9f5436a9, type: 2}
   width: 2
   height: 2
   rotations: []
-  machineInfo: {fileID: 0}
+  machineInfo:
+  - {fileID: 11400000, guid: bc5b117bacee54041aecd8a7d2db087d, type: 2}

@@ -12,7 +12,7 @@ namespace LD48
         public int width;
         public int height;
         public List<TileBase> rotations;
-        public MachineInfo machineInfo;
+        public List<MachineInfo> machineInfo;
 
         private int rotation = 0;
 

@@ -262,9 +262,19 @@ namespace LD48
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO;
 
-            if (buildingSO.machineInfo != null && buildingSO.machineInfo.production.Count > 0)
+            if (buildingSO.machineInfo != null)
             {
-                this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo.name, buildingSO.machineInfo.production[0]);
+                if (buildingSO.machineInfo.Count == 1)
+                {
+                    if (buildingSO.machineInfo[0].production.Count > 0)
+                    {
+                        this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo[0]);
+                    }
+                }
+                else if (buildingSO.machineInfo.Count > 1)
+                {
+                    this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
+                }
             }
 
             if (this.tileToPlace.tile == null)
