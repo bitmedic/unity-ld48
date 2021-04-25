@@ -16,6 +16,7 @@ namespace LD48
 
         public void Tick()
         {
+            machines.Shuffle();
             machines.ForEach(m => m.PrepareTick());
 
             // brute force over all machines as there is not necessarily a directed graph
