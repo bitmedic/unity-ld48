@@ -16,16 +16,16 @@ TextureImporter:
     second: Resources_3
   - first:
       213: -6291728694041167770
-    second: Resources_4
+    second: Resources_Hydrogen
   - first:
       213: 1848216903799394968
-    second: Resources_5
+    second: Resources_TNTbig
   - first:
       213: 522416265914234524
-    second: Resources_6
+    second: Resources_Steel
   - first:
       213: -1419259163969335966
-    second: Resources_7
+    second: Resources_TNT
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -247,7 +247,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Resources_4
+      name: Resources_Hydrogen
       rect:
         serializedVersion: 2
         x: 0
@@ -268,7 +268,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Resources_5
+      name: Resources_TNTbig
       rect:
         serializedVersion: 2
         x: 32
@@ -289,7 +289,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Resources_6
+      name: Resources_Steel
       rect:
         serializedVersion: 2
         x: 0
@@ -310,7 +310,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Resources_7
+      name: Resources_TNT
       rect:
         serializedVersion: 2
         x: 32

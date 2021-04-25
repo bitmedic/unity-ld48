@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
-  m_Name: Refinery
+  m_Name: Armory
   m_EditorClassIdentifier: 
-  name: Refinery
+  name: Armory
   key: factory_0
   maxInputPorts: 8
   maxOutputPorts: 8
   production:
-  - material: hydrogen
+  - material: explosives
     amount: 1
     strategy: 1
     tickCost: 5
@@ -45,10 +45,12 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 1
       _keyValues:
-      - water
+      - phosphor
+      - steel
       _keys:
-      - water
-      _values: 03000000
+      - phosphor
+      - steel
+      _values: 0500000002000000
   totalInputCapacity: 0
   totalOutputCapacity: 50
   inputCapacity:

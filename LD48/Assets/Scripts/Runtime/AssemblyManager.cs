@@ -31,6 +31,12 @@ namespace LD48
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
 
+        [Space]
+        public MachineInfo waterDrill;
+        public MachineInfo oreDrill;
+        public MachineInfo phosphorDrill;
+
+        [Space]
         public StringMachineInfoDictionary machinery;
         public StringTileDictionary resources;
         public List<string> ignoreTileTypes;
@@ -67,7 +73,7 @@ namespace LD48
                             if (!ignoreTileTypes.Contains(key)) unmappedMachineTypes.Add(key);
                             continue;
                         }
-                        
+
                         Machine m = new Machine(machinery[key]);
                         m.position = new Vector3Int(x, y, 0);
                         assembly.WithMachine(m);
@@ -271,7 +277,7 @@ namespace LD48
                 // check if output goes into the rocket
                 if (searchPosition.x >= -1 && searchPosition.x <= 1 && searchPosition.y >= -1 && searchPosition.y <= 1)
                 {
-                    Vector2Int rocketPosition = new Vector2Int(0,0);
+                    Vector2Int rocketPosition = new Vector2Int(0, 0);
                     Machine rocket = GetMachineAtPosition(rocketPosition);
 
                     if (rocket != null)
