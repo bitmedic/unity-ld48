@@ -7,7 +7,7 @@ namespace LD48
     public class AssemblyManager : MonoBehaviour
     {
         private const string key_rocket = "baseanimtile";
-        private const string key_drill = "drill_0";
+        private const string key_drill = "drillanimtile";
         private const string key_refinery = "factory_0";
         private const string key_smelter = "factory_armory"; // TODO umbennen
         private const string key_armory = "factory_smelter"; // TODO umbennen

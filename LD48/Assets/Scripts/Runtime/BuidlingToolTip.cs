@@ -123,6 +123,7 @@ namespace LD48
 
             this.outputText.text = string.Format("{0} {1}", production.amount, production.material);
 
+            this.titleTime.text = "Time:";
             this.productionTime.text = string.Format("{0}", production.tickCost);            
         }
 
