@@ -6,24 +6,24 @@ namespace LD48
 {
     public class AssemblyManager : MonoBehaviour
     {
-        private static string key_rocket = "baseanimtile";
-        private static string key_drill = "drill_0";
-        private static string key_refinery = "factory_0";
-        private static string key_smelter = "_0"; // TODO umbennen
-        private static string key_armory = "_0"; // TODO umbennen
-
-        private static string key_conveyer_SW_NE = "conveyors_swne";
-        private static string key_conveyer_SW_NW = "conveyors_swnw";
-        private static string key_conveyer_SW_SE = "conveyors_swse";
-        private static string key_conveyer_SE_NW = "conveyors_senw";
-        private static string key_conveyer_SE_NE = "conveyors_sene";
-        private static string key_conveyer_SE_SW = "conveyors_sesw";
-        private static string key_conveyer_NW_SE = "conveyors_nwse";
-        private static string key_conveyer_NW_SW = "conveyors_nwsw";
-        private static string key_conveyer_NW_NE = "conveyors_nwne";
-        private static string key_conveyer_NE_SW = "conveyors_nesw";
-        private static string key_conveyer_NE_SE = "conveyors_nese";
-        private static string key_conveyer_NE_NW = "conveyors_nenw";
+        private const string key_rocket = "baseanimtile";
+        private const string key_drill = "drill_0";
+        private const string key_refinery = "factory_0";
+        private const string key_smelter = "factory_armory"; // TODO umbennen
+        private const string key_armory = "factory_smelter"; // TODO umbennen
+                
+        private const string key_conveyer_SW_NE = "conveyors_swne";
+        private const string key_conveyer_SW_NW = "conveyors_swnw";
+        private const string key_conveyer_SW_SE = "conveyors_swse";
+        private const string key_conveyer_SE_NW = "conveyors_senw";
+        private const string key_conveyer_SE_NE = "conveyors_sene";
+        private const string key_conveyer_SE_SW = "conveyors_sesw";
+        private const string key_conveyer_NW_SE = "conveyors_nwse";
+        private const string key_conveyer_NW_SW = "conveyors_nwsw";
+        private const string key_conveyer_NW_NE = "conveyors_nwne";
+        private const string key_conveyer_NE_SW = "conveyors_nesw";
+        private const string key_conveyer_NE_SE = "conveyors_nese";
+        private const string key_conveyer_NE_NW = "conveyors_nenw";
 
         [Header("Static References")] public Tilemap tilemap;
         public Tilemap tilemapTerrain;
@@ -51,6 +51,11 @@ namespace LD48
             CreateModel();
         }
 
+        private void Update()
+        {
+            if (Time.frameCount % 100 == 0) Tick();
+        }
+        
         public void CreateModel()
         {
             previousAssembly = assembly;
@@ -92,6 +97,18 @@ namespace LD48
             assembly.Tick();
 
             UpdateBoxes();
+        }
+
+        public Machine GetRocket()
+        {
+            foreach (Machine m in assembly.machines)
+            {
+                if (m.info.key.Equals(key_rocket))
+                {
+                    return m;
+                }
+            }
+            return null;
         }
 
         private void UpdateBoxes()
@@ -196,7 +213,7 @@ namespace LD48
                     }
                 }
 
-                // check if machine was already in revious assembly and use its parameters
+                // check if machine was already in previous assembly and use its parameters
                 Machine previousMachine = GetMachineAtPosition(previousAssembly, new Vector2Int(m.position.x, m.position.y));
                 if (previousMachine != null && previousMachine.info.key.Equals(m.info.key))
                 {

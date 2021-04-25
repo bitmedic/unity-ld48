@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7ab39b64972e9479c3b8ddba5ee72d, type: 3}
   m_Name: Armory
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 548fd86006a3e4049a8694e7b73ff470, type: 2}
+  tile: {fileID: 11400000, guid: 5ce533733ed7cac4a9795f5b500db396, type: 2}
   width: 2
   height: 2
   rotations: []
+  machineInfo:
+  - {fileID: 11400000, guid: 69d215841bad66b418affe90259b6c5d, type: 2}

@@ -8,6 +8,7 @@ namespace LD48
 {
     public class BuildMenu : MonoBehaviour
     {
+        [SerializeField] Tilemap tilemapBuildPreview;
         [SerializeField] Tilemap tilemapFactory;
         [SerializeField] Tilemap tilemapTerrain;
         [SerializeField] Tilemap tilemapDecoration;
@@ -29,6 +30,9 @@ namespace LD48
 
         [SerializeField]
         BuidlingToolTip buidlingToolTip;
+
+        [SerializeField]
+        ClickSounds clickSoundAudioSource;
 
         BuildingSizeSO tileToPlace;
         int buildingWidth;
@@ -76,6 +80,7 @@ namespace LD48
                 doBulldoze = false;
                 tileToPlace?.ResetRotate();
                 this.ResetAllBuildButtons();
+                this.buidlingToolTip.HideToolTipp();
             }
 
             if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
@@ -93,7 +98,7 @@ namespace LD48
             cell.y--;
             cell.z = 0;
 
-            tilemapFactory.ClearAllEditorPreviewTiles();
+            tilemapBuildPreview.ClearAllTiles();
 
             if (tilemapTerrain.HasTile(cell))
             {
@@ -116,7 +121,7 @@ namespace LD48
                     }
                     else if (tileToPlace != null)
                     {
-                        tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace.GetTileRotation());
+                        tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetTileRotation());
                     }
                     // else do nothing for now
                 }
@@ -213,6 +218,7 @@ namespace LD48
                     if (x == 0 && y == 0) // if not the base spawn cell
                     {
                         //bulldoze
+                        clickSoundAudioSource.PlayBulldozeSound();
                         tilemapFactory.SetTile(cellLocation, null);
                     }
                     else
@@ -233,6 +239,8 @@ namespace LD48
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
         {
             // build
+            clickSoundAudioSource.PlayBuildSound();
+
             tilemapFactory.SetTile(cellLocation, tileToPlace);
             tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
 
@@ -259,12 +267,28 @@ namespace LD48
 
         public void SetBuildingSelected(BuildingSizeSO buildingSO)
         {
+            clickSoundAudioSource.PlaySelectSound();
+
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO;
 
-            if (buildingSO.machineInfo != null && buildingSO.machineInfo.production.Count > 0)
+            if (buildingSO.machineInfo != null)
             {
-                this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo.name, buildingSO.machineInfo.production[0]);
+                if (buildingSO.machineInfo.Count == 1)
+                {
+                    if (buildingSO.machineInfo[0].production.Count > 0)
+                    {
+                        this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo[0]);
+                    }
+                }
+                else if (buildingSO.machineInfo.Count > 1)
+                {
+                    this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
+                }
+            }
+            else
+            {
+                this.buidlingToolTip.HideToolTipp();
             }
 
             if (this.tileToPlace.tile == null)
