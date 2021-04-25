@@ -15,3 +15,4 @@ MonoBehaviour:
   resourceName: ore
   resourceNodeTiles:
   - {fileID: 11400000, guid: f80f82c740252fc479d46898629aabe5, type: 2}
+  machineInfo: {fileID: 11400000, guid: 468fe682c9c7cc041a2042b6a023d193, type: 2}

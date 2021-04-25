@@ -191,7 +191,7 @@ namespace LD48
                     {
                         if (resNode.resourceNodeTiles.Contains(resTile))
                         {
-                            m.info.production.Add(new Production(resNode.resourceName));
+                            m.info = resNode.machineInfo;
                         }
                     }
                 }
