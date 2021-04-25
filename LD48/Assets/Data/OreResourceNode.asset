@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: OreResourceNode
   m_EditorClassIdentifier: LD48.Runtime::ResourceNodeSO/BuildingSizeSO
   resourceName: ore
-  resourceNodeTiles: []
+  resourceNodeTiles:
+  - {fileID: 11400000, guid: f80f82c740252fc479d46898629aabe5, type: 2}

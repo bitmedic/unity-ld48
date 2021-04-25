@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PhosphorResourceNode
   m_EditorClassIdentifier: LD48.Runtime::ResourceNodeSO/BuildingSizeSO
   resourceName: phosphor
-  resourceNodeTiles: []
+  resourceNodeTiles:
+  - {fileID: 11400000, guid: cc44ce91c347ba34baba1e891ae29626, type: 2}

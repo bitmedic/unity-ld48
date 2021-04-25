@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: WaterResourceNode
   m_EditorClassIdentifier: LD48.Runtime::ResourceNodeSO/BuildingSizeSO
   resourceName: water
-  resourceNodeTiles: []
+  resourceNodeTiles:
+  - {fileID: 11400000, guid: 8b39db1c3d4e2434ba8f820dcfe24a0a, type: 2}
