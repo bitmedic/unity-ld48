@@ -18,16 +18,6 @@ namespace LD48
         }
 
         [Test]
-        public void TestPortSetup()
-        {
-            MachineInfo info = new MachineInfo("m1").WithInputPort(new PortDefinition()).WithInputPort(new PortDefinition()).WithOutputPort(new PortDefinition());
-            Machine machine = new Machine(info);
-
-            Assert.AreEqual(2, machine.inputPorts.Count);
-            Assert.AreEqual(1, machine.outputPorts.Count);
-        }
-
-        [Test]
         public void TestProduction()
         {
             MachineInfo info = new MachineInfo("m1")
@@ -54,6 +44,30 @@ namespace LD48
             Assert.AreEqual(10, machine.outputStorage.Count);
             Assert.AreEqual(4, machine.outputStorage.Count(p => p.material == "mat1"));
             Assert.AreEqual(6, machine.outputStorage.Count(p => p.material == "mat2"));
+        }
+
+        [Test]
+        public void TestTimedProduction()
+        {
+            MachineInfo info = new MachineInfo("m1").WithProduction(new Production("mat1", 1, 2));
+            Machine machine = new Machine(info);
+
+            MachineInfo info2 = new MachineInfo("m2");
+            Machine machine2 = new Machine(info2);
+
+            AssemblyLine ass = new AssemblyLine().WithMachine(machine).WithMachine(machine2);
+
+            ass.Tick();
+            Assert.AreEqual(0, machine.outputStorage.Count);
+
+            ass.Tick();
+            Assert.AreEqual(1, machine.outputStorage.Count);
+
+            ass.Tick();
+            Assert.AreEqual(1, machine.outputStorage.Count);
+
+            ass.Tick();
+            Assert.AreEqual(2, machine.outputStorage.Count);
         }
 
         [Test]
