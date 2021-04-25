@@ -106,7 +106,7 @@ namespace LD48
                         this.BulldozeBuilding(null, cell);
                     }
                 }
-                else if (this.CheckCanBuild(cell))
+                else if (this.buildingHeight > 0 && this.buildingWidth > 0 && this.CheckCanBuild(cell))
                 {
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +17,7 @@ namespace LD48
 
         [Header("Refrences")]
         public Image frameTextArea;
-        public TextMeshProUGUI textArea;
+        public Text textArea;
         public Machine Rocket;
 
         private StoryStep enumStoryStep;

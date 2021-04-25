@@ -6,6 +6,7 @@ namespace LD48
 {
     public class AssemblyManager : MonoBehaviour
     {
+        private static string key_rocket = "base";
         private static string key_drill = "drill_0";
         private static string key_refinery = "factory_0";
         private static string key_smelter = "_0"; // TODO umbennen
@@ -268,6 +269,16 @@ namespace LD48
                 if (MatchNeighbourOutput(GetMachineAtPosition(alternativeSearchPostion), parentMachine))
                 {
                     return;
+                }
+
+                // check if output goes into the rocket
+                if (searchPosition.x >= -1 && searchPosition.x <= 1 && searchPosition.y >= -1 && searchPosition.y <= 1)
+                {
+                    Vector2Int rokcetPosition = new Vector2Int(0,0);
+                    Machine rocket = GetMachineAtPosition(alternativeSearchPostion);
+
+                    parentMachine.outputPorts.Add(new Port(rocket));
+                    rocket.inputPorts.Add(new Port(parentMachine));
                 }
             }
         }
