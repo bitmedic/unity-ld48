@@ -1631,6 +1631,7 @@ MonoBehaviour:
     - conveyors_swne
     - conveyors_swnw
     - conveyors_swse
+    - baseanimtile
     _keys:
     - drill_0
     - conveyors_nenw
@@ -1646,6 +1647,7 @@ MonoBehaviour:
     - conveyors_swne
     - conveyors_swnw
     - conveyors_swse
+    - baseanimtile
     _values:
     - {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
     - {fileID: 11400000, guid: b9c4206dddb769f4b99791f9853cf2e9, type: 2}
@@ -1661,23 +1663,24 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9eaba938437b7eb4cae20a95cadb4708, type: 2}
     - {fileID: 11400000, guid: a009d8115ab71b94493033f162256cf4, type: 2}
     - {fileID: 11400000, guid: d028c24b05231ff4c9aafcbdca092de2, type: 2}
+    - {fileID: 11400000, guid: 29e0ce10c6afb8f48ae8b96c5baa2004, type: 2}
   resources:
     reorderableList:
-      canAdd: 0
-      canRemove: 0
-      draggable: 0
-      expandable: 0
-      multipleSelection: 0
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
       isExpanded: 0
       label:
-        m_Text: 
+        m_Text: Keys
         m_Image: {fileID: 0}
         m_Tooltip: 
-      headerHeight: 0
-      footerHeight: 0
-      slideEasing: 0
-      verticalSpacing: 0
-      showDefaultBackground: 0
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
       elementDisplayType: 0
       elementNameProperty: 
       elementNameOverride: 
@@ -1689,11 +1692,12 @@ MonoBehaviour:
     _values: []
   ignoreTileTypes:
   - terrain_0
+  - empty
   resourceNodes: []
   assembly:
     machines:
     - info: {fileID: 0}
-      position: {x: 0, y: 0}
+      position: {x: 0, y: 0, z: 0}
       inputPorts: []
       outputPorts: []
       inputStorage: []
@@ -3841,7 +3845,7 @@ PrefabInstance:
     - target: {fileID: 5720066502403446700, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4678259398471549702, guid: 19c4411bcb583f048b88ecd839bd21bf, type: 3}
+      objectReference: {fileID: 1757329675992614918, guid: 19c4411bcb583f048b88ecd839bd21bf, type: 3}
     - target: {fileID: 9004587534601407215, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_text
       value: 6
@@ -7955,7 +7959,7 @@ MonoBehaviour:
   textArea: {fileID: 0}
   Rocket:
     info: {fileID: 0}
-    position: {x: 0, y: 0}
+    position: {x: 0, y: 0, z: 0}
     inputPorts: []
     outputPorts: []
     inputStorage: []
@@ -10562,6 +10566,7 @@ MonoBehaviour:
   - {fileID: 1527766991}
   - {fileID: 204298269}
   - {fileID: 1166377666}
+  assemblyManager: {fileID: 282683882}
 --- !u!114 &1738956435
 MonoBehaviour:
   m_ObjectHideFlags: 0

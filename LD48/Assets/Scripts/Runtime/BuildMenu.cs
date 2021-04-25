@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -63,7 +64,14 @@ namespace LD48
             // go into placing mode as long as mouse button 0 is down
             if (Input.GetMouseButtonDown(0))
             {
-                clickedToPlace = true;
+                if (EventSystem.current.currentSelectedGameObject != null)
+                {
+                    // a UI Button was clicked, so don't build anything
+                }
+                else
+                {
+                    clickedToPlace = true;
+                }
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -238,6 +246,8 @@ namespace LD48
             tilemapFactory.SetTile(cellLocation, tileToPlace);
             tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
 
+            this.assemblyManager?.CreateModel();
+
             // if the building is larger than 1x1, then place something at the other positions
             for (int x = 0; x < this.buildingWidth; x++)
             {
@@ -252,8 +262,6 @@ namespace LD48
                         tilemapDecoration.SetTile(currentCell, this.emptyFillerTile);
 
                         this.clickedToPlace = false; // only every build 1 large building
-
-                        this.assemblyManager?.CreateModel();
                     }
                 }
             }
@@ -290,7 +298,6 @@ namespace LD48
 
         private void checkNumberKeysToBuild()
         {
-            BuildingSizeSO buildingSizeSO = null;
             int index = -1;
 
             if (Input.GetKeyDown(KeyCode.Alpha0))

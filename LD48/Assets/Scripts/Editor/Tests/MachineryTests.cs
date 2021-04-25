@@ -156,9 +156,9 @@ namespace LD48
 
             ass.Tick();
             Assert.AreEqual(1, machine1.outputStorage.Count);
-            Assert.AreEqual(0, conv1.inputStorage.Count);
+            Assert.AreEqual(1, conv1.inputStorage.Count);
             Assert.AreEqual(1, conv1.outputStorage.Count);
-            Assert.AreEqual(1, machine2.inputStorage.Count);
+            Assert.AreEqual(0, machine2.inputStorage.Count);
         }
     }
 }

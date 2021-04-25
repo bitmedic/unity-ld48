@@ -22,6 +22,7 @@ namespace LD48
 
         public event OutputProduced OnOutputProduced;
 
+        private StringIntDictionary productionTicks;
         private bool fetchingDone;
         private bool productionDone;
 
@@ -32,6 +33,7 @@ namespace LD48
             inputStorage = new List<Package>();
             tempStorage = new List<Package>();
             outputStorage = new List<Package>();
+            productionTicks = new StringIntDictionary();
         }
 
         public Machine(MachineInfo info) : this()
@@ -88,8 +90,9 @@ namespace LD48
                     if (port.connectedMachine.outputStorage.Count == 0) continue;
                     Package input = port.connectedMachine.outputStorage[0];
 
-                    int capacity = Mathf.Max(info.inputCapacity.ContainsKey(input.material) ? info.inputCapacity[input.material] : 0, info.totalInputCapacity);
-                    if (capacity == 0 || capacity > inputStorage.Count(s => s.material == input.material))
+                    int inputCapacity = Mathf.Max(info.inputCapacity.ContainsKey(input.material) ? info.inputCapacity[input.material] : 0, info.totalInputCapacity);
+                    int outputCapacity = Mathf.Max(info.outputCapacity.ContainsKey(input.material) ? info.outputCapacity[input.material] : 0, info.totalOutputCapacity);
+                    if ((inputCapacity == 0 || inputCapacity > inputStorage.Count(s => s.material == input.material)) && (outputCapacity == 0 || outputCapacity > outputStorage.Count(s => s.material == input.material)))
                     {
                         inputStorage.Add(input);
                         port.connectedMachine.outputStorage.RemoveAt(0);
@@ -114,27 +117,27 @@ namespace LD48
                                 inputStorage.RemoveAt(0);
                                 productionDone = true;
                             }
-
                             break;
 
                         case Strategy.Time:
                         case Strategy.Formula:
-                            List<string> result = p.Produce(inputStorage);
-                            if (result != null)
-                            {
-                                result.ForEach(m =>
-                                {
-                                    int capacity = Mathf.Max(info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0, info.totalOutputCapacity);
-                                    if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
-
-                                    tempStorage.Add(new Package(m));
-                                    productionDone = true;
-                                });
-                            }
-                            else
+                            if (!productionTicks.ContainsKey(p.GetKey())) productionTicks.Add(p.GetKey(), 0);
+                            productionTicks[p.GetKey()]++;
+                            if (productionTicks[p.GetKey()] < p.tickCost)
                             {
                                 productionDone = true;
+                                continue;
                             }
+                            productionTicks[p.GetKey()] = 0;
+
+                            p.Produce(inputStorage).ForEach(m =>
+                            {
+                                int capacity = Mathf.Max(info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0, info.totalOutputCapacity);
+                                if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
+
+                                tempStorage.Add(new Package(m));
+                                productionDone = true;
+                            });
                             break;
                     }
                 }

@@ -20,7 +20,7 @@ namespace LD48
         public int tickCost;
         public StringIntDictionary formula;
 
-        private int tickCounter;
+        private string key;
 
         public Production()
         {
@@ -41,12 +41,14 @@ namespace LD48
             strategy = Strategy.Time;
         }
 
+        public string GetKey()
+        {
+            if (string.IsNullOrEmpty(key)) key = Guid.NewGuid().ToString();
+            return key;
+        }
+
         public List<string> Produce(List<Package> inputs)
         {
-            tickCounter++;
-            if (tickCounter < tickCost) return null;
-            tickCounter = 0;
-
             List<string> result = new List<string>();
 
             if (strategy == Strategy.Formula)
