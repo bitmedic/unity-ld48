@@ -36,9 +36,6 @@ namespace LD48
 
             inputPorts.Clear();
             outputPorts.Clear();
-
-            info.inputPorts.ForEach(p => inputPorts.Add(new Port(p)));
-            info.outputPorts.ForEach(p => outputPorts.Add(new Port(p)));
         }
 
         public Machine PrepareTick()
@@ -111,14 +108,22 @@ namespace LD48
 
                         case Strategy.Time:
                         case Strategy.Formula:
-                            p.Produce(inputStorage)?.ForEach(m =>
+                            List<string> result = p.Produce(inputStorage);
+                            if (result != null)
                             {
-                                int capacity = info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0;
-                                if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
+                                result.ForEach(m =>
+                                {
+                                    int capacity = info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0;
+                                    if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
 
-                                tempStorage.Add(new Package(m));
+                                    tempStorage.Add(new Package(m));
+                                    productionDone = true;
+                                });
+                            }
+                            else
+                            {
                                 productionDone = true;
-                            });
+                            }
                             break;
                     }
                 }

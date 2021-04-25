@@ -12,17 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
   m_Name: Conveyor
   m_EditorClassIdentifier: 
-  name: Conveyor
   key: conveyerruletile
-  inputPorts:
-  - position: {x: 0, y: 0}
-  outputPorts:
-  - position: {x: 0, y: 0}
+  maxInputPorts: 1
+  maxOutputPorts: 1
   production:
   - material: 
     amount: 1
     strategy: 2
     tickCost: 1
+    formula:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: 
   inputCapacity:
     reorderableList:
       canAdd: 1
