@@ -7,6 +7,8 @@ namespace LD48
     [Serializable]
     public class AssemblyLine
     {
+        public const bool DEBUG_NO_SHUFFLE = true;
+
         public List<Machine> machines;
 
         public AssemblyLine()
@@ -16,7 +18,7 @@ namespace LD48
 
         public void Tick()
         {
-            machines.Shuffle();
+            if (!DEBUG_NO_SHUFFLE) machines.Shuffle();
             machines.ForEach(m => m.PrepareTick());
 
             // brute force over all machines as there is not necessarily a directed graph
