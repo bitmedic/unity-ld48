@@ -8,6 +8,7 @@ namespace LD48
 {
     public class BuildMenu : MonoBehaviour
     {
+        [SerializeField] Tilemap tilemapBuildPreview;
         [SerializeField] Tilemap tilemapFactory;
         [SerializeField] Tilemap tilemapTerrain;
         [SerializeField] Tilemap tilemapDecoration;
@@ -76,6 +77,7 @@ namespace LD48
                 doBulldoze = false;
                 tileToPlace?.ResetRotate();
                 this.ResetAllBuildButtons();
+                this.buidlingToolTip.HideToolTipp();
             }
 
             if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
@@ -93,7 +95,7 @@ namespace LD48
             cell.y--;
             cell.z = 0;
 
-            tilemapFactory.ClearAllEditorPreviewTiles();
+            tilemapBuildPreview.ClearAllTiles();
 
             if (tilemapTerrain.HasTile(cell))
             {
@@ -116,7 +118,7 @@ namespace LD48
                     }
                     else if (tileToPlace != null)
                     {
-                        tilemapFactory.SetEditorPreviewTile(cell, this.tileToPlace.GetTileRotation());
+                        tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetTileRotation());
                     }
                     // else do nothing for now
                 }
@@ -275,6 +277,10 @@ namespace LD48
                 {
                     this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
                 }
+            }
+            else
+            {
+                this.buidlingToolTip.HideToolTipp();
             }
 
             if (this.tileToPlace.tile == null)

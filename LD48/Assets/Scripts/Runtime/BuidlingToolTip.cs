@@ -14,11 +14,11 @@ namespace LD48
         public Text titleOutput;
         public Text outputText;
         public Text productionTime;
+        public Text titleTime;
 
         public void ShowToolTipp(List<MachineInfo> machineInfo)
         {
             string buildingName = machineInfo[0].name;
-            Production production = machineInfo[0].production[0];
 
             this.gameObject.SetActive(true);
 
@@ -38,7 +38,7 @@ namespace LD48
 
             if (machineInfo[1].production[0] != null)
             {
-                this.input2Text.text = string.Format("{0} {1}", machineInfo[0].production[0].amount, machineInfo[0].production[0].material);
+                this.input2Text.text = string.Format("{0} {1}", machineInfo[1].production[0].amount, machineInfo[1].production[0].material);
             }
             else
             {
@@ -47,14 +47,15 @@ namespace LD48
 
             if (machineInfo[1].production[0] != null)
             {
-                this.outputText.text = string.Format("{0} {1}", machineInfo[0].production[0].amount, machineInfo[0].production[0].material);
+                this.outputText.text = string.Format("{0} {1}", machineInfo[2].production[0].amount, machineInfo[2].production[0].material);
             }
             else
             {
                 this.input2Text.text = "";
             }
 
-            this.productionTime.text = string.Format("{0}", (production.tickCost));
+            this.productionTime.text = string.Format("");
+            this.titleTime.text = string.Format("");
         }
 
         public void ShowToolTipp(MachineInfo machineInfo)
