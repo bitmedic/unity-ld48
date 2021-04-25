@@ -77,7 +77,8 @@ namespace LD48
 
         private static string key_drill = "drill_0";
         private static string key_refinery = "factory_0";
-        private static string key_refinery2 = "_0"; //TODO umbennen
+        private static string key_smelter = "_0"; //TODO umbennen
+        private static string key_armory = "_0"; //TODO umbennen
 
 
         private static string key_conveyer_SW_NE = "conveyors_swne";
@@ -168,7 +169,7 @@ namespace LD48
 
             if (neighbour != null)
             {
-                parentMachine.outputPorts.Add(new Port(neighbour));
+                parentMachine.inputPorts.Add(new Port(neighbour));
                 this.MatchNeighbourInput(neighbour, parentMachine);
             }
             else
@@ -228,19 +229,10 @@ namespace LD48
         {
             if (neighbour != null)
             {
-                if (neighbour.info.key.Equals(key_drill))
-                {
-                    parentMachine.inputPorts.Add(new Port(neighbour));
-                    neighbour.outputPorts.Add(new Port(parentMachine));
-                    return true;
-                }
-                else if (neighbour.info.key.Equals(key_refinery))
-                {
-                    parentMachine.inputPorts.Add(new Port(neighbour));
-                    neighbour.outputPorts.Add(new Port(parentMachine));
-                    return true;
-                }
-                else if (neighbour.info.key.Equals(key_refinery2))
+                if (neighbour.info.key.Equals(key_drill) || 
+                   neighbour.info.key.Equals(key_refinery) || 
+                   neighbour.info.key.Equals(key_smelter) ||
+                   neighbour.info.key.Equals(key_armory))
                 {
                     parentMachine.inputPorts.Add(new Port(neighbour));
                     neighbour.outputPorts.Add(new Port(parentMachine));
@@ -254,19 +246,10 @@ namespace LD48
         {
             if (neighbour != null)
             {
-                if (neighbour.info.key.Equals(key_drill))
-                {
-                    parentMachine.outputPorts.Add(new Port(neighbour));
-                    neighbour.inputPorts.Add(new Port(parentMachine));
-                    return true;
-                }
-                else if (neighbour.info.key.Equals(key_refinery))
-                {
-                    parentMachine.outputPorts.Add(new Port(neighbour));
-                    neighbour.inputPorts.Add(new Port(parentMachine));
-                    return true;
-                }
-                else if (neighbour.info.key.Equals(key_refinery2))
+                if (neighbour.info.key.Equals(key_drill) ||
+                   neighbour.info.key.Equals(key_refinery) ||
+                   neighbour.info.key.Equals(key_smelter) ||
+                   neighbour.info.key.Equals(key_armory))
                 {
                     parentMachine.outputPorts.Add(new Port(neighbour));
                     neighbour.inputPorts.Add(new Port(parentMachine));

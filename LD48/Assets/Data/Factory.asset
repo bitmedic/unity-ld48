@@ -15,3 +15,4 @@ MonoBehaviour:
   tile: {fileID: 11400000, guid: 548fd86006a3e4049a8694e7b73ff470, type: 2}
   width: 2
   height: 2
+  rotations: []
