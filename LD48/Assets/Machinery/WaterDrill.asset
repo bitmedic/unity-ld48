@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Water Pump
   key: drill_0
+  productionEffect: {fileID: 0}
   maxInputPorts: 0
   maxOutputPorts: 8
   production:

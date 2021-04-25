@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Refinery
   key: factory_0
+  productionEffect: {fileID: 1758718281071787447, guid: 4f25a8f3a9d62e44d921146de5eaac15, type: 3}
   maxInputPorts: 8
   maxOutputPorts: 8
   production:
