@@ -18,9 +18,11 @@ namespace LD48
         public TMPro.TextMeshProUGUI tntProgressText;
 
         public Image impactBar;
-        public float impactTime;
-        public float impactTimeStart;
+        public float impactTimeLeft;
+        public float impactTimeTotal;
         public TMPro.TextMeshProUGUI impactProgressText;
+
+        public GameObject launchButtonPanel;
 
         // Start is called before the first frame update
         void Start()
@@ -31,6 +33,8 @@ namespace LD48
         // Update is called once per frame
         void Update()
         {
+            impactTimeLeft = impactTimeTotal - Time.time; //TODO this must be moved to main game loop
+
             float drillProgressPct = Mathf.Floor(drillProgress / drillGoal * 100);
             drillProgressBar.rectTransform.sizeDelta = new Vector2(15f, drillProgressPct);
             drillProgressText.text = string.Format("{0,2:00}m", drillProgressPct);
@@ -39,10 +43,19 @@ namespace LD48
             tntProgressBar.rectTransform.sizeDelta = new Vector2(15f, tntProgressPct);
             tntProgressText.text = string.Format("{0,2:00}%", tntProgressPct);
 
-            float impactTimePct = Mathf.Floor(impactTime / impactTimeStart * 100);
-            impactBar.rectTransform.sizeDelta = new Vector2(15f, 100 - impactTimePct);
-            int impactSecondsRemaining = Mathf.FloorToInt(impactTimeStart - impactTime);
-            impactProgressText.text = string.Format("{0,2:00}:{1,2:00}", impactSecondsRemaining / 60, impactSecondsRemaining % 60);
+            float impactTimePct = Mathf.Floor(impactTimeLeft / impactTimeTotal * 100);
+            impactBar.rectTransform.sizeDelta = new Vector2(15f, impactTimePct);
+            impactProgressText.text = string.Format("{0,2:00}:{1,2:00}", Mathf.FloorToInt(impactTimeLeft / 60f), impactTimeLeft % 60);
+
+            if (drillProgressPct > 100 && tntProgressPct > 100)
+            {
+                launchButtonPanel.SetActive(true);
+            }
+        }
+
+        public void WinTheGame()
+        {
+            // Do Something
         }
     }
 }
