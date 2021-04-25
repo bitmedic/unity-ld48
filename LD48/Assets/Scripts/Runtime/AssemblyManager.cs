@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,8 +8,8 @@ namespace LD48
     {
         private static string key_drill = "drill_0";
         private static string key_refinery = "factory_0";
-        private static string key_smelter = "_0"; //TODO umbennen
-        private static string key_armory = "_0"; //TODO umbennen
+        private static string key_smelter = "_0"; // TODO umbennen
+        private static string key_armory = "_0"; // TODO umbennen
 
         private static string key_conveyer_SW_NE = "conveyors_swne";
         private static string key_conveyer_SW_NW = "conveyors_swnw";
@@ -29,6 +27,7 @@ namespace LD48
         [Header("Static References")] 
         public Tilemap tilemap;
         public Tilemap tilemapTerrain;
+        public Tilemap tilemapBoxes;
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
         
@@ -94,6 +93,7 @@ namespace LD48
 
         private void UpdateBoxes()
         {
+            tilemapBoxes.ClearAllTiles();
             assembly.machines.ForEach(m =>
             {
                 if (!m.info.key.Contains("conveyors")) return;
@@ -105,7 +105,7 @@ namespace LD48
                         Debug.LogError("Unassigned resource found: " + o.material);
                         return;
                     }
-                    tilemap.SetTile(new Vector3Int(m.position.x, 0, m.position.y), resources[o.material]);
+                    tilemapBoxes.SetTile(new Vector3Int(m.position.x, m.position.y, 0), resources[o.material]);
                 });
             });
         }
