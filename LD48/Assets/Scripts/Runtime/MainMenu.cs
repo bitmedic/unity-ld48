@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace LD48
@@ -37,6 +38,16 @@ namespace LD48
         public void IntroIsDone()
         {
             animator.SetBool("isLanding", true);
+
+            StartCoroutine(WaitAndStartGame());
         }
+
+        IEnumerator WaitAndStartGame()
+        {
+            yield return new WaitForSeconds(6.5f);
+
+            SceneManager.LoadScene(1);
+        }
+
     }
 }
