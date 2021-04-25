@@ -113,6 +113,19 @@ namespace LD48
         }
 
         [Test]
+        public void TestStorageCapacity2()
+        {
+            MachineInfo info = new MachineInfo("m1").WithProduction(new Production("mat1"));
+            info.totalOutputCapacity = 2;
+            Machine machine = new Machine(info);
+
+            machine.FullTick();
+            machine.FullTick();
+            machine.FullTick();
+            Assert.AreEqual(2, machine.outputStorage.Count);
+        }
+
+        [Test]
         public void TestConveyor()
         {
             MachineInfo info = new MachineInfo("conv1").WithProduction(new Production(Strategy.Forward));

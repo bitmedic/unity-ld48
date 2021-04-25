@@ -88,7 +88,7 @@ namespace LD48
                     if (port.connectedMachine.outputStorage.Count == 0) continue;
                     Package input = port.connectedMachine.outputStorage[0];
 
-                    int capacity = info.inputCapacity.ContainsKey(input.material) ? info.inputCapacity[input.material] : 0;
+                    int capacity = Mathf.Max(info.inputCapacity.ContainsKey(input.material) ? info.inputCapacity[input.material] : 0, info.totalInputCapacity);
                     if (capacity == 0 || capacity > inputStorage.Count(s => s.material == input.material))
                     {
                         inputStorage.Add(input);
@@ -124,7 +124,7 @@ namespace LD48
                             {
                                 result.ForEach(m =>
                                 {
-                                    int capacity = info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0;
+                                    int capacity = Mathf.Max(info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0, info.totalOutputCapacity);
                                     if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
 
                                     tempStorage.Add(new Package(m));
