@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rocket
   m_EditorClassIdentifier: 
   name: Rocket
-  key: base
+  key: baseanimtile
   maxInputPorts: 12
   maxOutputPorts: 12
   production:

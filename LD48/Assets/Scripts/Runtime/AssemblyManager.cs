@@ -274,8 +274,15 @@ namespace LD48
                     Vector2Int rocketPosition = new Vector2Int(0, 0);
                     Machine rocket = GetMachineAtPosition(alternativeSearchPostion);
 
-                    parentMachine.outputPorts.Add(new Port(rocket));
-                    rocket.inputPorts.Add(new Port(parentMachine));
+                    if (rocket != null)
+                    {
+                        parentMachine.outputPorts.Add(new Port(rocket));
+                        rocket.inputPorts.Add(new Port(parentMachine));
+                    }
+                    else
+                    {
+                        Debug.Log("Rocket not found at " + rocketPosition);
+                    }
                 }
             }
         }
