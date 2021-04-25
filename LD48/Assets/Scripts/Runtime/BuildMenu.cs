@@ -52,6 +52,11 @@ namespace LD48
         {
             // place rocket at 0,0
             tilemapFactory.SetTile(new Vector3Int(0, 0, 0), rocketTile);
+
+            if (this.storyProgressor != null)
+            {
+                storyProgressor.TriggerAfterLanding();
+            }
         }
 
         // Update is called once per frame

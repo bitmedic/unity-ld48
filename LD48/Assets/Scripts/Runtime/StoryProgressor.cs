@@ -40,14 +40,13 @@ namespace LD48
 
         private void Start()
         {
-            this.TriggerAfterLanding();
         }
 
         private void Update()
         {
             if (rocket == null)
             {
-                this.rocket = assemblyManager.GetRocket();
+                this.rocket = assemblyManager?.GetRocket();
                 this.rocket.OnOutputProduced += (machine, packages) =>
                 {
                     RocketOutputProduced(machine, packages);
