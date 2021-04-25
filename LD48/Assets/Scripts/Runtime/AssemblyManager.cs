@@ -11,7 +11,6 @@ namespace LD48
         private static string key_smelter = "_0"; //TODO umbennen
         private static string key_armory = "_0"; //TODO umbennen
 
-
         private static string key_conveyer_SW_NE = "conveyors_swne";
         private static string key_conveyer_SW_NW = "conveyors_swnw";
         private static string key_conveyer_SW_SE = "conveyors_swse";
@@ -25,14 +24,22 @@ namespace LD48
         private static string key_conveyer_NE_SE = "conveyors_nese";
         private static string key_conveyer_NE_NW = "conveyors_nenw";
 
-        [Header("Static References")] public Tilemap tilemap;
+        [Header("Static References")] 
+        public Tilemap tilemap;
+        public Tilemap tilemapTerrain;
+        public Vector2Int minTilemapCoordinates;
+        public Vector2Int maxTilemapCoordinates;
+        
         public StringMachineInfoDictionary machinery;
         public List<string> ignoreTileTypes;
+        public List<ResourceNodeSO> resourceNodes;
 
         [Header("Runtime Info")] public AssemblyLine assembly;
+        private AssemblyLine previousAssembly;
 
         private void Start()
         {
+            previousAssembly = new AssemblyLine();
             CreateModel();
             // DebugConnect();
         }
@@ -55,6 +62,7 @@ namespace LD48
 
         public void CreateModel()
         {
+            previousAssembly = assembly;
             assembly = new AssemblyLine();
             HashSet<string> machineTypes = new HashSet<string>();
             HashSet<string> unmappedMachineTypes = new HashSet<string>();
@@ -62,28 +70,30 @@ namespace LD48
             BoundsInt bounds = tilemap.cellBounds;
             TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
 
-            for (int x = 0; x < bounds.size.x; x++)
+            for (int x = minTilemapCoordinates.x; x < maxTilemapCoordinates.x; x++)
             {
-                for (int y = 0; y < bounds.size.y; y++)
+                for (int y = minTilemapCoordinates.y; y < maxTilemapCoordinates.y; y++)
                 {
-                    TileBase tile = allTiles[x + y * bounds.size.x];
-                    if (tile == null) continue;
-
-                    string key = tile.name.ToLowerInvariant();
-                    machineTypes.Add(key);
-                    if (!machinery.ContainsKey(key))
+                    if (tilemap.HasTile(new Vector3Int(x, y, 0)))
                     {
-                        if (!ignoreTileTypes.Contains(key)) unmappedMachineTypes.Add(key);
-                        continue;
-                    }
+                        TileBase tile = tilemap.GetTile(new Vector3Int(x, y, 0)); 
+                        
+                        string key = tile.name.ToLowerInvariant();
+                        machineTypes.Add(key);
+                        if (!machinery.ContainsKey(key))
+                        {
+                            if (!ignoreTileTypes.Contains(key)) unmappedMachineTypes.Add(key);
+                            continue;
+                        }
 
-                    Machine m = new Machine(machinery[key]);
-                    m.position = new Vector2Int(x, y);
-                    assembly.WithMachine(m);
+                        Machine m = new Machine(machinery[key]);
+                        m.position = new Vector2Int(x, y);
+                        assembly.WithMachine(m);
+                    }
                 }
             }
 
-            MatchAllMachines(assembly);
+            MatchAllMachines();
 
             Debug.Log("Detected the following tile types: " + string.Join(", ", machineTypes));
             if (unmappedMachineTypes.Count > 0) Debug.LogError("Failed to map the following tile types: " + string.Join(", ", unmappedMachineTypes));
@@ -94,7 +104,7 @@ namespace LD48
             assembly.Tick();
         }
 
-        private void MatchAllMachines(AssemblyLine assembly)
+        private void MatchAllMachines()
         {
             foreach (Machine m in assembly.machines)
             {
@@ -160,6 +170,31 @@ namespace LD48
                     SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
                     SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
                 }
+
+                if (m.info.key.Equals(key_drill))
+                {
+                    TileBase resTile = tilemapTerrain.GetTile(new Vector3Int(m.position.x, m.position.y, 0));
+
+                    // check the resource node
+                    foreach(ResourceNodeSO resNode in resourceNodes)
+                    {
+                        if (resNode.resourceNodeTiles.Contains(resTile))
+                        {
+                            m.info.production.Add(new Production(resNode.resourceName));
+                        }
+                    }
+                }
+
+                // check if machine was already in revious assembly and use its parameters
+                Machine previousMachine = GetMachineAtPosition(previousAssembly, m.position);
+                if (previousMachine != null && previousMachine.info.key.Equals(m.info.key))
+                {
+                    m.inputStorage = previousMachine.inputStorage;
+                    m.outputStorage = previousMachine.outputStorage;
+                    m.tempStorage = previousMachine.tempStorage;
+                    m.info = previousMachine.info;
+                }
+
             }
         }
 
@@ -169,8 +204,11 @@ namespace LD48
 
             if (neighbour != null)
             {
-                parentMachine.inputPorts.Add(new Port(neighbour));
-                MatchNeighbourInput(neighbour, parentMachine);
+                if (!MatchNeighbourInput(neighbour, parentMachine))
+                {
+                    // if neighbour is not a big machine, that still at it as input
+                    parentMachine.inputPorts.Add(new Port(neighbour));
+                }
             }
             else
             {
@@ -200,8 +238,11 @@ namespace LD48
 
             if (neighbour != null)
             {
-                parentMachine.outputPorts.Add(new Port(neighbour));
-                MatchNeighbourOutput(neighbour, parentMachine);
+                if (!MatchNeighbourOutput(neighbour, parentMachine))
+                {
+                    // if neighbour is not assembly big machine, than still set it as output
+                    parentMachine.outputPorts.Add(new Port(neighbour));
+                }
             }
             else
             {
@@ -262,6 +303,16 @@ namespace LD48
         private Machine GetMachineAtPosition(Vector2Int position)
         {
             foreach (Machine m in assembly.machines)
+            {
+                if (m.position.Equals(position)) return m;
+            }
+
+            return null;
+        }
+
+        private Machine GetMachineAtPosition(AssemblyLine assLine, Vector2Int position)
+        {
+            foreach (Machine m in assLine.machines)
             {
                 if (m.position.Equals(position)) return m;
             }
