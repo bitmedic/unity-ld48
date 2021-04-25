@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
-  m_Name: GasDrill
+  m_Name: OreDrill
   m_EditorClassIdentifier: 
-  name: Hydrogen Drill
+  name: Ore Drill
   key: drill_0
   maxInputPorts: 0
   maxOutputPorts: 8
   production:
-  - material: gas
+  - material: ore
     amount: 1
     strategy: 0
-    tickCost: 2
+    tickCost: 10
     formula:
       reorderableList:
         canAdd: 1
