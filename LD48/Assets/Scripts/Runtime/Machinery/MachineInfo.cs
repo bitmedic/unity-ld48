@@ -6,6 +6,7 @@ namespace LD48
     [CreateAssetMenu(fileName = "Machine", menuName = "ScriptableObjects/Machine", order = 1)]
     public class MachineInfo : ScriptableObject
     {
+        public string name;
         public string key;
         public int maxInputPorts; // unused right now
         public int maxOutputPorts; // unused right now
