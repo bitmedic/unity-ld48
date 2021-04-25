@@ -11,6 +11,8 @@ namespace LD48
         public int maxInputPorts; // unused right now
         public int maxOutputPorts; // unused right now
         public List<Production> production;
+        public int totalInputCapacity;
+        public int totalOutputCapacity;
         public StringIntDictionary inputCapacity;
         public StringIntDictionary outputCapacity;
 

@@ -47,6 +47,8 @@ MonoBehaviour:
       _keyValues: []
       _keys: []
       _values: 
+  totalInputCapacity: 1
+  totalOutputCapacity: 1
   inputCapacity:
     reorderableList:
       canAdd: 1
@@ -95,7 +97,7 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 0
+    isExpanded: 1
     _keyValues: []
     _keys: []
     _values: 
