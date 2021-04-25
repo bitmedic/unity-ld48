@@ -27,11 +27,21 @@ namespace LD48
         private int indexStoryText = 0;
         private bool isTextShown = false;
 
+        private bool hasIntroTriggered = false;
+        private bool hasLandingTriggered = false;
+        private bool hasTier1Triggered = false;
+        private bool hasTier2Triggered = false;
+        private bool hasTier3Triggered = false;
+        private bool hasVictoryTriggered = false;
+        private bool hasDefeatTriggered = false;
 
         private void Start()
         {
             this.rocket = assemblyManager.GetRocket();
-            this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+            if (rocket != null)
+            {
+                this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+            }
         }
 
         private void Update()
@@ -39,7 +49,10 @@ namespace LD48
             if (rocket == null)
             {
                 this.rocket = assemblyManager.GetRocket();
-                this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+                if (rocket != null)
+                {
+                    this.rocket.OnOutputProduced += new OutputProduced(RocketOutputProduced);
+                }
             }
 
             if (isTextShown && Input.anyKeyDown)
@@ -50,56 +63,98 @@ namespace LD48
 
         public void RocketOutputProduced(Machine machine, List<Package> packages)
         {
-            Debug.Log("Output prodúced! " + machine + ", " + packages);
+            if (packages != null && packages.Count > 0)
+            {
+                if (packages[0].material.Equals("depth"))
+                {
+                    this.TriggerAfterTier1();
+                }
+                else if (packages[0].material.Equals("stability"))
+                {
+                    this.TriggerAfterTier2();
+                }
+                else if (packages[0].material.Equals("explosiveness"))
+                {
+                    this.TriggerAfterTier3();
+                }
+            }
         }
 
         public void TriggerStartIntro()
         {
-            this.enumStoryStep = StoryStep.Intro;
-            indexStoryText = -1;
-            this.ShowNextText();
+            if (!this.hasIntroTriggered)
+            {
+                this.hasIntroTriggered = true;
+                this.enumStoryStep = StoryStep.Intro;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         public void TriggerAfterLanding()
         {
-            this.enumStoryStep = StoryStep.AfterLanding;
-            indexStoryText = -1;
-            this.ShowNextText();
+            if (!this.hasLandingTriggered)
+            {
+                this.hasLandingTriggered = true;
+                this.enumStoryStep = StoryStep.AfterLanding;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         public void TriggerAfterTier1()
         {
-            this.enumStoryStep = StoryStep.AfterTier1;
-            indexStoryText = -1;
-            this.ShowNextText();
+            if (!this.hasTier1Triggered)
+            {
+                this.hasTier1Triggered = true;
+                this.enumStoryStep = StoryStep.AfterTier1;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         public void TriggerAfterTier2()
-        {
-            this.enumStoryStep = StoryStep.AfterTier2;
-            indexStoryText = -1;
-            this.ShowNextText();
+            {
+            if (!this.hasTier2Triggered)
+            {
+                this.hasTier2Triggered = true;
+                this.enumStoryStep = StoryStep.AfterTier2;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         public void TriggerAfterTier3()
         {
-            this.enumStoryStep = StoryStep.AfterTier3;
-            indexStoryText = -1;
-            this.ShowNextText();
+            if (!this.hasTier3Triggered)
+            {
+                this.hasTier3Triggered = true;
+                this.enumStoryStep = StoryStep.AfterTier3;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         public void TriggerVictory()
         {
-            this.enumStoryStep = StoryStep.Victory;
-            indexStoryText = -1;
-            this.ShowNextText();
+            if (!this.hasVictoryTriggered)
+            {
+                this.hasVictoryTriggered = true;
+                this.enumStoryStep = StoryStep.Victory;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         public void TriggerDefeat()
         {
-            this.enumStoryStep = StoryStep.Defeat;
-            indexStoryText = -1;
-            this.ShowNextText();
+            if (!this.hasDefeatTriggered)
+            {
+                this.hasDefeatTriggered = true;
+                this.enumStoryStep = StoryStep.Defeat;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
         }
 
         private void ShowNextText()
