@@ -7,16 +7,14 @@ namespace LD48
     public class MachineInfo : ScriptableObject
     {
         public string key;
-        public List<PortDefinition> inputPorts;
-        public List<PortDefinition> outputPorts;
+        public int maxInputPorts; // unused right now
+        public int maxOutputPorts; // unused right now
         public List<Production> production;
         public StringIntDictionary inputCapacity;
         public StringIntDictionary outputCapacity;
 
         public MachineInfo()
         {
-            inputPorts = new List<PortDefinition>();
-            outputPorts = new List<PortDefinition>();
             production = new List<Production>();
             inputCapacity = new StringIntDictionary();
             outputCapacity = new StringIntDictionary();
@@ -25,18 +23,6 @@ namespace LD48
         public MachineInfo(string name) : this()
         {
             this.name = name;
-        }
-
-        public MachineInfo WithInputPort(PortDefinition port)
-        {
-            inputPorts.Add(port);
-            return this;
-        }
-
-        public MachineInfo WithOutputPort(PortDefinition port)
-        {
-            outputPorts.Add(port);
-            return this;
         }
 
         public MachineInfo WithInputCapacity(string material, int capacity)

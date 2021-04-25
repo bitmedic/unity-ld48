@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c7ab39b64972e9479c3b8ddba5ee72d, type: 3}
-  m_Name: Factory
-  m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 548fd86006a3e4049a8694e7b73ff470, type: 2}
-  width: 2
-  height: 2
-  rotations: []
+  m_Script: {fileID: 11500000, guid: 6e0346765141b5f4a845c138370cc880, type: 3}
+  m_Name: WaterResourceNode
+  m_EditorClassIdentifier: LD48.Runtime::ResourceNodeSO/BuildingSizeSO
+  resourceName: Water
+  resourceNodeTiles: []
