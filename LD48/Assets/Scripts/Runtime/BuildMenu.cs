@@ -17,7 +17,13 @@ namespace LD48
         Tilemap tilemapDecoration;
 
         [SerializeField]
+        List<ResourceNodeSO> resourceNodeTiles;
+
+        [SerializeField]
         List<Button> buildButtons;
+
+        [SerializeField]
+        TileBase drillTile;
 
         [SerializeField]
         TileBase emptyFillerTile;
@@ -132,6 +138,31 @@ namespace LD48
                     if (!tilemapTerrain.HasTile(currentCell))
                     {
                         return false;
+                    }
+
+                    // check if cell has no factory field
+                    if (tilemapFactory.HasTile(currentCell))
+                    {
+                        return false;
+                    }
+
+                    if (this.tileToPlace != null && this.tileToPlace.Equals(this.drillTile))
+                    {
+                        bool foundResourceNode = false;
+
+                        // if building a drill check if all cells are also resource cells
+                        foreach (ResourceNodeSO resNode in this.resourceNodeTiles)
+                        {
+                            if (resNode.resourceNodeTiles.Contains(tilemapTerrain.GetTile(currentCell)))
+                            {
+                                foundResourceNode = true;
+                            }
+                        }
+
+                        if (!foundResourceNode)
+                        {
+                            return false;
+                        }
                     }
                 }
             }
