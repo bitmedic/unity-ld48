@@ -1,10 +1,12 @@
 {
-    "name": "LD48.Runtime",
+    "name": "RotaryHeart.Editor",
     "rootNamespace": "",
     "references": [
-        "RotaryHeart.Runtime"
+        "GUID:b0a603f416d6203469323a2f5aa8812f"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

@@ -5,7 +5,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "LD48.Runtime",
-        "RotaryHeart"
+        "RotaryHeart.Editor",
+        "RotaryHeart.Runtime"
     ],
     "includePlatforms": [
         "Editor"
