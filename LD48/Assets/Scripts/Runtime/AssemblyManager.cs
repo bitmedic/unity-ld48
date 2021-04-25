@@ -52,9 +52,6 @@ namespace LD48
             HashSet<string> machineTypes = new HashSet<string>();
             HashSet<string> unmappedMachineTypes = new HashSet<string>();
 
-            BoundsInt bounds = tilemap.cellBounds;
-            TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
-
             for (int x = minTilemapCoordinates.x; x < maxTilemapCoordinates.x; x++)
             {
                 for (int y = minTilemapCoordinates.y; y < maxTilemapCoordinates.y; y++)
@@ -274,7 +271,7 @@ namespace LD48
                 // check if output goes into the rocket
                 if (searchPosition.x >= -1 && searchPosition.x <= 1 && searchPosition.y >= -1 && searchPosition.y <= 1)
                 {
-                    Vector2Int rokcetPosition = new Vector2Int(0,0);
+                    Vector2Int rocketPosition = new Vector2Int(0, 0);
                     Machine rocket = GetMachineAtPosition(alternativeSearchPostion);
 
                     parentMachine.outputPorts.Add(new Port(rocket));
@@ -321,7 +318,7 @@ namespace LD48
         {
             foreach (Machine m in assembly.machines)
             {
-                if (m.position.Equals(position)) return m;
+                if (new Vector2Int(m.position.x, m.position.y).Equals(position)) return m;
             }
 
             return null;
@@ -331,7 +328,7 @@ namespace LD48
         {
             foreach (Machine m in assLine.machines)
             {
-                if (m.position.Equals(position)) return m;
+                if (new Vector2Int(m.position.x, m.position.y).Equals(position)) return m;
             }
 
             return null;
