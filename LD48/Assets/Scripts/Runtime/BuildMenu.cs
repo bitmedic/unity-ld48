@@ -36,6 +36,9 @@ namespace LD48
         [SerializeField]
         List<SingleBuildButton> numberKeysToBuildButtonScript;
 
+        [SerializeField]
+        AssemblyManager assemblyManager;
+
         BuildingSizeSO tileToPlace;
         int buildingWidth;
         int buildingHeight;
@@ -225,6 +228,8 @@ namespace LD48
                     }
                 }
             }
+
+            this.assemblyManager?.CreateModel();
         }
 
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
@@ -247,6 +252,8 @@ namespace LD48
                         tilemapDecoration.SetTile(currentCell, this.emptyFillerTile);
 
                         this.clickedToPlace = false; // only every build 1 large building
+
+                        this.assemblyManager?.CreateModel();
                     }
                 }
             }
