@@ -4996,6 +4996,9 @@ MonoBehaviour:
   tilemapBoxes: {fileID: 370961738}
   minTilemapCoordinates: {x: -50, y: -30}
   maxTilemapCoordinates: {x: 50, y: 30}
+  waterDrill: {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
+  oreDrill: {fileID: 11400000, guid: 468fe682c9c7cc041a2042b6a023d193, type: 2}
+  phosphorDrill: {fileID: 11400000, guid: 642f681506f83ab4b9afa4eec538a17f, type: 2}
   machinery:
     reorderableList:
       canAdd: 1
@@ -5003,7 +5006,7 @@ MonoBehaviour:
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 0
+      isExpanded: 1
       label:
         m_Text: Keys
         m_Image: {fileID: 0}
@@ -5018,7 +5021,7 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 0
+    isExpanded: 1
     _keyValues:
     - drill_0
     - conveyors_nenw
@@ -5088,9 +5091,9 @@ MonoBehaviour:
     reqReferences: {fileID: 0}
     isExpanded: 1
     _keyValues:
-    - gas
+    - water
     _keys:
-    - gas
+    - water
     _values:
     - {fileID: 11400000, guid: 2d78105c077c5c14e9b8b735bbd3b14b, type: 2}
   ignoreTileTypes:

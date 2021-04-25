@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
-  m_Name: GasDrill
+  m_Name: Armory
   m_EditorClassIdentifier: 
-  name: Hydrogen Drill
-  key: drill_0
-  maxInputPorts: 0
+  name: Armory
+  key: factory_0
+  maxInputPorts: 8
   maxOutputPorts: 8
   production:
-  - material: gas
+  - material: explosives
     amount: 1
-    strategy: 0
-    tickCost: 2
+    strategy: 1
+    tickCost: 5
     formula:
       reorderableList:
         canAdd: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
         draggable: 1
         expandable: 1
         multipleSelection: 1
-        isExpanded: 0
+        isExpanded: 1
         label:
           m_Text: Keys
           m_Image: {fileID: 0}
@@ -43,10 +43,14 @@ MonoBehaviour:
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
-      isExpanded: 0
-      _keyValues: []
-      _keys: []
-      _values: 
+      isExpanded: 1
+      _keyValues:
+      - phosphor
+      - steel
+      _keys:
+      - phosphor
+      - steel
+      _values: 0500000002000000
   totalInputCapacity: 0
   totalOutputCapacity: 50
   inputCapacity:

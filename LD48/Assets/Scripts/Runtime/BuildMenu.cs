@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,35 +8,24 @@ namespace LD48
 {
     public class BuildMenu : MonoBehaviour
     {
-        [SerializeField]
-        Tilemap tilemapFactory;
-        [SerializeField]
-        Tilemap tilemapTerrain;
-        [SerializeField]
-        Tilemap tilemapDecoration;
+        [SerializeField] Tilemap tilemapFactory;
+        [SerializeField] Tilemap tilemapTerrain;
+        [SerializeField] Tilemap tilemapDecoration;
 
-        [SerializeField]
-        List<ResourceNodeSO> resourceNodeTiles;
+        [SerializeField] List<ResourceNodeSO> resourceNodeTiles;
 
-        [SerializeField]
-        List<Button> buildButtons;
+        [SerializeField] List<Button> buildButtons;
 
-        [SerializeField]
-        TileBase rocketTile;
+        [SerializeField] TileBase rocketTile;
 
-        [SerializeField]
-        TileBase drillTile;
+        [SerializeField] TileBase drillTile;
 
-        [SerializeField]
-        TileBase emptyFillerTile;
+        [SerializeField] TileBase emptyFillerTile;
 
-        [SerializeField]
-        List<BuildingSizeSO> numberKeysToBuild;
-        [SerializeField]
-        List<SingleBuildButton> numberKeysToBuildButtonScript;
+        [SerializeField] List<BuildingSizeSO> numberKeysToBuild;
+        [SerializeField] List<SingleBuildButton> numberKeysToBuildButtonScript;
 
-        [SerializeField]
-        AssemblyManager assemblyManager;
+        [SerializeField] AssemblyManager assemblyManager;
 
         BuildingSizeSO tileToPlace;
         int buildingWidth;
@@ -226,7 +213,7 @@ namespace LD48
                         tilemapFactory.SetTile(cellLocation, null);
                     }
                     else
-                    { 
+                    {
                         Vector3Int currentCell = new Vector3Int(cellLocation.x + x, cellLocation.y + y, cellLocation.z);
 
                         if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(currentCell)))
@@ -290,7 +277,7 @@ namespace LD48
 
         private void ResetAllBuildButtons()
         {
-            foreach(Button btn in this.buildButtons)
+            foreach (Button btn in this.buildButtons)
             {
                 btn.GetComponent<SingleBuildButton>().SetUnselected();
             }
