@@ -14,7 +14,7 @@ namespace LD48
 
         private void Start()
         {
-            earth.position = new Vector3(-347, -264, 0);
+            //earth.position = new Vector3(-347, -264, 0);
         }
 
         public void StartGame()
