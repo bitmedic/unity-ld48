@@ -590,6 +590,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: RHSD
+    13: RHSD
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

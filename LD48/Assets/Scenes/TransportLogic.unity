@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5521,11 +5521,11 @@ MonoBehaviour:
     - explosives
     _values:
     - {fileID: 11400000, guid: 2d78105c077c5c14e9b8b735bbd3b14b, type: 2}
-    - {fileID: 11400000, guid: bbf66891a17144d4b9bb53aa160b8a36, type: 2}
     - {fileID: 11400000, guid: aac7e71c1d0849946a481c09253538ef, type: 2}
+    - {fileID: 11400000, guid: bbf66891a17144d4b9bb53aa160b8a36, type: 2}
     - {fileID: 11400000, guid: 29bc2bd9bb219e144afee7a682f7d245, type: 2}
     - {fileID: 11400000, guid: cf9b385c71f674b4cbd97fd95d65cef2, type: 2}
-    - {fileID: 11400000, guid: a173ca2fd94766c4e94048307a0018e0, type: 2}
+    - {fileID: 11400000, guid: 9b0c8163e003d904991eedb75ae12c2e, type: 2}
   ignoreTileTypes:
   - terrain_0
   - baseanimtile

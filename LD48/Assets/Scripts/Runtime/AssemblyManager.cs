@@ -51,6 +51,11 @@ namespace LD48
             CreateModel();
         }
 
+        private void Update()
+        {
+            if (Time.frameCount % 100 == 0) Tick();
+        }
+        
         public void CreateModel()
         {
             previousAssembly = assembly;

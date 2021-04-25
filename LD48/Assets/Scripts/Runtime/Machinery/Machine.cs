@@ -90,6 +90,9 @@ namespace LD48
                     if (port.connectedMachine.outputStorage.Count == 0) continue;
                     Package input = port.connectedMachine.outputStorage[0];
 
+                    // filter
+                    if (!info.inputCapacity.ContainsKey(input.material) && info.inputCapacity.Count > 0) continue;
+
                     int inputCapacity = Mathf.Max(info.inputCapacity.ContainsKey(input.material) ? info.inputCapacity[input.material] : 0, info.totalInputCapacity);
                     int outputCapacity = Mathf.Max(info.outputCapacity.ContainsKey(input.material) ? info.outputCapacity[input.material] : 0, info.totalOutputCapacity);
                     if ((inputCapacity == 0 || inputCapacity > inputStorage.Count(s => s.material == input.material)) && (outputCapacity == 0 || outputCapacity > outputStorage.Count(s => s.material == input.material)))
