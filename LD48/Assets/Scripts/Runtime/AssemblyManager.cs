@@ -11,7 +11,7 @@ namespace LD48
         private const string key_refinery = "factory_0";
         private const string key_smelter = "factory_armory"; // TODO umbennen
         private const string key_armory = "factory_smelter"; // TODO umbennen
-                
+
         private const string key_conveyer_SW_NE = "conveyors_swne";
         private const string key_conveyer_SW_NW = "conveyors_swnw";
         private const string key_conveyer_SW_SE = "conveyors_swse";
@@ -31,13 +31,11 @@ namespace LD48
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
 
-        [Space]
-        public MachineInfo waterDrill;
+        [Space] public MachineInfo waterDrill;
         public MachineInfo oreDrill;
         public MachineInfo phosphorDrill;
 
-        [Space]
-        public StringMachineInfoDictionary machinery;
+        [Space] public StringMachineInfoDictionary machinery;
         public StringTileDictionary resources;
         public List<string> ignoreTileTypes;
         public List<ResourceNodeSO> resourceNodes;
@@ -55,7 +53,7 @@ namespace LD48
         {
             if (Time.frameCount % 100 == 0) Tick();
         }
-        
+
         public void CreateModel()
         {
             previousAssembly = assembly;
@@ -82,6 +80,16 @@ namespace LD48
                         Machine m = new Machine(machinery[key]);
                         m.position = new Vector3Int(x, y, 0);
                         assembly.WithMachine(m);
+
+                        m.OnOutputProduced += (machine, packages) =>
+                        {
+                            if (m.info.productionEffect != null)
+                            {
+                                Vector3 pos = tilemap.GetCellCenterWorld(m.position) + new Vector3(0, 1, 0);
+                                GameObject effect = Instantiate(m.info.productionEffect, pos, Quaternion.identity);
+                                Destroy(effect, 4);
+                            }
+                        };
                     }
                 }
             }

@@ -138,6 +138,18 @@ namespace LD48
                                 int capacity = Mathf.Max(info.outputCapacity.ContainsKey(m) ? info.outputCapacity[m] : 0, info.totalOutputCapacity);
                                 if (capacity > 0 && outputStorage.Count(o => o.material == m) >= capacity) return;
 
+                                if (p.strategy == Strategy.Formula)
+                                {
+                                    // remove inputs
+                                    foreach (KeyValuePair<string, int> req in p.formula)
+                                    {
+                                        for (int i = 0; i < req.Value; i++)
+                                        {
+                                            inputStorage.RemoveAt(inputStorage.FindIndex(input => input.material == req.Key));
+                                        }
+                                    }
+                                }
+
                                 tempStorage.Add(new Package(m));
                                 productionDone = true;
                             });

@@ -8,6 +8,7 @@ namespace LD48
     {
         public string name;
         public string key;
+        public GameObject productionEffect;
         public int maxInputPorts; // unused right now
         public int maxOutputPorts; // unused right now
         public List<Production> production;

@@ -50,7 +50,7 @@ MonoBehaviour:
       - ore
       _values: 03000000
   totalInputCapacity: 0
-  totalOutputCapacity: 50
+  totalOutputCapacity: 30
   inputCapacity:
     reorderableList:
       canAdd: 1
