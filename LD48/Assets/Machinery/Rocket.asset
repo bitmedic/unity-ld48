@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3073c2f409fa3b479af861d3814b74b, type: 3}
-  m_Name: conveyors_nenw
+  m_Name: Rocket
   m_EditorClassIdentifier: 
-  name: Conveyor
-  key: conveyors_nenw
-  maxInputPorts: 1
-  maxOutputPorts: 1
+  name: Rocket
+  key: base
+  maxInputPorts: 12
+  maxOutputPorts: 12
   production:
-  - material: 
+  - material: depth
     amount: 1
-    strategy: 2
+    strategy: 1
     tickCost: 1
     formula:
       reorderableList:
@@ -28,7 +28,7 @@ MonoBehaviour:
         draggable: 1
         expandable: 1
         multipleSelection: 1
-        isExpanded: 0
+        isExpanded: 1
         label:
           m_Text: Keys
           m_Image: {fileID: 0}
@@ -43,10 +43,76 @@ MonoBehaviour:
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
-      isExpanded: 0
-      _keyValues: []
-      _keys: []
-      _values: 
+      isExpanded: 1
+      _keyValues:
+      - hydrogen
+      _keys:
+      - hydrogen
+      _values: 05000000
+  - material: stability
+    amount: 1
+    strategy: 1
+    tickCost: 1
+    formula:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 1
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 1
+      _keyValues:
+      - steel
+      _keys:
+      - steel
+      _values: 0a000000
+  - material: explosiveness
+    amount: 1
+    strategy: 1
+    tickCost: 1
+    formula:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 1
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 1
+      _keyValues:
+      - explosive
+      _keys:
+      - explosive
+      _values: 01000000
   inputCapacity:
     reorderableList:
       canAdd: 1
