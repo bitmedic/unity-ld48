@@ -7,7 +7,7 @@ namespace LD48
     [Serializable]
     public class AssemblyLine
     {
-        public const bool DEBUG_NO_SHUFFLE = true;
+        public const bool DEBUG_NO_SHUFFLE = false;
 
         public List<Machine> machines;
 
