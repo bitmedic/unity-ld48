@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Smelter
   key: factory_0
+  productionEffect: {fileID: 0}
   maxInputPorts: 8
   maxOutputPorts: 8
   production:
@@ -50,7 +51,7 @@ MonoBehaviour:
       - ore
       _values: 03000000
   totalInputCapacity: 0
-  totalOutputCapacity: 30
+  totalOutputCapacity: 5
   inputCapacity:
     reorderableList:
       canAdd: 1

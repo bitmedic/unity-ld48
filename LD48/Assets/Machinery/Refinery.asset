@@ -51,7 +51,7 @@ MonoBehaviour:
       - water
       _values: 03000000
   totalInputCapacity: 0
-  totalOutputCapacity: 30
+  totalOutputCapacity: 5
   inputCapacity:
     reorderableList:
       canAdd: 1
