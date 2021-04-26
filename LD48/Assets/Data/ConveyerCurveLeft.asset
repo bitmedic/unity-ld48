@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7ab39b64972e9479c3b8ddba5ee72d, type: 3}
   m_Name: ConveyerCurveLeft
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 7dd25cc6e5a130345a7a18db68c8d0a1, type: 2}
+  tile: {fileID: 11400000, guid: da35f33d2df34fd46a3bed7f9dbe2d91, type: 2}
   width: 1
   height: 1
   rotations:
-  - {fileID: 11400000, guid: b47c926300f052546ba9f2a16b9e01b2, type: 2}
-  - {fileID: 11400000, guid: 1ca52753f2578054da10d0e6e10e4591, type: 2}
-  - {fileID: 11400000, guid: 731fec60204998048b1ddffef5dec738, type: 2}
+  - {fileID: 11400000, guid: dc136864c95fa964ca700a5de68e9d83, type: 2}
+  - {fileID: 11400000, guid: 311145a40377f3e429dfc1d1957d0cf2, type: 2}
+  - {fileID: 11400000, guid: 50aedfd540176f940946f3a40cf00c09, type: 2}
   machineInfo: []

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: conveyors_swne
   m_EditorClassIdentifier: 
   name: Conveyor
-  key: conveyors_swne
+  key: conveyors_anim_swne
+  productionEffect: {fileID: 0}
   maxInputPorts: 1
   maxOutputPorts: 1
   production:
@@ -82,7 +83,7 @@ MonoBehaviour:
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 0
+      isExpanded: 1
       label:
         m_Text: Keys
         m_Image: {fileID: 0}

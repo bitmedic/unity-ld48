@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13528,9 +13528,6 @@ MonoBehaviour:
   tilemapBoxes: {fileID: 1065165756}
   minTilemapCoordinates: {x: -50, y: -30}
   maxTilemapCoordinates: {x: 50, y: 30}
-  waterDrill: {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
-  oreDrill: {fileID: 11400000, guid: 468fe682c9c7cc041a2042b6a023d193, type: 2}
-  phosphorDrill: {fileID: 11400000, guid: 642f681506f83ab4b9afa4eec538a17f, type: 2}
   machinery:
     reorderableList:
       canAdd: 1
@@ -13556,41 +13553,41 @@ MonoBehaviour:
     isExpanded: 1
     _keyValues:
     - drillanimtile
-    - conveyors_nenw
+    - conveyors_anim_nenw
     - factory_0
-    - conveyors_nesw
-    - conveyors_nese
-    - conveyors_nwne
-    - conveyors_nwse
-    - conveyors_nwsw
-    - conveyors_sene
-    - conveyors_sen
-    - conveyors_senw
-    - conveyors_swne
-    - conveyors_swnw
-    - conveyors_swse
+    - conveyors_anim_nesw
+    - conveyors_anim_nese
+    - conveyors_anim_nwne
+    - conveyors_anim_nwse
+    - conveyors_anim_nwsw
+    - conveyors_anim_sene
+    - conveyors_ses
+    - conveyors_anim_senw
+    - conveyors_anim_swne
+    - conveyors_anim_swnw
+    - conveyors_anim_swse
     - factory_armory
     - factory_smelter
-    - conveyors_sesw
+    - conveyors_anim_sesw
     - baseanimtile
     _keys:
     - drillanimtile
-    - conveyors_nenw
+    - conveyors_anim_nenw
     - factory_0
-    - conveyors_nesw
-    - conveyors_nese
-    - conveyors_nwne
-    - conveyors_nwse
-    - conveyors_nwsw
-    - conveyors_sene
-    - conveyors_sen
-    - conveyors_senw
-    - conveyors_swne
-    - conveyors_swnw
-    - conveyors_swse
+    - conveyors_anim_nesw
+    - conveyors_anim_nese
+    - conveyors_anim_nwne
+    - conveyors_anim_nwse
+    - conveyors_anim_nwsw
+    - conveyors_anim_sene
+    - conveyors_ses
+    - conveyors_anim_senw
+    - conveyors_anim_swne
+    - conveyors_anim_swnw
+    - conveyors_anim_swse
     - factory_armory
     - factory_smelter
-    - conveyors_sesw
+    - conveyors_anim_sesw
     - baseanimtile
     _values:
     - {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
@@ -13662,6 +13659,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f6f7a4e51cdb5440bf86ebd3a296128, type: 2}
   - {fileID: 11400000, guid: 8ace27ad7663f784ab3380971decf353, type: 2}
   - {fileID: 11400000, guid: 59f3431f2a49b6e4cbae5953d21365ed, type: 2}
+  tickSpeed: 0.2
   assembly:
     machines: []
 --- !u!4 &1085196835
@@ -13946,7 +13944,7 @@ MonoBehaviour:
   - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
     Impossible Robert, Bitmedic and nosko
   assemblyManager: {fileID: 1085196834}
-  defeatAnimation: {fileID: 1738956439}
+  defeatAnimation: {fileID: 0}
   frameTextArea: {fileID: 27160935}
   textArea: {fileID: 1346200157}
   rocket:
