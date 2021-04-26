@@ -16,7 +16,7 @@ MonoBehaviour:
   width: 1
   height: 1
   rotations:
-  - {fileID: 11400000, guid: dc136864c95fa964ca700a5de68e9d83, type: 2}
-  - {fileID: 11400000, guid: 311145a40377f3e429dfc1d1957d0cf2, type: 2}
   - {fileID: 11400000, guid: 50aedfd540176f940946f3a40cf00c09, type: 2}
+  - {fileID: 11400000, guid: 311145a40377f3e429dfc1d1957d0cf2, type: 2}
+  - {fileID: 11400000, guid: dc136864c95fa964ca700a5de68e9d83, type: 2}
   machineInfo: []
