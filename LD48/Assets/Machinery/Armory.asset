@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Armory
   key: factory_0
-  productionEffect: {fileID: 0}
+  productionEffect: {fileID: 8359940585463587625, guid: 00113e3ded440294fa084418e3ab44ec, type: 3}
   maxInputPorts: 8
   maxOutputPorts: 8
   production:
