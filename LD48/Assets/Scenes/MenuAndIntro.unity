@@ -1331,7 +1331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 339, y: -121}
+  m_AnchoredPosition: {x: 361, y: -121}
   m_SizeDelta: {x: 423.94, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385824249
@@ -6685,7 +6685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150515171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11, y: 149, z: -5772.75}
+  m_LocalPosition: {x: 11, y: 78, z: -5772.75}
   m_LocalScale: {x: 130.6125, y: 130.6125, z: 64.5}
   m_Children: []
   m_Father: {fileID: 1364702731}
@@ -6883,7 +6883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1943354901264923257, guid: a1ed0766640bfbf45a8dca646f0d0a34, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1943354901264923257, guid: a1ed0766640bfbf45a8dca646f0d0a34, type: 3}
       propertyPath: m_LocalScale.x
@@ -6969,7 +6969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.7175, y: 259}
+  m_AnchoredPosition: {x: -13, y: 265}
   m_SizeDelta: {x: 1137.6, y: 118.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207069244
@@ -7005,7 +7005,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "a Game for Ludum Dare 48  \nmade by Robert(?), Matt(?) and Noskro"
+  m_Text: "made by Impossible Robert, Matt(?) and Noskro\na Game for Ludum Dare 48 
+    \n"
 --- !u!222 &1207069245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7190,10 +7191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1200, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7338,7 +7339,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5842042806190684024, guid: 7473ae8916b897a4d924669efa2b7b3e, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5842042806190684024, guid: 7473ae8916b897a4d924669efa2b7b3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9262,10 +9263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1200, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -9571,7 +9572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816065415551532124, guid: 34334fce6e71ada429926c7f5988cd20, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8816065415551532124, guid: 34334fce6e71ada429926c7f5988cd20, type: 3}
       propertyPath: m_LocalPosition.x
