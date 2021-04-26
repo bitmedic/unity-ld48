@@ -54,7 +54,7 @@ namespace LD48
 
             drillProgressPct = Mathf.Clamp(drillProgressPct, 0, 100); // max 100%
             drillProgressBar.rectTransform.sizeDelta = new Vector2(15f, drillProgressPct);
-            drillProgressText.text = FormatDrillProgress(drillProgress);
+            drillProgressText.text = FormatDrillProgress(Mathf.Min(drillProgress, drillGoal));
 
             tntProgress = assMan.GetRocket().GetMaterialQuantity("explosiveness");
             float tntProgressPct = Mathf.Floor(tntProgress / tntGoal * 100);
