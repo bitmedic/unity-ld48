@@ -10746,7 +10746,7 @@ GameObject:
   - component: {fileID: 933682122}
   - component: {fileID: 933682121}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Canvas_Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15476,6 +15476,7 @@ MonoBehaviour:
   animator: {fileID: 1364702735}
   story: {fileID: 1322431609}
   earth: {fileID: 0}
+  creditsCanvas: {fileID: 933682123}
 --- !u!4 &1236412309
 Transform:
   m_ObjectHideFlags: 0

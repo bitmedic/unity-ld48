@@ -12,6 +12,7 @@ namespace LD48
         public Animator animator;
         public StoryProgressor story;
         public Transform earth;
+        public Canvas creditsCanvas;
 
         private void Start()
         {
@@ -20,11 +21,12 @@ namespace LD48
 
         public void StartGame()
         {
-            StartText.text = "Safe us!";
+            StartText.text = "Save us!";
             
             animator.SetTrigger("startAnimation");
-
+            creditsCanvas.gameObject.SetActive(false);
             StartCoroutine(WaitAndStartStory());
+
         }
 
         IEnumerator WaitAndStartStory()
