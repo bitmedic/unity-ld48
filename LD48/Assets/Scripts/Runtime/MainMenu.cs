@@ -20,7 +20,7 @@ namespace LD48
 
         public void StartGame()
         {
-            StartText.text = "Launch";
+            StartText.text = "Safe us!";
             
             animator.SetTrigger("startAnimation");
 
