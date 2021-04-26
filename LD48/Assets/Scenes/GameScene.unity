@@ -13936,12 +13936,12 @@ MonoBehaviour:
   - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
     wait! The celebration is starting down here. I\u2019ll talk to you later. bye!  "
   - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
-    by Impossible Robert, Bitmedic and nosko '
+    by Impossible Robert, Bitmedic and noskro '
   storyDefeat:
   - 'You tried you best, but everybody you know died. Now there is nothing we can
     do but to play more video games and try again.  '
   - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
-    by Impossible Robert, Bitmedic and nosko '
+    by Impossible Robert, Bitmedic and noskro '
   assemblyManager: {fileID: 1085196834}
   defeatAnimation: {fileID: 1738956439}
   frameTextArea: {fileID: 27160935}
@@ -14040,7 +14040,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
-    m_FontSize: 40
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
