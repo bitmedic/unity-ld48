@@ -31,17 +31,16 @@ namespace LD48
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
 
-        [Space] public MachineInfo waterDrill;
-        public MachineInfo oreDrill;
-        public MachineInfo phosphorDrill;
-
         [Space] public StringMachineInfoDictionary machinery;
         public StringTileDictionary resources;
         public List<string> ignoreTileTypes;
         public List<ResourceNodeSO> resourceNodes;
 
+        [Header("Configuration")] public float tickSpeed = 0.2f;
+
         [Header("Runtime Info")] public AssemblyLine assembly;
         private AssemblyLine previousAssembly;
+        private float nextTick;
 
         private void Start()
         {
@@ -51,7 +50,11 @@ namespace LD48
 
         private void Update()
         {
-            if (Time.frameCount % 100 == 0) Tick();
+            if (Time.time > nextTick)
+            {
+                Tick();
+                nextTick = Time.time + tickSpeed;
+            }
         }
 
         public void CreateModel()
