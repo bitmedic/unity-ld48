@@ -13855,7 +13855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 773252398}
-  secondsDuration: 300
+  progressui: {fileID: 0}
 --- !u!1001 &804182565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19825,7 +19825,7 @@ MonoBehaviour:
     to do.
   - Good luck! You are our only hope now!
   storyVictory:
-  - "You saved us! And you even made it out alive... In the name of all of humanki\u2026
+  - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
     wait! The celebration is starting down here. I\u2019ll talk to you later. bye! "
   - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
     Impossible Robert, Bitmedic and nosko
@@ -27303,7 +27303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1847506492}
-  secondsDuration: 300
+  progressui: {fileID: 0}
 --- !u!1 &2083909400
 GameObject:
   m_ObjectHideFlags: 0
