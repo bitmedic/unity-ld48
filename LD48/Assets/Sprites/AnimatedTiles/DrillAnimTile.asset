@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: DrillAnimTile
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -3010401151903113755, guid: b9be96a0fb5d8aa49a6dce216ba1aef2, type: 3}
-  - {fileID: -4556558838227070352, guid: b9be96a0fb5d8aa49a6dce216ba1aef2, type: 3}
+  - {fileID: -8293987241012098587, guid: 3b5086ab37ccf7e49af13e1377f58c6c, type: 3}
+  - {fileID: -3141670662358218673, guid: 3b5086ab37ccf7e49af13e1377f58c6c, type: 3}
+  - {fileID: 6478862337383723595, guid: 3b5086ab37ccf7e49af13e1377f58c6c, type: 3}
+  - {fileID: 8141554866209825104, guid: 3b5086ab37ccf7e49af13e1377f58c6c, type: 3}
+  - {fileID: -4774478712663149243, guid: 3b5086ab37ccf7e49af13e1377f58c6c, type: 3}
+  - {fileID: 8186255486166252136, guid: 3b5086ab37ccf7e49af13e1377f58c6c, type: 3}
   m_MinSpeed: 2
   m_MaxSpeed: 4
   m_AnimationStartTime: 0
