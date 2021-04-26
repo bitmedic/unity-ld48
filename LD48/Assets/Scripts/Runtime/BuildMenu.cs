@@ -391,7 +391,7 @@ namespace LD48
                 index = 7;
             }
 
-            if (index > 0)
+            if (index >= 0)
             {
                 if (numberKeysToBuild.Count > index)
                 {
