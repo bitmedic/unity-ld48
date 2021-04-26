@@ -4240,17 +4240,6 @@ MonoBehaviour:
   cell: {x: 0, y: 0, z: 0}
   terrainTile: {fileID: 0}
   factoryTile: {fileID: 0}
---- !u!114 &1771109429 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-  m_PrefabInstance: {fileID: 8020235673683501851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29c8ec85d75a814a84fe012a7f3f46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2040394614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5777,50 +5766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 536423405}
     m_Modifications:
-    - target: {fileID: 2005088883379010547, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 20.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_Transition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1771109429}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WinTheGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LD48.ProgressUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2391620502483453421, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030370703839491101, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -5.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5428868759750608456, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8020235673116746176, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Name
       value: ProgressPanel
