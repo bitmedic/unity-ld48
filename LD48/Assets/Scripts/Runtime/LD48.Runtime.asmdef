@@ -2,7 +2,8 @@
     "name": "LD48.Runtime",
     "rootNamespace": "",
     "references": [
-        "RotaryHeart.Runtime"
+        "RotaryHeart.Runtime",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
