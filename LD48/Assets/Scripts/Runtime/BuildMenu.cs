@@ -78,7 +78,7 @@ namespace LD48
                     clickedToPlace = true;
                 }
             }
-            else if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 clickedToPlace = false;
             }
