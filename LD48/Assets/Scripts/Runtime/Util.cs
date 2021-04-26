@@ -1,11 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEngine;
+using Random = System.Random;
 
 namespace LD48
 {
     public static class Util
     {
+        public static void ToggleActive(this GameObject go)
+        {
+            go.SetActive(!go.activeSelf);
+        }
+
         public static void Shuffle<T>(this IList<T> list)
         {
             int n = list.Count;
