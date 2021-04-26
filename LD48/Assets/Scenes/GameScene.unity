@@ -13943,7 +13943,7 @@ MonoBehaviour:
   - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
     by Impossible Robert, Bitmedic and nosko '
   assemblyManager: {fileID: 1085196834}
-  defeatAnimation: {fileID: 0}
+  defeatAnimation: {fileID: 1738956439}
   frameTextArea: {fileID: 27160935}
   textArea: {fileID: 1346200157}
   rocket:
