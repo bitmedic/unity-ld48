@@ -19785,12 +19785,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyTextIntro:
-  - So ... everyone knows that asteroid 2021LD48 will hit earth in a few days.
-  - The hit wil have a deep impact on all life on your. Your mission is to prevent
-    this armageddon.
-  - Once you land on the surface you need to drill a big whole and fill it with explosives.
-  - Then we might have a chance to blow it up and save our home.
-  - Good luck!
+  - 'Everyone knows asteroid 21-LD48 will hit earth. It will have a deep impact on
+    all life on earth. Your mission is to prevent armageddon! '
+  - Land on the surface, drill a deep hole and fill it with explosives.Then we might
+    have a chance to survive.
+  - 'Good luck ... '
   storyTextAfterLanding:
   - Good! You made it! The big drill is already ready to go.
   - But there was no space on the rocket for extra fuel. So you need to make some
