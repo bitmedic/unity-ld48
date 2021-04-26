@@ -249,6 +249,11 @@ namespace LD48
 
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
         {
+            if (tileToPlace == null)
+            {
+                return;
+            }
+
             // build
             clickSoundAudioSource.PlayBuildSound();
 
