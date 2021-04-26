@@ -10,13 +10,19 @@ namespace LD48
     public class StoryProgressor : MonoBehaviour
     {
         [Header("Text")]
+        [TextArea]
         public List<string> storyTextIntro;
-        
+        [TextArea]
         public List<string> storyTextAfterLanding;
+        [TextArea]
         public List<string> storyTextAfterTier1;
+        [TextArea]
         public List<string> storyTextAfterTier2;
+        [TextArea]
         public List<string> storyTextAfterTier3;
+        [TextArea]
         public List<string> storyVictory;
+        [TextArea]
         public List<string> storyDefeat;
 
         [Header("Refrences")]
