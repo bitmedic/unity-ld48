@@ -49,7 +49,7 @@ MonoBehaviour:
       _keys: []
       _values: 
   totalInputCapacity: 0
-  totalOutputCapacity: 30
+  totalOutputCapacity: 3
   inputCapacity:
     reorderableList:
       canAdd: 1

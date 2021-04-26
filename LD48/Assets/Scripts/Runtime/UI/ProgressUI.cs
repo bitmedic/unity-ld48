@@ -63,7 +63,7 @@ namespace LD48
 
             float impactTimePct = Mathf.Floor(impactTimeLeft / impactTimeTotal * 100);
             impactBar.rectTransform.sizeDelta = new Vector2(15f, impactTimePct);
-            impactProgressText.text = string.Format("{0,2:00}:{1,2:00}", Mathf.FloorToInt(impactTimeLeft / 60f), impactTimeLeft % 60);
+            impactProgressText.text = string.Format("{0,2:00}:{1,2:00}", Mathf.FloorToInt(impactTimeLeft / 60f), Mathf.FloorToInt(impactTimeLeft % 60));
 
             if (drillProgressPct > 100 && tntProgressPct > 100)
             {

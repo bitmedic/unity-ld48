@@ -5555,7 +5555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 773252398}
-  secondsDuration: 300
+  progressui: {fileID: 0}
 --- !u!1001 &886042784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5727,6 +5727,10 @@ PrefabInstance:
       propertyPath: story
       value: 
       objectReference: {fileID: 1170465629}
+    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
+      propertyPath: impactTimeTotal
+      value: 900
+      objectReference: {fileID: 0}
     - target: {fileID: 8020235673116746176, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Name
       value: ProgressPanel
@@ -19289,7 +19293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -859.3, y: 162.2}
+  m_AnchoredPosition: {x: -859.3, y: 162.20001}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595946257
@@ -30210,7 +30214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1847506492}
-  secondsDuration: 300
+  progressui: {fileID: 2114483455}
 --- !u!1 &1906114554
 GameObject:
   m_ObjectHideFlags: 0
@@ -30646,6 +30650,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &2114483455 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
+  m_PrefabInstance: {fileID: 886042784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29c8ec85d75a814a84fe012a7f3f46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5496499477880799991
 PrefabInstance:
   m_ObjectHideFlags: 0
