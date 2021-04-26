@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rocket
   key: baseanimtile
+  productionEffect: {fileID: 0}
   maxInputPorts: 12
   maxOutputPorts: 12
   production:
@@ -109,10 +110,12 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 1
       _keyValues:
-      - explosive
+      - explosives
       _keys:
-      - explosive
+      - explosives
       _values: 01000000
+  totalInputCapacity: 0
+  totalOutputCapacity: 0
   inputCapacity:
     reorderableList:
       canAdd: 1
