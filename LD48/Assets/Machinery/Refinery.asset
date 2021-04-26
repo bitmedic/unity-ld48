@@ -19,7 +19,7 @@ MonoBehaviour:
   maxOutputPorts: 8
   production:
   - material: hydrogen
-    amount: 1
+    amount: 2
     strategy: 1
     tickCost: 5
     formula:

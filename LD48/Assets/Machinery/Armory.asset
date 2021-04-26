@@ -51,7 +51,7 @@ MonoBehaviour:
       _keys:
       - phosphor
       - steel
-      _values: 0500000002000000
+      _values: 0600000004000000
   totalInputCapacity: 0
   totalOutputCapacity: 5
   inputCapacity:

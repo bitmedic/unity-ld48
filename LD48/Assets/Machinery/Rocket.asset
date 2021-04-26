@@ -81,7 +81,7 @@ MonoBehaviour:
       - steel
       _keys:
       - steel
-      _values: 0a000000
+      _values: 02000000
   - material: explosiveness
     amount: 1
     strategy: 1
