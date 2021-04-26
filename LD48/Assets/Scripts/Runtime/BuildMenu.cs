@@ -69,6 +69,10 @@ namespace LD48
                 {
                     // a UI Button was clicked, so don't build anything
                 }
+                else if (this.storyProgressor.isTextShown)
+                {
+                    // if story text is shown, don't try to build
+                }
                 else
                 {
                     clickedToPlace = true;

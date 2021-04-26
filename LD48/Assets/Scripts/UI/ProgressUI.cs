@@ -41,6 +41,8 @@ namespace LD48
 
             drillProgress = depth * stability;
             float drillProgressPct = Mathf.Floor(drillProgress / drillGoal * 100);
+
+            drillProgressPct = Mathf.Min(drillProgressPct, 100); // max 100%
             drillProgressBar.rectTransform.sizeDelta = new Vector2(15f, drillProgressPct);
             drillProgressText.text = FormatDrillProgress(drillProgress);
 
@@ -50,6 +52,7 @@ namespace LD48
             tntProgressText.text = string.Format("{0,2:00}%", tntProgressPct);
 
             float impactTimePct = Mathf.Floor(impactTimeLeft / impactTimeTotal * 100);
+            impactTimePct = Mathf.Max(impactTimePct, 0); // max 100%
             impactBar.rectTransform.sizeDelta = new Vector2(15f, impactTimePct);
             impactProgressText.text = string.Format("{0,2:00}:{1,2:00}", Mathf.FloorToInt(impactTimeLeft / 60f), impactTimeLeft % 60);
 

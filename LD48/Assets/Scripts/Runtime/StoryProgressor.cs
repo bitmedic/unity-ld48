@@ -28,7 +28,8 @@ namespace LD48
         private MainMenu mainMenu;
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
-        private bool isTextShown = false;
+        [HideInInspector]
+        public bool isTextShown = false;
 
         private bool hasIntroTriggered = false;
         private bool hasLandingTriggered = false;
