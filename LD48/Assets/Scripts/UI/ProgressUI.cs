@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 namespace LD48
 {
@@ -71,8 +72,7 @@ namespace LD48
 
         public void WinTheGame()
         {
-            // Do Something
-            story.TriggerVictory();
+            SceneManager.LoadScene(2);
         }
 
         public void LoseTheGame()

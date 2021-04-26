@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace LD48
@@ -160,7 +161,7 @@ namespace LD48
         {
             this.mainMenu = mm;
         }
-
+        
         private void ShowNextText()
         {
             this.indexStoryText++;
@@ -184,6 +185,10 @@ namespace LD48
                         {
                             this.mainMenu.IntroIsDone();
                         }
+                    }
+                    if (this.hasVictoryTriggered == true || this.hasDefeatTriggered == true)
+                    {
+                        SceneManager.LoadScene(0);
                     }
 
                     this.isTextShown = false;
@@ -213,6 +218,14 @@ namespace LD48
             if (enumStoryStep.Equals(StoryStep.AfterTier3))
             {
                 return this.storyTextAfterTier3;
+            }
+            if (enumStoryStep.Equals(StoryStep.Victory))
+            {
+                return this.storyVictory;
+            }
+            if (enumStoryStep.Equals(StoryStep.Defeat))
+            {
+                return this.storyDefeat;
             }
             return null;
         }

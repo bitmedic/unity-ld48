@@ -160,7 +160,11 @@ MonoBehaviour:
   - Once you have enough of the boom stuff and digged deep enough you will know what
     to do.
   - Good luck! You are our only hope now!
-  storyVictory: []
+  storyVictory:
+  - You saved us! And you even made it out alive... You are the geratest hero now
+    ... bla bla... bla
+  - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
+    Impossible Robert, Bitmedic and nosko
   storyDefeat: []
   assemblyManager: {fileID: 0}
   frameTextArea: {fileID: 1799210810395871727}

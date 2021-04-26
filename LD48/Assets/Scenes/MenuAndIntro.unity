@@ -7005,8 +7005,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "made by Impossible Robert, Matt(?) and Noskro\na Game for Ludum Dare 48 
-    \n"
+  m_Text: "made by Impossible Robert, Bitmedic and Noskro\na Game for Ludum Dare
+    48  \n"
 --- !u!222 &1207069245
 CanvasRenderer:
   m_ObjectHideFlags: 0
