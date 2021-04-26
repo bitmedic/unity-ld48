@@ -20790,6 +20790,88 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoryProgress
       objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyDefeat.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyVictory.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextIntro.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextIntro.Array.data[0]
+      value: 'Everyone knows asteroid 21-LD48 will hit earth. It will have a deep
+        impact on all life on earth. Your mission is to prevent armageddon! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextIntro.Array.data[1]
+      value: Land on the surface, drill a deep hole and fill it with explosives.Then
+        we might have a chance to survive.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextIntro.Array.data[2]
+      value: Good luck ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterTier1.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterTier2.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterTier3.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterTier1.Array.data[0]
+      value: Hurry we don't have much time left.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterTier1.Array.data[1]
+      value: Hurry we don't have much time left.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterTier1.Array.data[2]
+      value: Hurry we don't have much time left.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[0]
+      value: Good luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[1]
+      value: Good luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[2]
+      value: Good luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[3]
+      value: Good luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[4]
+      value: Good luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[5]
+      value: Good luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
+      propertyPath: storyTextAfterLanding.Array.data[6]
+      value: Good luck
+      objectReference: {fileID: 0}
     - target: {fileID: 1799210811406539734, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
       propertyPath: m_RootOrder
       value: 4
