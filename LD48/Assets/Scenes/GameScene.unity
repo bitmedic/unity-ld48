@@ -13744,7 +13744,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149219890
 GameObject:
@@ -13916,8 +13916,8 @@ MonoBehaviour:
   - 'Then build conveyor belts and transport it to a refinery to make hydrogen. Get
     the hydrogen to the rocket to fuel the drill. Good luck! '
   storyTextAfterTier1:
-  - 'Good! The drill started working. But we need Iron to fig deeper and deeper.
-    Build another small drill on an iron node. They are rather gray-ish. '
+  - Good! The drill started working. But we need Iron to dig deeper and deeper. Build
+    another small drill on an iron node. They are rather gray-ish.
   - 'Once the raw ore has been processed bring it to the drill as well. Hurry, we
     don''t have much time left. '
   storyTextAfterTier2:
@@ -13928,9 +13928,9 @@ MonoBehaviour:
     phosphore we can use. Put that and steel plates in the Armory to build explosives. '
   - "You don\u2019t want to miss a thing! Good luck! "
   storyTextAfterTier3:
-  - 'Seems like you get the hang of it. Keep on mining the resources. The more the
-    better. Once you have enough boom stuff and digged deep enough you will know
-    what to do. '
+  - Seems like you get the hang of it. Keep on mining the resources. The more the
+    better. Once you have enough boom stuff and dug deep enough you will know what
+    to do.
   - 'Good luck! You are our only hope now! '
   storyVictory:
   - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
@@ -13968,7 +13968,7 @@ Transform:
   m_Children:
   - {fileID: 1653951795}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1253849294 stripped
 MonoBehaviour:
@@ -19110,7 +19110,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.31000003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1500207927 stripped
 MonoBehaviour:
@@ -19225,7 +19225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1527766991 stripped
 MonoBehaviour:
@@ -24312,7 +24312,7 @@ Transform:
   - {fileID: 1040455532}
   - {fileID: 186484485}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1691024928
 MonoBehaviour:
@@ -29968,7 +29968,7 @@ RectTransform:
   - {fileID: 1655510195}
   - {fileID: 36842504}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -30170,7 +30170,7 @@ RectTransform:
   - {fileID: 696676742}
   - {fileID: 773252397}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
