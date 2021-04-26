@@ -20804,13 +20804,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
       propertyPath: storyTextIntro.Array.data[0]
-      value: 'Everyone knows asteroid 21-LD48 will hit earth. It will have a deep
-        impact on all life on earth. Your mission is to prevent armageddon! '
+      value: 'Everyone knows asteroid 21-LD48 will hit earth. It will have a "deep
+        impact" on all life on earth. Your mission is to prevent armageddon! '
       objectReference: {fileID: 0}
     - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
       propertyPath: storyTextIntro.Array.data[1]
-      value: Land on the surface, drill a deep hole and fill it with explosives.Then
-        we might have a chance to survive.
+      value: Land on the surface, drill a deep hole and fill it with explosives.
+        Then we might have a chance to survive.
       objectReference: {fileID: 0}
     - target: {fileID: 1799210811406539733, guid: 9cea596e8473d85489fda806984b3e7a, type: 3}
       propertyPath: storyTextIntro.Array.data[2]
