@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Smelter
   key: factory_0
-  productionEffect: {fileID: 0}
+  productionEffect: {fileID: 999840997910337002, guid: cc218d84c230d9545bc350b033ddd545, type: 3}
   maxInputPorts: 8
   maxOutputPorts: 8
   production:
