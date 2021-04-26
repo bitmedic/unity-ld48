@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 namespace LD48
 {
     public class ProgressUI : MonoBehaviour
@@ -31,12 +33,18 @@ namespace LD48
         void Start()
         {
             assMan = GameObject.FindObjectOfType<AssemblyManager>();
+            impactTimeLeft = impactTimeTotal;
         }
 
         // Update is called once per frame
         void Update()
         {
-            impactTimeLeft = impactTimeTotal - Time.time; //TODO this must be moved to main game loop
+            // TODO: pausing if text is shown only makes sense if also no ticks are generated
+            //if (!story.isTextShown) 
+            //{
+                impactTimeLeft = impactTimeLeft - Time.deltaTime; //TODO this must be moved to main game loop
+                impactTimeLeft = Mathf.Max(impactTimeLeft, 0);
+            //}
 
             int depth = assMan.GetRocket().GetMaterialQuantity("depth") + 1;
             int stability = assMan.GetRocket().GetMaterialQuantity("stability") + 1;
@@ -54,7 +62,6 @@ namespace LD48
             tntProgressText.text = string.Format("{0,2:00}%", tntProgressPct);
 
             float impactTimePct = Mathf.Floor(impactTimeLeft / impactTimeTotal * 100);
-            impactTimePct = Mathf.Max(impactTimePct, 0); // max 100%
             impactBar.rectTransform.sizeDelta = new Vector2(15f, impactTimePct);
             impactProgressText.text = string.Format("{0,2:00}:{1,2:00}", Mathf.FloorToInt(impactTimeLeft / 60f), impactTimeLeft % 60);
 
@@ -69,10 +76,11 @@ namespace LD48
             }
         }
 
+
+
         public void WinTheGame()
         {
-            // Do Something
-            story.TriggerVictory();
+            SceneManager.LoadScene(2);
         }
 
         public void LoseTheGame()
