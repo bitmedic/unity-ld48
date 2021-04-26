@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13903,50 +13903,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyTextIntro:
-  - So ... everyone knows that asteroid 2021LD48 will hit earth in a few days.
-  - The hit wil have a deep impact on all life on your. Your mission is to prevent
-    this armageddon.
-  - Once you land on the surface you need to drill a big whole and fill it with explosives.
-  - Then we might have a chance to blow it up and save our home.
-  - Good luck!
+  - 'Everyone knows asteroid 21-LD48 will hit earth. It will have a deep impact on
+    all life on earth. Your mission is to prevent armageddon! '
+  - Land on the surface, drill a deep hole and fill it with explosives.Then we might
+    have a chance to survive.
+  - 'Good luck ... '
   storyTextAfterLanding:
-  - Good! You made it! The big drill is already ready to go.
-  - But there was no space on the rocket for extra fuel. So you need to make some
-    yourself.
-  - 'Use some spare parts to make a small drill. '
-  - No - the small drill can't go deep enough for the explosives. It just gathers
-    some surface ressources.
-  - Put it on any ice field. You should be able to easily find some. Ice looks like
-    blue sparkles up there.
-  - Then run the ice into a Refinery to make hydrogen. Use the conveyer belts for
-    that.
-  - The hydrogen needs to go into the big drill to fuel it.
-  - Good luck
+  - 'You made it! The drill is ready to go. We could not bring fuel though. '
+  - "Build a small drill to gather resources from the asteroid\u2019s surface. Put
+    it on a blue-sparkled ice field to gather water. You should be able to easily
+    find some. "
+  - 'Then build conveyor belts and transport it to a refinery to make hydrogen. Get
+    the hydrogen to the rocket to fuel the drill. Good luck! '
   storyTextAfterTier1:
-  - Good! Now you have fuel to run the drill. Next you need Iron to dig deeper and
-    deeper.
-  - Build another drill on an iron node  - they are rather gray-ish.
-  - Onc ethe iron has been processed put it in the big drill as well.
-  - Hurry we don't have much time left.
+  - 'Good! The drill started working. But we need Iron to fig deeper and deeper.
+    Build another small drill on an iron node. They are rather gray-ish. '
+  - 'Once the raw ore has been processed bring it to the drill as well. Hurry, we
+    don''t have much time left. '
   storyTextAfterTier2:
-  - Good! Now we can dig deep enough to deploy the explosives
-  - But I have bad news from the scientists. We waited too long. The asteroid is
-    getting to close to earth.
-  - To save earth we need more explosives. Lukcily there is some phosphore on the
-    asteroid we can use.
-  - Put that and some iron ore in the armory to get explosives.
-  - You know the rest! Good luck!
+  - 'Perfect! Now we can dig deep enough to deploy the explosives.  '
+  - 'But I have bad news from the scientists. We waited too long. The asteroid is
+    getting too close to earth. '
+  - 'To save earth we need more explosives quickly. Luckily this asteroid contains
+    phosphore we can use. Put that and steel plates in the Armory to build explosives. '
+  - "You don\u2019t want to miss a thing! Good luck! "
   storyTextAfterTier3:
-  - Seems like you get the hang of it. Keep on mining the reosurces. The faster the
-    better
-  - Once you have enough of the boom stuff and digged deep enough you will know what
-    to do.
-  - Good luck! You are our only hope now!
-  storyVictory: []
+  - 'Seems like you get the hang of it. Keep on mining the resources. The more the
+    better. Once you have enough boom stuff and digged deep enough you will know
+    what to do. '
+  - 'Good luck! You are our only hope now! '
+  storyVictory:
+  - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
+    wait! The celebration is starting down here. I\u2019ll talk to you later. bye!  "
+  - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
+    by Impossible Robert, Bitmedic and nosko '
   storyDefeat:
-  - 'You tried you best. Now there is nothign we can do but to play more video games. '
-  - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
-    Impossible Robert, Bitmedic and nosko
+  - 'You tried you best, but everybody you know died. Now there is nothing we can
+    do but to play more video games and try again.  '
+  - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
+    by Impossible Robert, Bitmedic and nosko '
   assemblyManager: {fileID: 1085196834}
   defeatAnimation: {fileID: 0}
   frameTextArea: {fileID: 27160935}
