@@ -22,6 +22,8 @@ namespace LD48
         public float impactTimeTotal;
         public TMPro.TextMeshProUGUI impactProgressText;
 
+        public StoryProgressor story;
+
         public GameObject launchButtonPanel;
         private AssemblyManager assMan;
 
@@ -60,11 +62,23 @@ namespace LD48
             {
                 launchButtonPanel.SetActive(true);
             }
+
+            if (impactTimeLeft <= 0)
+            {
+                this.LoseTheGame();
+            }
         }
 
         public void WinTheGame()
         {
             // Do Something
+            story.TriggerVictory();
+        }
+
+        public void LoseTheGame()
+        {
+            // Do Something
+            story.TriggerDefeat();
         }
 
         private string FormatDrillProgress(float progress)
