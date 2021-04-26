@@ -5567,7 +5567,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -3010401151903113755, guid: b9be96a0fb5d8aa49a6dce216ba1aef2, type: 3}
       - {fileID: -4556558838227070352, guid: b9be96a0fb5d8aa49a6dce216ba1aef2, type: 3}
-      m_AnimationSpeed: 2.131055
+      m_AnimationSpeed: 2.4468932
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -5711,6 +5711,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2040394616}
     m_Modifications:
+    - target: {fileID: 999840997910337001, guid: cc218d84c230d9545bc350b033ddd545, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 999840997910337002, guid: cc218d84c230d9545bc350b033ddd545, type: 3}
       propertyPath: m_Name
       value: SmelterySmoke
