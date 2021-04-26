@@ -19425,9 +19425,6 @@ MonoBehaviour:
   tilemapBoxes: {fileID: 0}
   minTilemapCoordinates: {x: -50, y: -30}
   maxTilemapCoordinates: {x: 50, y: 30}
-  waterDrill: {fileID: 11400000, guid: 1e431f2530f5aac429fb4725e3fd1c6e, type: 2}
-  oreDrill: {fileID: 11400000, guid: 468fe682c9c7cc041a2042b6a023d193, type: 2}
-  phosphorDrill: {fileID: 11400000, guid: 642f681506f83ab4b9afa4eec538a17f, type: 2}
   machinery:
     reorderableList:
       canAdd: 1
@@ -19559,6 +19556,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f6f7a4e51cdb5440bf86ebd3a296128, type: 2}
   - {fileID: 11400000, guid: 8ace27ad7663f784ab3380971decf353, type: 2}
   - {fileID: 11400000, guid: 59f3431f2a49b6e4cbae5953d21365ed, type: 2}
+  tickSpeed: 0.2
   assembly:
     machines: []
 --- !u!4 &1085196835
@@ -19827,8 +19825,8 @@ MonoBehaviour:
     to do.
   - Good luck! You are our only hope now!
   storyVictory:
-  - You saved us! And you even made it out alive... You are the geratest hero now
-    ... bla bla... bla
+  - "You saved us! And you even made it out alive... In the name of all of humanki\u2026
+    wait! The celebration is starting down here. I\u2019ll talk to you later. bye! "
   - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
     Impossible Robert, Bitmedic and nosko
   storyDefeat: []
