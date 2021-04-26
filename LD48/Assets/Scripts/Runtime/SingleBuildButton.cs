@@ -7,6 +7,7 @@ namespace LD48
 {
     public class SingleBuildButton : MonoBehaviour
     {
+        public Image imageSelection;
         Image image;
         bool isSelected = false;
 
@@ -27,6 +28,7 @@ namespace LD48
                 // select
                 image.color = new Color(59f/255, 221f/255, 39f/255);
                 this.isSelected = true;
+                this.imageSelection.gameObject.SetActive(true);
             }
         }
 
@@ -35,6 +37,7 @@ namespace LD48
             float colorGrey = 183f / 255;
             image.color = new Color(colorGrey, colorGrey, colorGrey);
             this.isSelected = false;
+            this.imageSelection.gameObject.SetActive(false);
         }
     }
 }
