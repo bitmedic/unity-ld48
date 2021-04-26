@@ -12,18 +12,18 @@ namespace LD48
         private const string key_smelter = "factory_armory"; // TODO umbennen
         private const string key_armory = "factory_smelter"; // TODO umbennen
 
-        private const string key_conveyer_SW_NE = "conveyors_swne";
-        private const string key_conveyer_SW_NW = "conveyors_swnw";
-        private const string key_conveyer_SW_SE = "conveyors_swse";
-        private const string key_conveyer_SE_NW = "conveyors_senw";
-        private const string key_conveyer_SE_NE = "conveyors_sene";
-        private const string key_conveyer_SE_SW = "conveyors_sesw";
-        private const string key_conveyer_NW_SE = "conveyors_nwse";
-        private const string key_conveyer_NW_SW = "conveyors_nwsw";
-        private const string key_conveyer_NW_NE = "conveyors_nwne";
-        private const string key_conveyer_NE_SW = "conveyors_nesw";
-        private const string key_conveyer_NE_SE = "conveyors_nese";
-        private const string key_conveyer_NE_NW = "conveyors_nenw";
+        private const string key_conveyer_SW_NE = "conveyors_anim_swne";
+        private const string key_conveyer_SW_NW = "conveyors_anim_swnw";
+        private const string key_conveyer_SW_SE = "conveyors_anim_swse";
+        private const string key_conveyer_SE_NW = "conveyors_anim_senw";
+        private const string key_conveyer_SE_NE = "conveyors_anim_sene";
+        private const string key_conveyer_SE_SW = "conveyors_anim_sesw";
+        private const string key_conveyer_NW_SE = "conveyors_anim_nwse";
+        private const string key_conveyer_NW_SW = "conveyors_anim_nwsw";
+        private const string key_conveyer_NW_NE = "conveyors_anim_nwne";
+        private const string key_conveyer_NE_SW = "conveyors_anim_nesw";
+        private const string key_conveyer_NE_SE = "conveyors_anim_nese";
+        private const string key_conveyer_NE_NW = "conveyors_anim_nenw";
 
         [Header("Static References")] public Tilemap tilemap;
         public Tilemap tilemapTerrain;

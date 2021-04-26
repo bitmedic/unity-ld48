@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: Conveyor_anim_SWNW
+  m_Name: Conveyors_anim_SESW
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 8068248785174447128, guid: 110e04ae48a98254299bad0f6490fa72, type: 3}
-  - {fileID: -6675885206004376108, guid: 5453ec56a12a843408b6f0a40ebced1d, type: 3}
-  - {fileID: -7849593596514651186, guid: ba1f5d1e49da12741b82aa758a0afbd6, type: 3}
-  - {fileID: -4603236142894874824, guid: eb41e9737bdad2440acf95569b935f0d, type: 3}
+  - {fileID: 5117426933981545141, guid: 110e04ae48a98254299bad0f6490fa72, type: 3}
+  - {fileID: 6415823431123964152, guid: 5453ec56a12a843408b6f0a40ebced1d, type: 3}
+  - {fileID: 6032053071646395666, guid: ba1f5d1e49da12741b82aa758a0afbd6, type: 3}
+  - {fileID: 618891850351403407, guid: eb41e9737bdad2440acf95569b935f0d, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
