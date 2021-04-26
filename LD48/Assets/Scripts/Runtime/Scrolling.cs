@@ -29,8 +29,9 @@ namespace LD48
 
         private void Update()
         {
-            float scrollX = Input.GetAxisRaw("Horizontal") + (Input.GetMouseButton(1) ? Input.GetAxisRaw("Mouse X") * -5f: 0);
-            float scrollY = Input.GetAxisRaw("Vertical") + (Input.GetMouseButton(1) ? Input.GetAxisRaw("Mouse Y") * -5f: 0);
+            bool mouseScroll = Input.GetMouseButton(1) || Input.GetMouseButton(2);
+            float scrollX = Input.GetAxisRaw("Horizontal") + (mouseScroll ? Input.GetAxisRaw("Mouse X") * -5f: 0);
+            float scrollY = Input.GetAxisRaw("Vertical") + (mouseScroll ? Input.GetAxisRaw("Mouse Y") * -5f: 0);
             if (scrollX != 0f || scrollY != 0f)
             {
                 Vector3 asteroidPosition = this.gridTransform.position;
