@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,35 +8,24 @@ namespace LD48
 {
     public class StoryProgressor : MonoBehaviour
     {
-        [Header("Text")]
-        [TextArea]
-        public List<string> storyTextIntro;
-        [TextArea]
-        public List<string> storyTextAfterLanding;
-        [TextArea]
-        public List<string> storyTextAfterTier1;
-        [TextArea]
-        public List<string> storyTextAfterTier2;
-        [TextArea]
-        public List<string> storyTextAfterTier3;
-        [TextArea]
-        public List<string> storyVictory;
-        [TextArea]
-        public List<string> storyDefeat;
+        [Header("Text")] [TextArea] public List<string> storyTextIntro;
+        [TextArea] public List<string> storyTextAfterLanding;
+        [TextArea] public List<string> storyTextAfterTier1;
+        [TextArea] public List<string> storyTextAfterTier2;
+        [TextArea] public List<string> storyTextAfterTier3;
+        [TextArea] public List<string> storyVictory;
+        [TextArea] public List<string> storyDefeat;
 
-        [Header("Refrences")]
-        public AssemblyManager assemblyManager;
+        [Header("Refrences")] public AssemblyManager assemblyManager;
         public Animator defeatAnimation;
         public Image frameTextArea;
         public Text textArea;
 
-        [HideInInspector]
-        public Machine rocket;
+        [HideInInspector] public Machine rocket;
         private MainMenu mainMenu;
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
-        [HideInInspector]
-        public bool isTextShown = false;
+        [HideInInspector] public bool isTextShown = false;
 
         private bool hasIntroTriggered = false;
         private bool hasLandingTriggered = false;
@@ -56,16 +44,13 @@ namespace LD48
             if (rocket == null)
             {
                 this.rocket = assemblyManager?.GetRocket();
-                this.rocket.OnOutputProduced += (machine, packages) =>
-                {
-                    RocketOutputProduced(machine, packages);
-                };
+                this.rocket.OnOutputProduced += (machine, packages) => { RocketOutputProduced(machine, packages); };
             }
 
             if (isTextShown && Input.anyKeyDown)
             {
                 this.ShowNextText();
-            }            
+            }
         }
 
         public void RocketOutputProduced(Machine machine, List<Package> packages)
@@ -121,7 +106,7 @@ namespace LD48
         }
 
         public void TriggerAfterTier2()
-            {
+        {
             if (!this.hasTier2Triggered)
             {
                 this.hasTier2Triggered = true;
@@ -169,7 +154,7 @@ namespace LD48
         {
             this.mainMenu = mm;
         }
-        
+
         private void ShowNextText()
         {
             this.indexStoryText++;
@@ -261,5 +246,5 @@ namespace LD48
         AfterTier3,
         Victory,
         Defeat
-}
+    }
 }

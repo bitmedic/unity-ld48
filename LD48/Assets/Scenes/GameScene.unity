@@ -13915,9 +13915,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyTextIntro:
-  - 'Everyone knows asteroid 21-LD48 will hit earth. It will have a deep impact on
-    all life on earth. Your mission is to prevent armageddon! '
-  - Land on the surface, drill a deep hole and fill it with explosives.Then we might
+  - 'Everyone knows asteroid 21-LD48 will hit earth. It will have a "deep impact"
+    on all life on earth. Your mission is to prevent armageddon! '
+  - Land on the surface, drill a deep hole and fill it with explosives. Then we might
     have a chance to survive.
   - 'Good luck ... '
   storyTextAfterLanding:
@@ -13943,15 +13943,15 @@ MonoBehaviour:
   - Seems like you get the hang of it. Keep on mining the resources. The more the
     better. Once you have enough boom stuff and dug deep enough you will know what
     to do.
-  - 'Good luck! You are our only hope now! '
+  - Good luck! You are our only hope now!
   storyVictory:
   - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
-    wait! The celebration is starting down here. I\u2019ll talk to you later. bye!  "
+    wait! The celebration is starting down here. I\u2019ll talk to you later. Bye!  "
   - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
     by Impossible Robert, Bitmedic and noskro '
   storyDefeat:
   - 'You tried you best, but everybody you know died. Now there is nothing we can
-    do but to play more video games and try again.  '
+    do but to play more video games and try again. '
   - 'The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48
     by Impossible Robert, Bitmedic and noskro '
   assemblyManager: {fileID: 1085196834}
