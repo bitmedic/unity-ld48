@@ -113,7 +113,7 @@ MonoBehaviour:
       - explosives
       _keys:
       - explosives
-      _values: 02000000
+      _values: 01000000
   totalInputCapacity: 0
   totalOutputCapacity: 0
   inputCapacity:
