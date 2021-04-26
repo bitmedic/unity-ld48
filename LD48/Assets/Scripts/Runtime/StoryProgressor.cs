@@ -21,6 +21,7 @@ namespace LD48
 
         [Header("Refrences")]
         public AssemblyManager assemblyManager;
+        public Animator defeatAnimation;
         public Image frameTextArea;
         public Text textArea;
 
@@ -153,6 +154,7 @@ namespace LD48
                 this.hasDefeatTriggered = true;
                 this.enumStoryStep = StoryStep.Defeat;
                 indexStoryText = -1;
+
                 this.ShowNextText();
             }
         }
@@ -186,9 +188,15 @@ namespace LD48
                             this.mainMenu.IntroIsDone();
                         }
                     }
-                    if (this.hasVictoryTriggered == true || this.hasDefeatTriggered == true)
+                    if (this.hasVictoryTriggered == true)
                     {
                         SceneManager.LoadScene(0);
+                    }
+                    if (this.hasDefeatTriggered == true)
+                    {
+                        this.defeatAnimation.SetBool("isDefeat", true);
+
+                        StartCoroutine(DelayAndShowMainMenu());
                     }
 
                     this.isTextShown = false;
@@ -228,6 +236,13 @@ namespace LD48
                 return this.storyDefeat;
             }
             return null;
+        }
+
+        IEnumerator DelayAndShowMainMenu()
+        {
+            yield return new WaitForSeconds(20f);
+
+            SceneManager.LoadScene(0);
         }
     }
 

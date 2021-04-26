@@ -165,8 +165,12 @@ MonoBehaviour:
     ... bla bla... bla
   - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
     Impossible Robert, Bitmedic and nosko
-  storyDefeat: []
+  storyDefeat:
+  - 'You tried you best. Now there is nothign we can do but to play more video games. '
+  - The end. Thanks for playing! This game was made in 3 days for Ludum Dare 48 by
+    Impossible Robert, Bitmedic and nosko
   assemblyManager: {fileID: 0}
+  defeatAnimation: {fileID: 0}
   frameTextArea: {fileID: 1799210810395871727}
   textArea: {fileID: 1799210811710986965}
   rocket:
