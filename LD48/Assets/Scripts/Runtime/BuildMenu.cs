@@ -358,7 +358,7 @@ namespace LD48
         {
             int index = -1;
 
-            if (Input.GetKeyDown(KeyCode.Alpha0))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 index = 0;
             }

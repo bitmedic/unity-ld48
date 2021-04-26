@@ -60,7 +60,7 @@ namespace LD48
             float tntProgressPct = Mathf.Floor(tntProgress / tntGoal * 100);
             tntProgressPct = Mathf.Clamp(tntProgressPct, 0, 100); // max 100%
             tntProgressBar.rectTransform.sizeDelta = new Vector2(15f, tntProgressPct);
-            tntProgressText.text = string.Format("{0,2:00}%", tntProgressPct);
+            tntProgressText.text = string.Format("{0,2}%", tntProgressPct);
 
             float impactTimePct = Mathf.Floor(impactTimeLeft / impactTimeTotal * 100);
             impactBar.rectTransform.sizeDelta = new Vector2(15f, impactTimePct);
