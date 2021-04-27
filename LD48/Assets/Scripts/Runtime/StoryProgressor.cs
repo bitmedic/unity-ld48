@@ -47,7 +47,7 @@ namespace LD48
                 this.rocket.OnOutputProduced += (machine, packages) => { RocketOutputProduced(machine, packages); };
             }
 
-            if (isTextShown && Input.anyKeyDown)
+            if (isTextShown && Input.GetKeyUp(KeyCode.Space))
             {
                 this.ShowNextText();
             }
@@ -145,6 +145,7 @@ namespace LD48
                 this.hasDefeatTriggered = true;
                 this.enumStoryStep = StoryStep.Defeat;
                 indexStoryText = -1;
+                this.defeatAnimation.SetBool("isDefeat", true);
 
                 this.ShowNextText();
             }
@@ -179,15 +180,9 @@ namespace LD48
                             this.mainMenu.IntroIsDone();
                         }
                     }
-                    if (this.hasVictoryTriggered == true)
+                    if (this.hasVictoryTriggered == true || this.hasDefeatTriggered == true)
                     {
                         SceneManager.LoadScene(0);
-                    }
-                    if (this.hasDefeatTriggered == true)
-                    {
-                        this.defeatAnimation.SetBool("isDefeat", true);
-
-                        StartCoroutine(DelayAndShowMainMenu());
                     }
 
                     this.isTextShown = false;
@@ -227,13 +222,6 @@ namespace LD48
                 return this.storyDefeat;
             }
             return null;
-        }
-
-        IEnumerator DelayAndShowMainMenu()
-        {
-            yield return new WaitForSeconds(20f);
-
-            SceneManager.LoadScene(0);
         }
     }
 
