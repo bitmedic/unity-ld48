@@ -2412,13 +2412,13 @@ MonoBehaviour:
   drillProgressText: {fileID: 1886184202}
   steelProgressBar: {fileID: 8290505094090492913}
   steelProgress: 0
-  steelGoal: 200
+  steelGoal: 120
   hydroProgressBar: {fileID: 1695387932}
   hydroProgress: 0
-  hydroGoal: 300
+  hydroGoal: 240
   tntProgressBar: {fileID: 572105330}
   tntProgress: 0
-  tntGoal: 100
+  tntGoal: 150
   tntProgressText: {fileID: 2037169948}
   impactBar: {fileID: 1715030328}
   impactTimeLeft: 48
