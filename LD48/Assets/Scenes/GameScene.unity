@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6785,7 +6785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 294241550, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 704643071
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 341626760, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Color.a
@@ -6817,7 +6817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949422841, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 704643071
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 957057495, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor.a
@@ -6825,7 +6825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957057495, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 704643071
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1695387932, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Color.a
@@ -6873,7 +6873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1886184202, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 704643071
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1954741902, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontSize
@@ -6893,7 +6893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1954741902, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 704643071
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2037169948, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontSize
@@ -6909,7 +6909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2037169948, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 704643071
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2372934925018996001, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Color.a
@@ -6947,18 +6947,6 @@ PrefabInstance:
       propertyPath: story
       value: 
       objectReference: {fileID: 1170465629}
-    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: tntGoal
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: drillGoal
-      value: 4800
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
-      propertyPath: impactTimeTotal
-      value: 600
-      objectReference: {fileID: 0}
     - target: {fileID: 8020235673116746176, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Name
       value: ProgressPanel
