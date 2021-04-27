@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10745,6 +10745,7 @@ GameObject:
   - component: {fileID: 933682123}
   - component: {fileID: 933682122}
   - component: {fileID: 933682121}
+  - component: {fileID: 933682124}
   m_Layer: 0
   m_Name: Canvas_Credits
   m_TagString: Untagged
@@ -10833,6 +10834,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 20
   m_TargetDisplay: 0
+--- !u!95 &933682124
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933682119}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1688ad258a7523e4b8b4d796d7c1e147, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &976973290
 GameObject:
   m_ObjectHideFlags: 0
@@ -15474,9 +15494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartText: {fileID: 539544927}
   animator: {fileID: 1364702735}
+  animatorCredits: {fileID: 933682124}
   story: {fileID: 1322431609}
-  earth: {fileID: 0}
-  creditsCanvas: {fileID: 933682123}
 --- !u!4 &1236412309
 Transform:
   m_ObjectHideFlags: 0
