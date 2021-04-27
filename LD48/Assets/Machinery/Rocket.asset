@@ -49,7 +49,7 @@ MonoBehaviour:
       - hydrogen
       _keys:
       - hydrogen
-      _values: 06000000
+      _values: 02000000
   - material: stability
     amount: 1
     strategy: 1

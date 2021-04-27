@@ -9,10 +9,17 @@ namespace LD48
     public class ProgressUI : MonoBehaviour
     {
 
-        public Image drillProgressBar;
         public float drillProgress;
         public float drillGoal;
         public TMPro.TextMeshProUGUI drillProgressText;
+        
+        public Image steelProgressBar;
+        public float steelProgress;
+        public float steelGoal;
+
+        public Image hydroProgressBar; 
+        public float hydroProgress;
+        public float hydroGoal;
 
         public Image tntProgressBar;
         public float tntProgress;
@@ -46,15 +53,22 @@ namespace LD48
                 impactTimeLeft = Mathf.Max(impactTimeLeft, 0);
             //}
 
-            int depth = assMan.GetRocket().GetMaterialQuantity("depth") + 1;
-            int stability = assMan.GetRocket().GetMaterialQuantity("stability") + 1;
+            steelProgress = assMan.GetRocket().GetMaterialQuantity("stability");
+            hydroProgress = assMan.GetRocket().GetMaterialQuantity("depth");
 
-            drillProgress = depth * stability;
+            float steelProgressPct = steelProgress / steelGoal * 100;
+            steelProgressPct = Mathf.Clamp(steelProgressPct, 0, 100); // max 100%
+            steelProgressBar.rectTransform.sizeDelta = new Vector2(15f, steelProgressPct);
+
+            float hydroProgressPct = hydroProgress / hydroGoal * 100;
+            hydroProgressPct = Mathf.Clamp(hydroProgressPct, 0, 100); // max 100%
+            hydroProgressBar.rectTransform.sizeDelta = new Vector2(15f, hydroProgressPct);
+
+            drillProgress = (hydroProgressPct + steelProgressPct) / 2;
+
             float drillProgressPct = Mathf.Floor(drillProgress / drillGoal * 100);
-
             drillProgressPct = Mathf.Clamp(drillProgressPct, 0, 100); // max 100%
-            drillProgressBar.rectTransform.sizeDelta = new Vector2(15f, drillProgressPct);
-            drillProgressText.text = FormatDrillProgress(Mathf.Min(drillProgress, drillGoal));
+            drillProgressText.text = string.Format("{0,2}%", drillProgressPct);
 
             tntProgress = assMan.GetRocket().GetMaterialQuantity("explosiveness");
             float tntProgressPct = Mathf.Floor(tntProgress / tntGoal * 100);
@@ -90,16 +104,5 @@ namespace LD48
             story.TriggerDefeat();
         }
 
-        private string FormatDrillProgress(float progress)
-        {
-            if (progress < 1000) 
-            {
-                return string.Format("{0:F0}m", progress);
-            }
-            else
-            {
-                return string.Format("{0:F1}km", progress / 1000);
-            }
-        }
     }
 }
