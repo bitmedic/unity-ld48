@@ -72,7 +72,7 @@ namespace LD48
             }
 
             this.productionTime.text = string.Format("");
-            this.titleTime.text = string.Format("");
+            this.productionTime.text = string.Format("{0} Ticks", machineInfo[0].production[0].tickCost);
         }
 
         public void ShowToolTipp(MachineInfo machineInfo)
@@ -124,7 +124,7 @@ namespace LD48
             this.outputText.text = string.Format("{0} {1}", production.amount, production.material);
 
             this.titleTime.text = "Time:";
-            this.productionTime.text = string.Format("{0}", production.tickCost);            
+            this.productionTime.text = string.Format("{0} Ticks", production.tickCost);            
         }
         
         public void ShowToolTippConveyer()
