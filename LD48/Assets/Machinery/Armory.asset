@@ -21,7 +21,7 @@ MonoBehaviour:
   - material: explosives
     amount: 1
     strategy: 1
-    tickCost: 5
+    tickCost: 6
     formula:
       reorderableList:
         canAdd: 1

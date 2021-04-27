@@ -49,7 +49,7 @@ MonoBehaviour:
       - hydrogen
       _keys:
       - hydrogen
-      _values: 07000000
+      _values: 06000000
   - material: stability
     amount: 1
     strategy: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
       - steel
       _keys:
       - steel
-      _values: 05000000
+      _values: 03000000
   - material: explosiveness
     amount: 1
     strategy: 1

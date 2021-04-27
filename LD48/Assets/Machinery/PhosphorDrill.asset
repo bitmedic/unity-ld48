@@ -19,7 +19,7 @@ MonoBehaviour:
   maxOutputPorts: 8
   production:
   - material: phosphor
-    amount: 1
+    amount: 2
     strategy: 0
     tickCost: 3
     formula:
