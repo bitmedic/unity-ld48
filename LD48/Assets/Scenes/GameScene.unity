@@ -6947,6 +6947,18 @@ PrefabInstance:
       propertyPath: story
       value: 
       objectReference: {fileID: 1170465629}
+    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
+      propertyPath: tntGoal
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
+      propertyPath: hydroGoal
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623480104540062279, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
+      propertyPath: steelGoal
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8020235673116746176, guid: daa3e8c343cc02c47b8fd6481b3a3670, type: 3}
       propertyPath: m_Name
       value: ProgressPanel
