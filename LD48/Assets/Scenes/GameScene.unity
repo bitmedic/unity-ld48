@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21225,7 +21225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -859.3, y: 162.20001}
+  m_AnchoredPosition: {x: -859.2999, y: 162.20001}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595946257
@@ -31835,6 +31835,7 @@ GameObject:
   - component: {fileID: 1738956435}
   - component: {fileID: 1738956434}
   - component: {fileID: 1738956439}
+  - component: {fileID: 1738956440}
   m_Layer: 5
   m_Name: Canvas_UI
   m_TagString: Untagged
@@ -31858,6 +31859,7 @@ MonoBehaviour:
   tilemapFactory: {fileID: 2093935345}
   tilemapTerrain: {fileID: 1725880354}
   tilemapDecoration: {fileID: 976973293}
+  checkConveyorCurve: {fileID: 1738956440}
   resourceNodeTiles:
   - {fileID: 11400000, guid: 3f6f7a4e51cdb5440bf86ebd3a296128, type: 2}
   - {fileID: 11400000, guid: 8ace27ad7663f784ab3380971decf353, type: 2}
@@ -32008,6 +32010,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1738956440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738956433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664a98ddef09c914193f989e5e3e769c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 2093935345}
+  conveyor_straight_nwse: {fileID: 11400000, guid: 5f0bc1d0d4731364a8725cf4df5a7f36, type: 2}
+  conveyor_straight_nesw: {fileID: 11400000, guid: 85c623cb80571394190e5dede1a0a0b8, type: 2}
+  conveyor_straight_senw: {fileID: 11400000, guid: 204d263021367a1429a53d018fc66b98, type: 2}
+  conveyor_straight_swne: {fileID: 11400000, guid: 7a7862f4b0d2cde4c8e03472e94785ed, type: 2}
+  conveyor_curveleft_nwne: {fileID: 11400000, guid: 311145a40377f3e429dfc1d1957d0cf2, type: 2}
+  conveyor_curveleft_nese: {fileID: 11400000, guid: 50aedfd540176f940946f3a40cf00c09, type: 2}
+  conveyor_curveleft_swnw: {fileID: 11400000, guid: dc136864c95fa964ca700a5de68e9d83, type: 2}
+  conveyor_curveleft_sesw: {fileID: 11400000, guid: da35f33d2df34fd46a3bed7f9dbe2d91, type: 2}
+  conveyor_curveright_nwsw: {fileID: 11400000, guid: 86dbfd4005547234a9db1af2bb5c6e11, type: 2}
+  conveyor_curveright_swse: {fileID: 11400000, guid: 7ef79b6446d5d8e47bc49799a6e37f57, type: 2}
+  conveyor_curveright_sene: {fileID: 11400000, guid: 3147cc46fb1e2cb409a4e1d269f9e8f9, type: 2}
+  conveyor_curveright_nenw: {fileID: 11400000, guid: 99f7e7fa5e427bb40a076b12ff0abfa9, type: 2}
 --- !u!1 &1805842552
 GameObject:
   m_ObjectHideFlags: 0
