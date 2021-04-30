@@ -13,6 +13,8 @@ namespace LD48
         [SerializeField] Tilemap tilemapTerrain;
         [SerializeField] Tilemap tilemapDecoration;
 
+        [SerializeField] CheckConveyorCurve checkConveyorCurve;
+
         [SerializeField] List<ResourceNodeSO> resourceNodeTiles;
 
         [SerializeField] List<Button> buildButtons;
@@ -231,6 +233,7 @@ namespace LD48
                         //bulldoze
                         clickSoundAudioSource.PlayBulldozeSound();
                         tilemapFactory.SetTile(cellLocation, null);
+                        this.UpdateMachines();
                     }
                     else
                     {
@@ -239,12 +242,11 @@ namespace LD48
                         if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(currentCell)))
                         {
                             tilemapFactory.SetTile(currentCell, null);
+                            this.UpdateMachines();
                         }
                     }
                 }
             }
-
-            this.UpdateMachines();
         }
 
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
@@ -346,6 +348,7 @@ namespace LD48
         {
             if (this.assemblyManager != null)
             {
+                this.checkConveyorCurve.RealignConveyorsCurve();
                 this.assemblyManager.CreateModel();
                 storyProgressor.rocket = null;
             }
