@@ -30,6 +30,15 @@ public class UndirectionalConveyors : MonoBehaviour
     public TileBase conveyor_curveright_sene;
     public TileBase conveyor_curveright_nenw;
 
+    [Header("Building Tiles")]
+    public TileBase rocket;
+    public TileBase drill;
+    public TileBase refinery;
+    public TileBase smelter;
+    public TileBase armory;
+    public TileBase empty_building_background;
+
+
     private enum Direction { NW, NE, SE, SW, None };
     private enum ConnectionType { Input, Output, None };
 
@@ -91,6 +100,13 @@ public class UndirectionalConveyors : MonoBehaviour
 
     private void ChangeNextTileToMatchNewTile(Vector3Int position, TileBase tile, Direction comingFrom)
     {
+        // TODO check if target is rocket or building
+        if (tile != null && !IsTileConveyor(tile))
+        {
+            // if next tile is anything but a conveyer, we don't need to modify it
+            return;
+        }
+
         Direction goingTo = GetDirectionFromTile(tile, false);
 
         if (comingFrom == goingTo)
@@ -104,6 +120,13 @@ public class UndirectionalConveyors : MonoBehaviour
 
     private TileBase ChangePreviousTileToMatchNewTile(Vector3Int position, TileBase tile, Direction goingTo)
     {
+        // TODO check if target is rocket or building
+        if (tile != null && !IsTileConveyor(tile))
+        {
+            // if next tile is anything but a conveyer, we don't need to modify it
+            return tile;
+        }
+
         Direction comingFrom = GetDirectionFromTile(tile, true);
 
         if (comingFrom == goingTo)
@@ -122,12 +145,42 @@ public class UndirectionalConveyors : MonoBehaviour
         return tileToPlace;
     }
 
-    private TileBase GetBestMatchingOpenNeighbour(Vector3Int position, ref Vector3Int neighbourPosition, ref Direction neighbourDirection, ConnectionType connectionType, TileBase neighbourPreviousTile)
+    private TileBase GetBestMatchingOpenNeighbour(Vector3Int position, ref Vector3Int rocketPosition, ref Direction neighbourDirection, ConnectionType connectionType, TileBase neighbourPreviousTile)
     {
-        // find neighbouring rocket as first priority
-        // TODO
+        // find neighbouring rocket as first priority - Rocket can only be connected at the conveyors output port (never on the input)
+        if (connectionType.Equals(ConnectionType.Output))
+        {
+            if ((Math.Abs(position.x) <= 2 && Math.Abs(position.y) <= 2) && !(Math.Abs(position.x) == 2 && Math.Abs(position.y) == 2))
+            {
+                rocketPosition = new Vector3Int(0,0,0);
+                TileBase tileRocket = tilemap.GetTile(rocketPosition);
+                // thats the circle around the rocket taht connects to it
 
+                if (position.x == 2)
+                {
+                    // top right row
+                    neighbourDirection = Direction.SW;
+                }
+                else if (position.x == -2)
+                {
+                    // bottem left row
+                    neighbourDirection = Direction.NE;
+                }
+                else if (position.y == -2)
+                {
+                    // bottom right row
+                    neighbourDirection = Direction.NW;
+                }
+                else if (position.y == 2)
+                {
+                    // top left row
+                    neighbourDirection = Direction.SE;
+                }
 
+                return tileRocket;
+            }
+        }
+        
         // find neighbouring conveyors in all 4 direction
         Vector3Int positionNW = new Vector3Int(position.x + 0, position.y + 1, 0);
         Vector3Int positionNE = new Vector3Int(position.x + 1, position.y + 0, 0);
@@ -137,7 +190,7 @@ public class UndirectionalConveyors : MonoBehaviour
         TileBase neightbourTile = GetOpenNeighbourConveyor(positionNW, connectionType);
         if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
         {
-            neighbourPosition = positionNW;
+            rocketPosition = positionNW;
             neighbourDirection = Direction.NW;
             return neightbourTile;
         }
@@ -145,7 +198,7 @@ public class UndirectionalConveyors : MonoBehaviour
         neightbourTile = GetOpenNeighbourConveyor(positionNE, connectionType);
         if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
         {
-            neighbourPosition = positionNE;
+            rocketPosition = positionNE;
             neighbourDirection = Direction.NE;
             return neightbourTile;
         }
@@ -153,7 +206,7 @@ public class UndirectionalConveyors : MonoBehaviour
         neightbourTile = GetOpenNeighbourConveyor(positionSE, connectionType);
         if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
         {
-            neighbourPosition = positionSE;
+            rocketPosition = positionSE;
             neighbourDirection = Direction.SE;
             return neightbourTile;
         }
@@ -161,7 +214,7 @@ public class UndirectionalConveyors : MonoBehaviour
         neightbourTile = GetOpenNeighbourConveyor(positionSW, connectionType);
         if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
         {
-            neighbourPosition = positionSW;
+            rocketPosition = positionSW;
             neighbourDirection = Direction.SW;
             return neightbourTile;
         }
@@ -187,6 +240,10 @@ public class UndirectionalConveyors : MonoBehaviour
                     // this is a prevous open ended neighbour
                     return neighbourTile;
                 }
+            }
+            else if (neighbourTile != null)
+            {
+                return neighbourTile;
             }
         }
 
@@ -303,9 +360,10 @@ public class UndirectionalConveyors : MonoBehaviour
                 return true;
             }
         }
-        else
+        else if (tileBase != null)
         {
-            // TODO check if neighbour is factory or rocket
+            // if neighbour is factory or rocket
+            return true;
         }
 
         return false;
@@ -341,17 +399,6 @@ public class UndirectionalConveyors : MonoBehaviour
     }
 
 
-    private TileBase GetNeighbour(int x, int y)
-    {
-        if (tilemap.HasTile(new Vector3Int(x, y, 0)))
-        {
-            return tilemap.GetTile(new Vector3Int(x, y, 0));
-        }
-        else
-        {
-            return null;
-        }
-    }
 
     private TileBase GetNeighbour(Vector2Int position, Direction direction)
     {
@@ -374,9 +421,20 @@ public class UndirectionalConveyors : MonoBehaviour
             positon = new Vector3Int(position.x - 1, position.y, 0);
         }
 
-        if (tilemap.HasTile(new Vector3Int(positon.x, positon.y, 0)))
+        return GetNeighbour(positon.x, positon.y);
+    }
+
+    private TileBase GetNeighbour(int x, int y)
+    {
+        // radius around spawn for rocket
+        if (Math.Abs(x) <= 1 && Math.Abs(y) <= 1)
         {
-            return tilemap.GetTile(new Vector3Int(positon.x, positon.y, 0));
+            return tilemap.GetTile(new Vector3Int(0, 0, 0));
+        }
+
+        if (tilemap.HasTile(new Vector3Int(x, y, 0)))
+        {
+            return tilemap.GetTile(new Vector3Int(x, y, 0));
         }
         else
         {

@@ -32036,6 +32036,12 @@ MonoBehaviour:
   conveyor_curveright_swse: {fileID: 11400000, guid: 7ef79b6446d5d8e47bc49799a6e37f57, type: 2}
   conveyor_curveright_sene: {fileID: 11400000, guid: 3147cc46fb1e2cb409a4e1d269f9e8f9, type: 2}
   conveyor_curveright_nenw: {fileID: 11400000, guid: 99f7e7fa5e427bb40a076b12ff0abfa9, type: 2}
+  rocket: {fileID: 11400000, guid: 51aa508bb4dd5864da3b8176a8eee17f, type: 2}
+  drill: {fileID: 11400000, guid: bb7fd920e667d9249b4c3e9981cd7824, type: 2}
+  refinery: {fileID: 11400000, guid: 548fd86006a3e4049a8694e7b73ff470, type: 2}
+  smelter: {fileID: 11400000, guid: 642fa889cf73bd146996e7fd9f5436a9, type: 2}
+  armory: {fileID: 11400000, guid: 5ce533733ed7cac4a9795f5b500db396, type: 2}
+  empty_building_background: {fileID: 11400000, guid: 8ada5d550c27ebd44be7a240bf2287a1, type: 2}
 --- !u!1 &1805842552
 GameObject:
   m_ObjectHideFlags: 0
