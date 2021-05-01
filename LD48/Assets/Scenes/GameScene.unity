@@ -31859,7 +31859,7 @@ MonoBehaviour:
   tilemapFactory: {fileID: 2093935345}
   tilemapTerrain: {fileID: 1725880354}
   tilemapDecoration: {fileID: 976973293}
-  checkConveyorCurve: {fileID: 1738956440}
+  undirectionalConveyors: {fileID: 1738956440}
   resourceNodeTiles:
   - {fileID: 11400000, guid: 3f6f7a4e51cdb5440bf86ebd3a296128, type: 2}
   - {fileID: 11400000, guid: 8ace27ad7663f784ab3380971decf353, type: 2}
@@ -32019,10 +32019,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738956433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664a98ddef09c914193f989e5e3e769c, type: 3}
+  m_Script: {fileID: 11500000, guid: 78e327b16ffeb7d49a28439609df80be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 2093935345}
+  conveyor_dot: {fileID: 11400000, guid: 9185ed7f94447fc46b3f21291823c6c6, type: 2}
   conveyor_straight_nwse: {fileID: 11400000, guid: 5f0bc1d0d4731364a8725cf4df5a7f36, type: 2}
   conveyor_straight_nesw: {fileID: 11400000, guid: 85c623cb80571394190e5dede1a0a0b8, type: 2}
   conveyor_straight_senw: {fileID: 11400000, guid: 204d263021367a1429a53d018fc66b98, type: 2}
@@ -32751,7 +32752,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc4ee94103e09c5488ffc57afee949e1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.386
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -33114,7 +33115,7 @@ PrefabInstance:
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 6960fdf08e9edee478f4ba381bfa59b0, type: 2}
+      objectReference: {fileID: 11400000, guid: add93651348879a48aa4e55f5f868b90, type: 2}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: LD48.BuildingSizeSO, LD48.Runtime

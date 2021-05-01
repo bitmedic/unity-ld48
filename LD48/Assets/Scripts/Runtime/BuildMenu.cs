@@ -13,7 +13,7 @@ namespace LD48
         [SerializeField] Tilemap tilemapTerrain;
         [SerializeField] Tilemap tilemapDecoration;
 
-        [SerializeField] CheckConveyorCurve checkConveyorCurve;
+        [SerializeField] UndirectionalConveyors undirectionalConveyors;
 
         [SerializeField] List<ResourceNodeSO> resourceNodeTiles;
 
@@ -259,9 +259,16 @@ namespace LD48
             // build
             clickSoundAudioSource.PlayBuildSound();
 
-            tilemapFactory.SetTile(cellLocation, tileToPlace);
-            tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
+            if (this.undirectionalConveyors.IsTileConveyor(tileToPlace))
+            {
+                this.undirectionalConveyors.BuildNewConveyor(cellLocation);
+            }
+            else
+            {
+                tilemapFactory.SetTile(cellLocation, tileToPlace);
+            }
 
+            tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
             this.UpdateMachines();
 
             // if the building is larger than 1x1, then place something at the other positions
@@ -348,7 +355,6 @@ namespace LD48
         {
             if (this.assemblyManager != null)
             {
-                this.checkConveyorCurve.RealignConveyorsCurve();
                 this.assemblyManager.CreateModel();
                 storyProgressor.rocket = null;
             }
