@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,11 @@ namespace LD48
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
         [HideInInspector] public bool isTextShown = false;
+
+        [HideInInspector]
+        public Action onTier1Complete;
+        [HideInInspector]
+        public Action onTier2Complete;
 
         private bool hasIntroTriggered = false;
         private bool hasLandingTriggered = false;
@@ -120,6 +126,12 @@ namespace LD48
                 this.hasTier1Triggered = true;
                 this.enumStoryStep = StoryStep.AfterTier1;
                 indexStoryText = -1;
+
+                if (onTier1Complete != null)
+                {
+                    onTier1Complete();
+                }
+
                 this.ShowNextText();
             }
         }
@@ -131,6 +143,12 @@ namespace LD48
                 this.hasTier2Triggered = true;
                 this.enumStoryStep = StoryStep.AfterTier2;
                 indexStoryText = -1;
+
+                if (onTier2Complete != null)
+                {
+                    onTier2Complete();
+                }
+
                 this.ShowNextText();
             }
         }
@@ -168,6 +186,12 @@ namespace LD48
 
                 this.ShowNextText();
             }
+        }
+
+        public void RegisterTierCompleteActions(Action onTier1Complete, Action onTier2Complete)
+        {
+            this.onTier1Complete = onTier1Complete;
+            this.onTier2Complete = onTier2Complete;
         }
 
         public void SetMainMenu(MainMenu mm)

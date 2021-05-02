@@ -38,6 +38,14 @@ namespace LD48
         [SerializeField]
         ClickSounds clickSoundAudioSource;
 
+        [SerializeField]
+        List<Button> tier2Buttons;
+        [SerializeField]
+        List<Button> tier3Buttons;
+
+        private bool isTier2BuildingsActive;
+        private bool isTier3BuildingsActive;
+        
         BuildingSizeSO tileToPlace;
         int buildingWidth;
         int buildingHeight;
@@ -50,6 +58,7 @@ namespace LD48
         bool doBulldoze = false;
         bool clickedToPlace = false;
 
+
         private void Start()
         {
             // place rocket at 0,0
@@ -57,6 +66,7 @@ namespace LD48
 
             if (this.storyProgressor != null)
             {
+                storyProgressor.RegisterTierCompleteActions(ActiveTier2Buildings, ActiveTier3Buildings);
                 storyProgressor.TriggerAfterLanding();
             }
         }
@@ -64,6 +74,36 @@ namespace LD48
         // Update is called once per frame
         void Update()
         {
+            if (tier2Buttons.Count > 0)
+            {
+                foreach (Button btn in tier2Buttons)
+                {
+                    if (isTier2BuildingsActive)
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0); 
+                    }
+                    else
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0,0,0); 
+                    }
+                }
+            }
+
+            if (tier3Buttons.Count > 0)
+            {
+                foreach (Button btn in tier3Buttons)
+                {
+                    if (isTier3BuildingsActive)
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
+                    }
+                    else
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+                    }
+                }
+            }
+
             // go into placing mode as long as mouse button 0 is down
             if (Input.GetMouseButtonDown(0))
             {
@@ -96,10 +136,10 @@ namespace LD48
                 this.buidlingToolTip.HideToolTipp();
             }
 
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
-            {
-                tileToPlace?.DoRotate();
-            }
+            //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
+            //{
+            //    tileToPlace?.DoRotate();
+            //}
 
             this.checkNumberKeysToBuild();
 
@@ -363,6 +403,16 @@ namespace LD48
             this.buildingHeight = buildingSO.height;
         }
 
+        public void ActiveTier2Buildings()
+        {
+            this.isTier2BuildingsActive = true;
+        }
+
+        public void ActiveTier3Buildings()
+        {
+            this.isTier3BuildingsActive = true;
+        }
+
         private void UpdateMachines()
         {
             if (this.assemblyManager != null)
@@ -421,10 +471,33 @@ namespace LD48
             {
                 if (numberKeysToBuild.Count > index)
                 {
-                    this.SetBuildingSelected(numberKeysToBuild[index]);
-
                     if (this.numberKeysToBuildButtonScript.Count > index)
                     {
+                        if (!isTier2BuildingsActive)
+                        {
+                            foreach (Button btn in tier2Buttons)
+                            {
+                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
+                                {
+                                    // button is in still unlocked tier 2 => prevent
+                                    return;
+                                }
+                            }
+                        }
+
+                        if (!isTier3BuildingsActive)
+                        {
+                            foreach (Button btn in tier3Buttons)
+                            {
+                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
+                                {
+                                    // button is in still unlocked tier 2 => prevent
+                                    return;
+                                }
+                            }
+                        }
+
+                        this.SetBuildingSelected(numberKeysToBuild[index]);
                         this.numberKeysToBuildButtonScript[index].ToggleSelected();
                     }
                     else
