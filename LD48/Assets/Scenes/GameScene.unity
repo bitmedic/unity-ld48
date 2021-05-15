@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15888,9 +15888,9 @@ MonoBehaviour:
   defeatAnimation: {fileID: 1738956439}
   frameTextArea: {fileID: 27160935}
   textArea: {fileID: 1346200157}
-  textPressSpace: {fileID: 1346200157}
+  textPressSpace: {fileID: 45574974}
   audioSource: {fileID: 1816219323}
-  characterSpeed: 0
+  characterSpeed: 0.05
   rocket:
     info: {fileID: 0}
     position: {x: 0, y: 0, z: 0}
@@ -26739,13 +26739,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725880351}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000597994, w: 0.9999998}
   m_LocalPosition: {x: -1.71, y: -3.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1691024927}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.069}
 --- !u!483693784 &1725880353
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -32330,7 +32330,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!224 &1738956438
 RectTransform:
