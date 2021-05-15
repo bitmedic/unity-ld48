@@ -49,9 +49,10 @@ public class UndirectionalConveyors : MonoBehaviour
         Direction neighbourPreviousDirection = Direction.None;
 
         TileBase neighbourPreviousTile = GetBestMatchingOpenNeighbour(position, ref neighbourPreviousPosition, ref neighbourPreviousDirection, ConnectionType.Input, null);
-
+        Debug.Log("got previous neighbour");
         if (neighbourPreviousTile != null)
         {
+            Debug.Log("has previous neighbour");
             // change previous neighbour Tile to match new tile 
             TileBase changedTile = ChangePreviousTileToMatchNewTile(neighbourPreviousPosition, neighbourPreviousTile, DirectionGetOpposite(neighbourPreviousDirection));
 
@@ -62,6 +63,7 @@ public class UndirectionalConveyors : MonoBehaviour
 
             if (neighbourNextTile != null)
             {
+                Debug.Log("has next neighbour");
                 // previous and next tiles are given - Get Opposided as the directions are from the outside intio the tile and we need the direction inside the tile
                 PlaceConveyor(position, neighbourPreviousDirection, neighbourNextDirection);
 
@@ -70,12 +72,14 @@ public class UndirectionalConveyors : MonoBehaviour
             }
             else
             {
+                Debug.Log("has no next neighbour");
                 // place new tile origination from previous neighbour and going straight (for now)
                 PlaceConveyor(position, neighbourPreviousDirection, DirectionGetOpposite(neighbourPreviousDirection));
             }
         }
         else
         {
+            Debug.Log("has no previous neighbour");
             // check if Open next Neighbour exists
             Vector3Int neighbourNextPosition = new Vector3Int(0, 0, 0);
             Direction neighbourNextDirection = Direction.None;
@@ -83,6 +87,7 @@ public class UndirectionalConveyors : MonoBehaviour
 
             if (neighbourNextTile != null)
             {
+                Debug.Log("has next neighbour");
                 // change next neighbour Tile to match new tile 
                 ChangeNextTileToMatchNewTile(neighbourNextPosition, neighbourNextTile, DirectionGetOpposite(neighbourNextDirection));
 
@@ -91,6 +96,7 @@ public class UndirectionalConveyors : MonoBehaviour
             }
             else
             {
+                Debug.Log("has no next neighbour");
                 // start new conveyor chain as nothing is close to it
                 //  = place conveyor dot
                 PlaceConveyor(position, Direction.None, Direction.None);
@@ -220,7 +226,37 @@ public class UndirectionalConveyors : MonoBehaviour
         }
 
         // if not find neighbouring buildings in all 4 directions including empty buildings tiles
-        // TODO
+        neightbourTile = GetOpenNeighbourNonConveyor(positionNW, connectionType);
+        if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
+        {
+            rocketPosition = positionNW;
+            neighbourDirection = Direction.NW;
+            return neightbourTile;
+        }
+
+        neightbourTile = GetOpenNeighbourNonConveyor(positionNE, connectionType);
+        if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
+        {
+            rocketPosition = positionNE;
+            neighbourDirection = Direction.NE;
+            return neightbourTile;
+        }
+
+        neightbourTile = GetOpenNeighbourNonConveyor(positionSE, connectionType);
+        if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
+        {
+            rocketPosition = positionSE;
+            neighbourDirection = Direction.SE;
+            return neightbourTile;
+        }
+
+        neightbourTile = GetOpenNeighbourNonConveyor(positionSW, connectionType);
+        if (neightbourTile != null && neightbourTile != neighbourPreviousTile)
+        {
+            rocketPosition = positionSW;
+            neighbourDirection = Direction.SW;
+            return neightbourTile;
+        }
 
         return null;
     }
@@ -241,7 +277,18 @@ public class UndirectionalConveyors : MonoBehaviour
                     return neighbourTile;
                 }
             }
-            else if (neighbourTile != null)
+        }
+
+        return null;
+    }
+
+    private TileBase GetOpenNeighbourNonConveyor(Vector3Int position, ConnectionType connectionType)
+    {
+        if (tilemap.HasTile(position))
+        {
+            TileBase neighbourTile = tilemap.GetTile(position);
+
+            if (!IsTileConveyor(neighbourTile))
             {
                 return neighbourTile;
             }
