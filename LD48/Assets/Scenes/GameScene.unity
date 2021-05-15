@@ -15534,7 +15534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
   m_RefResolutionX: 480
-  m_RefResolutionY: 320
+  m_RefResolutionY: 270
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 1
