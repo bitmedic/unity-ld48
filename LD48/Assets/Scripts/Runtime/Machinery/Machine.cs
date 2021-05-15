@@ -145,7 +145,11 @@ namespace LD48
                                     {
                                         for (int i = 0; i < req.Value; i++)
                                         {
-                                            inputStorage.RemoveAt(inputStorage.FindIndex(input => input.material == req.Key));
+                                            int index = inputStorage.FindIndex(input => input.material == req.Key);
+                                            if (index >= 0 && index < inputStorage.Count)
+                                            {
+                                                inputStorage.RemoveAt(index);
+                                            }
                                         }
                                     }
                                 }

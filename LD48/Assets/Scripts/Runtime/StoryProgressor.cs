@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,8 @@ namespace LD48
 {
     public class StoryProgressor : MonoBehaviour
     {
-        [Header("Text")] [TextArea] public List<string> storyTextIntro;
+        [Header("Text")] [TextArea] 
+        public List<string> storyTextIntro;
         [TextArea] public List<string> storyTextAfterLanding;
         [TextArea] public List<string> storyTextAfterTier1;
         [TextArea] public List<string> storyTextAfterTier2;
@@ -16,16 +18,27 @@ namespace LD48
         [TextArea] public List<string> storyVictory;
         [TextArea] public List<string> storyDefeat;
 
-        [Header("Refrences")] public AssemblyManager assemblyManager;
+        [Header("Refrences")] 
+        public AssemblyManager assemblyManager;
         public Animator defeatAnimation;
         public Image frameTextArea;
         public Text textArea;
+        public Text textPressSpace;
+        public AudioSource audioSource;
+
+        [Header("Parameters")] 
+        public float characterSpeed;
 
         [HideInInspector] public Machine rocket;
         private MainMenu mainMenu;
         private StoryStep enumStoryStep;
         private int indexStoryText = 0;
         [HideInInspector] public bool isTextShown = false;
+
+        [HideInInspector]
+        public Action onTier1Complete;
+        [HideInInspector]
+        public Action onTier2Complete;
 
         private bool hasIntroTriggered = false;
         private bool hasLandingTriggered = false;
@@ -35,6 +48,7 @@ namespace LD48
         private bool hasVictoryTriggered = false;
         private bool hasDefeatTriggered = false;
 
+        private TextTypeWriterSingle textTypeWriterInstance;
         private void Start()
         {
         }
@@ -49,7 +63,18 @@ namespace LD48
 
             if (isTextShown && Input.GetKeyUp(KeyCode.Space))
             {
-                this.ShowNextText();
+                audioSource.Play();
+
+                // check if texttypewriter is still active
+                if (textTypeWriterInstance != null && textTypeWriterInstance.IsActive())
+                {
+                    // show all text
+                    textTypeWriterInstance.WriteAllAndDestroy();
+                }
+                else
+                {
+                    this.ShowNextText();
+                }
             }
         }
 
@@ -101,6 +126,12 @@ namespace LD48
                 this.hasTier1Triggered = true;
                 this.enumStoryStep = StoryStep.AfterTier1;
                 indexStoryText = -1;
+
+                if (onTier1Complete != null)
+                {
+                    onTier1Complete();
+                }
+
                 this.ShowNextText();
             }
         }
@@ -112,6 +143,12 @@ namespace LD48
                 this.hasTier2Triggered = true;
                 this.enumStoryStep = StoryStep.AfterTier2;
                 indexStoryText = -1;
+
+                if (onTier2Complete != null)
+                {
+                    onTier2Complete();
+                }
+
                 this.ShowNextText();
             }
         }
@@ -151,6 +188,12 @@ namespace LD48
             }
         }
 
+        public void RegisterTierCompleteActions(Action onTier1Complete, Action onTier2Complete)
+        {
+            this.onTier1Complete = onTier1Complete;
+            this.onTier2Complete = onTier2Complete;
+        }
+
         public void SetMainMenu(MainMenu mm)
         {
             this.mainMenu = mm;
@@ -169,7 +212,10 @@ namespace LD48
             {
                 if (currentStoryText.Count > indexStoryText)
                 {
-                    this.textArea.text = currentStoryText[indexStoryText];
+                    textPressSpace.gameObject.SetActive(false);
+                    textTypeWriterInstance = TextTypeWriter.AddWriter_Static(this.textArea, currentStoryText[indexStoryText], characterSpeed, audioSource, TextAnimationComplete);
+                    
+                    //this.textArea.text = currentStoryText[indexStoryText];
                 }
                 else
                 {
@@ -189,6 +235,11 @@ namespace LD48
                     this.frameTextArea.gameObject.SetActive(false);
                 }
             }
+        }
+
+        private void TextAnimationComplete()
+        {
+            textPressSpace.gameObject.SetActive(true);
         }
 
         private List<string> GetCurrentStory()

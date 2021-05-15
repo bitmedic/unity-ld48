@@ -32,7 +32,7 @@ namespace LD48
         public TMPro.TextMeshProUGUI impactProgressText;
 
         public StoryProgressor story;
-
+        public Animator oneMinuteWarningAnimator;
         public GameObject launchButtonPanel;
         private AssemblyManager assMan;
 
@@ -88,6 +88,11 @@ namespace LD48
             if (impactTimeLeft <= 0)
             {
                 this.LoseTheGame();
+            }
+
+            if (impactTimeLeft <= 60)
+            {
+                oneMinuteWarningAnimator.SetBool("StartOneMinuteWarning", true);
             }
         }
 

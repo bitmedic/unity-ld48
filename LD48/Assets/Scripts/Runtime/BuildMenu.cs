@@ -13,7 +13,7 @@ namespace LD48
         [SerializeField] Tilemap tilemapTerrain;
         [SerializeField] Tilemap tilemapDecoration;
 
-        [SerializeField] CheckConveyorCurve checkConveyorCurve;
+        [SerializeField] UndirectionalConveyors undirectionalConveyors;
 
         [SerializeField] List<ResourceNodeSO> resourceNodeTiles;
 
@@ -38,6 +38,14 @@ namespace LD48
         [SerializeField]
         ClickSounds clickSoundAudioSource;
 
+        [SerializeField]
+        List<Button> tier2Buttons;
+        [SerializeField]
+        List<Button> tier3Buttons;
+
+        private bool isTier2BuildingsActive;
+        private bool isTier3BuildingsActive;
+        
         BuildingSizeSO tileToPlace;
         int buildingWidth;
         int buildingHeight;
@@ -50,6 +58,7 @@ namespace LD48
         bool doBulldoze = false;
         bool clickedToPlace = false;
 
+
         private void Start()
         {
             // place rocket at 0,0
@@ -57,6 +66,7 @@ namespace LD48
 
             if (this.storyProgressor != null)
             {
+                storyProgressor.RegisterTierCompleteActions(ActiveTier2Buildings, ActiveTier3Buildings);
                 storyProgressor.TriggerAfterLanding();
             }
         }
@@ -64,6 +74,36 @@ namespace LD48
         // Update is called once per frame
         void Update()
         {
+            if (tier2Buttons.Count > 0)
+            {
+                foreach (Button btn in tier2Buttons)
+                {
+                    if (isTier2BuildingsActive)
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0); 
+                    }
+                    else
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0,0,0); 
+                    }
+                }
+            }
+
+            if (tier3Buttons.Count > 0)
+            {
+                foreach (Button btn in tier3Buttons)
+                {
+                    if (isTier3BuildingsActive)
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
+                    }
+                    else
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+                    }
+                }
+            }
+
             // go into placing mode as long as mouse button 0 is down
             if (Input.GetMouseButtonDown(0))
             {
@@ -96,10 +136,10 @@ namespace LD48
                 this.buidlingToolTip.HideToolTipp();
             }
 
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
-            {
-                tileToPlace?.DoRotate();
-            }
+            //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
+            //{
+            //    tileToPlace?.DoRotate();
+            //}
 
             this.checkNumberKeysToBuild();
 
@@ -201,6 +241,7 @@ namespace LD48
 
             // TODO: How to find Building if an emptyFiller was clicked??
             TileBase clickedTile = tilemapFactory.GetTile(cellLocation);
+            bool needToDeleteEmptys = false;
 
             if (this.emptyFillerTile.Equals(clickedTile))
             {
@@ -209,21 +250,31 @@ namespace LD48
                     this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x + 1, cellLocation.y - 1, cellLocation.z))))
                 {
                     cellLocation = new Vector3Int(cellLocation.x, cellLocation.y - 1, cellLocation.z);
+                    needToDeleteEmptys = true;
                 }
                 else if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x - 1, cellLocation.y, cellLocation.z))) &&
                          this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x, cellLocation.y - 1, cellLocation.z))))
                 {
                     cellLocation = new Vector3Int(cellLocation.x - 1, cellLocation.y - 1, cellLocation.z);
+                    needToDeleteEmptys = true;
                 }
                 else if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x - 1, cellLocation.y + 1, cellLocation.z))) &&
-                         this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x, cellLocation.y - 1, cellLocation.z))))
+                         this.emptyFillerTile.Equals(tilemapFactory.GetTile(new Vector3Int(cellLocation.x, cellLocation.y + 1, cellLocation.z))))
                 {
                     cellLocation = new Vector3Int(cellLocation.x - 1, cellLocation.y, cellLocation.z);
+                    needToDeleteEmptys = true;
                 }
             }
 
-
-            // if the building is larger than 1x1, then also remove the empty fillers
+            // if the main tile of a building was selected it should still delete the empty tiles
+            if (this.drillTile.Equals(clickedTile) ||
+                this.undirectionalConveyors.refinery.Equals(clickedTile) ||
+                this.undirectionalConveyors.smelter.Equals(clickedTile) ||
+                this.undirectionalConveyors.armory.Equals(clickedTile))
+            {
+                needToDeleteEmptys = true;
+            }
+            
             for (int x = 0; x < 2; x++)
             {
                 for (int y = 0; y < 2; y++)
@@ -233,20 +284,21 @@ namespace LD48
                         //bulldoze
                         clickSoundAudioSource.PlayBulldozeSound();
                         tilemapFactory.SetTile(cellLocation, null);
-                        this.UpdateMachines();
                     }
-                    else
+                    // if the building is larger than 1x1, then also remove the empty fillers
+                    else if (needToDeleteEmptys)
                     {
                         Vector3Int currentCell = new Vector3Int(cellLocation.x + x, cellLocation.y + y, cellLocation.z);
 
                         if (this.emptyFillerTile.Equals(tilemapFactory.GetTile(currentCell)))
                         {
                             tilemapFactory.SetTile(currentCell, null);
-                            this.UpdateMachines();
                         }
                     }
                 }
             }
+
+            this.UpdateMachines();
         }
 
         private void BuildBuilding(TileBase tileToPlace, Vector3Int cellLocation)
@@ -259,9 +311,16 @@ namespace LD48
             // build
             clickSoundAudioSource.PlayBuildSound();
 
-            tilemapFactory.SetTile(cellLocation, tileToPlace);
-            tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
+            if (this.undirectionalConveyors.IsTileConveyor(tileToPlace))
+            {
+                this.undirectionalConveyors.BuildNewConveyor(cellLocation);
+            }
+            else
+            {
+                tilemapFactory.SetTile(cellLocation, tileToPlace);
+            }
 
+            tilemapDecoration.SetTile(cellLocation, this.emptyFillerTile);
             this.UpdateMachines();
 
             // if the building is larger than 1x1, then place something at the other positions
@@ -344,11 +403,20 @@ namespace LD48
             this.buildingHeight = buildingSO.height;
         }
 
+        public void ActiveTier2Buildings()
+        {
+            this.isTier2BuildingsActive = true;
+        }
+
+        public void ActiveTier3Buildings()
+        {
+            this.isTier3BuildingsActive = true;
+        }
+
         private void UpdateMachines()
         {
             if (this.assemblyManager != null)
             {
-                this.checkConveyorCurve.RealignConveyorsCurve();
                 this.assemblyManager.CreateModel();
                 storyProgressor.rocket = null;
             }
@@ -403,10 +471,33 @@ namespace LD48
             {
                 if (numberKeysToBuild.Count > index)
                 {
-                    this.SetBuildingSelected(numberKeysToBuild[index]);
-
                     if (this.numberKeysToBuildButtonScript.Count > index)
                     {
+                        if (!isTier2BuildingsActive)
+                        {
+                            foreach (Button btn in tier2Buttons)
+                            {
+                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
+                                {
+                                    // button is in still unlocked tier 2 => prevent
+                                    return;
+                                }
+                            }
+                        }
+
+                        if (!isTier3BuildingsActive)
+                        {
+                            foreach (Button btn in tier3Buttons)
+                            {
+                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
+                                {
+                                    // button is in still unlocked tier 2 => prevent
+                                    return;
+                                }
+                            }
+                        }
+
+                        this.SetBuildingSelected(numberKeysToBuild[index]);
                         this.numberKeysToBuildButtonScript[index].ToggleSelected();
                     }
                     else

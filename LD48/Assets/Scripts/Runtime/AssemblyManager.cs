@@ -28,6 +28,7 @@ namespace LD48
         [Header("Static References")] public Tilemap tilemap;
         public Tilemap tilemapTerrain;
         public Tilemap tilemapBoxes;
+        public Transform particleParent;
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
 
@@ -89,7 +90,7 @@ namespace LD48
                             if (m.info.productionEffect != null)
                             {
                                 Vector3 pos = tilemap.GetCellCenterWorld(m.position) + new Vector3(0, 1, 0);
-                                GameObject effect = Instantiate(m.info.productionEffect, pos, Quaternion.identity);
+                                GameObject effect = Instantiate(m.info.productionEffect, pos, Quaternion.identity, particleParent);
                                 Destroy(effect, 4);
                             }
                         };
