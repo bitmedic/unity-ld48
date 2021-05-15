@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15220,7 +15220,7 @@ MonoBehaviour:
   tilemap: {fileID: 2093935345}
   tilemapTerrain: {fileID: 1725880354}
   tilemapBoxes: {fileID: 1065165756}
-  particleParent: {fileID: 761484014}
+  particleParent: {fileID: 0}
   minTilemapCoordinates: {x: -50, y: -30}
   maxTilemapCoordinates: {x: 50, y: 30}
   machinery:
@@ -15449,6 +15449,7 @@ GameObject:
   - component: {fileID: 1149219892}
   - component: {fileID: 1149219891}
   - component: {fileID: 1149219894}
+  - component: {fileID: 1149219895}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15553,6 +15554,26 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1149219895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149219890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 480
+  m_RefResolutionY: 320
+  m_UpscaleRT: 0
+  m_PixelSnapping: 1
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &1153182658
 GameObject:
   m_ObjectHideFlags: 0
@@ -15867,9 +15888,9 @@ MonoBehaviour:
   defeatAnimation: {fileID: 1738956439}
   frameTextArea: {fileID: 27160935}
   textArea: {fileID: 1346200157}
-  textPressSpace: {fileID: 45574974}
+  textPressSpace: {fileID: 1346200157}
   audioSource: {fileID: 1816219323}
-  characterSpeed: 0.05
+  characterSpeed: 0
   rocket:
     info: {fileID: 0}
     position: {x: 0, y: 0, z: 0}
@@ -32480,7 +32501,7 @@ GameObject:
   - component: {fileID: 1816219322}
   - component: {fileID: 1816219323}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Text Character Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
