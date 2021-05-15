@@ -18,7 +18,7 @@ namespace LD48
         [TextArea] public List<string> storyVictory;
         [TextArea] public List<string> storyDefeat;
 
-        [Header("Refrences")] 
+        [Header("References")] 
         public AssemblyManager assemblyManager;
         public Animator defeatAnimation;
         public Image frameTextArea;

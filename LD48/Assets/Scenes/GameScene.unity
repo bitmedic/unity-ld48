@@ -15527,16 +15527,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149219890}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
-  m_RefResolutionX: 640
-  m_RefResolutionY: 480
+  m_RefResolutionX: 480
+  m_RefResolutionY: 320
   m_UpscaleRT: 0
-  m_PixelSnapping: 0
+  m_PixelSnapping: 1
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
@@ -15854,8 +15854,8 @@ MonoBehaviour:
   defeatAnimation: {fileID: 1738956439}
   frameTextArea: {fileID: 27160935}
   textArea: {fileID: 1346200157}
-  textPressSpace: {fileID: 0}
-  audioSource: {fileID: 0}
+  textPressSpace: {fileID: 1346200157}
+  audioSource: {fileID: 1816219323}
   characterSpeed: 0
   rocket:
     info: {fileID: 0}
@@ -32174,7 +32174,7 @@ MonoBehaviour:
   tilemapFactory: {fileID: 2093935345}
   tilemapTerrain: {fileID: 1725880354}
   tilemapDecoration: {fileID: 976973293}
-  undirectionalConveyors: {fileID: 0}
+  undirectionalConveyors: {fileID: 1738956440}
   resourceNodeTiles:
   - {fileID: 11400000, guid: 3f6f7a4e51cdb5440bf86ebd3a296128, type: 2}
   - {fileID: 11400000, guid: 8ace27ad7663f784ab3380971decf353, type: 2}
@@ -32445,7 +32445,7 @@ GameObject:
   - component: {fileID: 1816219322}
   - component: {fileID: 1816219323}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Text Character Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
