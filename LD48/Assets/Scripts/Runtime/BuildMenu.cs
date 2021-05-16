@@ -45,7 +45,7 @@ namespace LD48
 
         private bool isTier2BuildingsActive;
         private bool isTier3BuildingsActive;
-        
+
         BuildingSizeSO tileToPlace;
 
         Vector2 mousePosition;
@@ -77,11 +77,11 @@ namespace LD48
                 {
                     if (isTier2BuildingsActive)
                     {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0); 
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
                     }
                     else
                     {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0,0,0); 
+                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
                     }
                 }
             }
@@ -271,7 +271,7 @@ namespace LD48
             {
                 needToDeleteEmptys = true;
             }
-            
+
             for (int x = 0; x < 2; x++)
             {
                 for (int y = 0; y < 2; y++)
@@ -427,83 +427,73 @@ namespace LD48
 
         private void checkNumberKeysToBuild()
         {
-            int index = -1;
-
             if (Input.GetKeyDown(KeyCode.X))
             {
-                index = 0;
+                HandleBuildKeyInput(0);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                index = 1;
+                HandleBuildKeyInput(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                index = 2;
+                HandleBuildKeyInput(2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                index = 3;
+                HandleBuildKeyInput(3);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                index = 4;
+                HandleBuildKeyInput(4);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                index = 5;
+                HandleBuildKeyInput(5);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                index = 6;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                index = 7;
-            }
+        }
 
-            if (index >= 0)
+        void HandleBuildKeyInput(int index)
+        {
+            if (numberKeysToBuild.Count > index)
             {
-                if (numberKeysToBuild.Count > index)
+                if (this.numberKeysToBuildButtonScript.Count > index)
                 {
-                    if (this.numberKeysToBuildButtonScript.Count > index)
+                    if (!isTier2BuildingsActive)
                     {
-                        if (!isTier2BuildingsActive)
+                        foreach (Button btn in tier2Buttons)
                         {
-                            foreach (Button btn in tier2Buttons)
+                            if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
                             {
-                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
-                                {
-                                    // button is in still unlocked tier 2 => prevent
-                                    return;
-                                }
+                                // button is in still unlocked tier 2 => prevent
+                                return;
                             }
                         }
+                    }
 
-                        if (!isTier3BuildingsActive)
+                    if (!isTier3BuildingsActive)
+                    {
+                        foreach (Button btn in tier3Buttons)
                         {
-                            foreach (Button btn in tier3Buttons)
+                            if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
                             {
-                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
-                                {
-                                    // button is in still unlocked tier 2 => prevent
-                                    return;
-                                }
+                                // button is in still unlocked tier 2 => prevent
+                                return;
                             }
                         }
+                    }
 
-                        this.SetBuildingSelected(numberKeysToBuild[index]);
-                        this.numberKeysToBuildButtonScript[index].ToggleSelected();
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough Buttons defined in the List for the number selection");
-                    }
+                    this.SetBuildingSelected(numberKeysToBuild[index]);
+                    this.numberKeysToBuildButtonScript[index].ToggleSelected();
                 }
                 else
                 {
-                    Debug.Log("Not enough Numbers to ButtonsizeSO defined in the List for the number selection");
+                    Debug.Log("Not enough Buttons defined in the List for the number selection");
                 }
+            }
+            else
+            {
+                Debug.Log("Not enough Numbers to ButtonsizeSO defined in the List for the number selection");
             }
         }
     }
