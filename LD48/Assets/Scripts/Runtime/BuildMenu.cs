@@ -33,7 +33,7 @@ namespace LD48
         [SerializeField] StoryProgressor storyProgressor;
 
         [SerializeField]
-        BuidlingToolTip buidlingToolTip;
+        BuidlingToolTip buidlingTooltip;
 
         [SerializeField]
         ClickSounds clickSoundAudioSource;
@@ -130,7 +130,7 @@ namespace LD48
                 doBulldoze = false;
                 tileToPlace?.ResetRotate();
                 this.ResetAllBuildButtons();
-                this.buidlingToolTip.HideToolTipp();
+                this.buidlingTooltip.Hide();
             }
 
             //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
@@ -138,7 +138,7 @@ namespace LD48
             //    tileToPlace?.DoRotate();
             //}
 
-            this.checkNumberKeysToBuild();
+            this.CheckNumberKeysToBuild();
 
             mousePosition = Input.mousePosition;
             worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -352,36 +352,36 @@ namespace LD48
                 {
                     if (buildingSO.machineInfo[0].production.Count > 0)
                     {
-                        this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo[0]);
+                        this.buidlingTooltip.ShowTooltip(buildingSO.machineInfo[0]);
                     }
                 }
                 else if (buildingSO.machineInfo.Count > 1)
                 {
-                    this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
+                    this.buidlingTooltip.ShowTooltip(buildingSO.machineInfo);
                 }
                 else if (buildingSO.rotations.Count == 3)
                 {
                     // conveyers
-                    this.buidlingToolTip.ShowToolTippConveyer();
+                    this.buidlingTooltip.ShowTooltipConveyer();
                 }
                 else if (buildingSO.tile == null)
                 {
-                    this.buidlingToolTip.ShowToolTipp();
+                    this.buidlingTooltip.ShowTooltip();
                 }
                 else
                 {
-                    this.buidlingToolTip.HideToolTipp();
+                    this.buidlingTooltip.Hide();
                 }
             }
             else
             {
                 if (buildingSO.tile == null)
                 {
-                    this.buidlingToolTip.ShowToolTipp();
+                    this.buidlingTooltip.ShowTooltip();
                 }
                 else
                 {
-                    this.buidlingToolTip.HideToolTipp();
+                    this.buidlingTooltip.Hide();
                 }
             }
 
@@ -425,7 +425,7 @@ namespace LD48
             }
         }
 
-        private void checkNumberKeysToBuild()
+        private void CheckNumberKeysToBuild()
         {
             if (Input.GetKeyDown(KeyCode.X))
             {

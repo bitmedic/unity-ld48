@@ -17,7 +17,7 @@ namespace LD48
         public Text titleTime;
 
 
-        public void ShowToolTipp()
+        public void ShowTooltip()
         {
             this.gameObject.SetActive(true);
 
@@ -33,7 +33,7 @@ namespace LD48
             this.titleTime.text = string.Format("");
         }
 
-        public void ShowToolTipp(List<MachineInfo> machineInfo)
+        public void ShowTooltip(List<MachineInfo> machineInfo)
         {
             string buildingName = machineInfo[0].name;
 
@@ -75,7 +75,7 @@ namespace LD48
             this.productionTime.text = string.Format("{0} Ticks", machineInfo[0].production[0].tickCost);
         }
 
-        public void ShowToolTipp(MachineInfo machineInfo)
+        public void ShowTooltip(MachineInfo machineInfo)
         {
             string buildingName = machineInfo.name;
             Production production = machineInfo.production[0];
@@ -127,7 +127,7 @@ namespace LD48
             this.productionTime.text = string.Format("{0} Ticks", production.tickCost);            
         }
         
-        public void ShowToolTippConveyer()
+        public void ShowTooltipConveyer()
         {
             this.gameObject.SetActive(true);
 
@@ -143,7 +143,7 @@ namespace LD48
             this.productionTime.text = string.Format("");
         }
 
-        public void HideToolTipp()
+        public void Hide()
         {
             this.gameObject.SetActive(false);
         }
