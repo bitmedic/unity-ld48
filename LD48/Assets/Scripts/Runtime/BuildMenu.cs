@@ -33,7 +33,7 @@ namespace LD48
         [SerializeField] StoryProgressor storyProgressor;
 
         [SerializeField]
-        BuidlingToolTip buidlingTooltip;
+        BuidlingToolTip buildingTooltip;
 
         [SerializeField]
         ClickSounds clickSoundAudioSource;
@@ -130,7 +130,7 @@ namespace LD48
                 doBulldoze = false;
                 tileToPlace?.ResetRotate();
                 this.ResetAllBuildButtons();
-                this.buidlingTooltip.Hide();
+                buildingTooltip.ShowOrHideTooltip(null);
             }
 
             //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
@@ -162,14 +162,14 @@ namespace LD48
                         this.BulldozeBuilding(cell);
                     }
                 }
-                else if (tileToPlace.height > 0 && tileToPlace.width > 0 && this.CheckCanBuild(cell))
+                else if (tileToPlace != null && tileToPlace.height > 0 && tileToPlace.width > 0 && this.CheckCanBuild(cell))
                 {
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
-                        this.BuildBuilding(this.tileToPlace?.GetTileRotation(), cell);
+                        this.BuildBuilding(this.tileToPlace.GetTileRotation(), cell);
                     }
-                    else if (tileToPlace != null)
+                    else
                     {
                         tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetTileRotation());
                     }
@@ -346,44 +346,7 @@ namespace LD48
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO;
 
-            if (buildingSO.machineInfo != null)
-            {
-                if (buildingSO.machineInfo.Count == 1)
-                {
-                    if (buildingSO.machineInfo[0].production.Count > 0)
-                    {
-                        this.buidlingTooltip.ShowTooltip(buildingSO.machineInfo[0]);
-                    }
-                }
-                else if (buildingSO.machineInfo.Count > 1)
-                {
-                    this.buidlingTooltip.ShowTooltip(buildingSO.machineInfo);
-                }
-                else if (buildingSO.rotations.Count == 3)
-                {
-                    // conveyers
-                    this.buidlingTooltip.ShowTooltipConveyer();
-                }
-                else if (buildingSO.tile == null)
-                {
-                    this.buidlingTooltip.ShowTooltip();
-                }
-                else
-                {
-                    this.buidlingTooltip.Hide();
-                }
-            }
-            else
-            {
-                if (buildingSO.tile == null)
-                {
-                    this.buidlingTooltip.ShowTooltip();
-                }
-                else
-                {
-                    this.buidlingTooltip.Hide();
-                }
-            }
+            buildingTooltip.ShowOrHideTooltip(buildingSO);
 
             if (this.tileToPlace.tile == null)
             {
