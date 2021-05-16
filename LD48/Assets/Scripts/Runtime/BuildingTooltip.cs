@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace LD48
 {
-    public class BuidlingToolTip : MonoBehaviour
+    public class BuildingTooltip : MonoBehaviour
     {
         public Text titleText;
         public Text titleInput;
@@ -16,8 +16,55 @@ namespace LD48
         public Text productionTime;
         public Text titleTime;
 
+        public void ShowOrHideTooltip(BuildingSizeSO buildingSO)
+        {
+            if (buildingSO == null)
+            {
+                this.Hide();
+            }
+            else if (buildingSO.machineInfo != null)
+            {
+                if (buildingSO.machineInfo.Count == 1)
+                {
+                    if (buildingSO.machineInfo[0].production.Count > 0)
+                    {
+                        this.ShowTooltip(buildingSO.machineInfo[0]);
+                    }
+                }
+                else if (buildingSO.machineInfo.Count > 1)
+                {
+                    this.ShowTooltip(buildingSO.machineInfo);
+                }
+                else if (buildingSO.rotations.Count == 3)
+                {
+                    // conveyers
+                    this.ShowTooltipConveyer();
+                }
+                else if (buildingSO.tile == null)
+                {
+                    this.ShowTooltip();
+                }
+                else
+                {
+                    this.Hide();
+                }
+            }
+            else
+            {
+                if (buildingSO.tile == null)
+                {
+                    this.ShowTooltip();
+                }
+                else
+                {
+                    this.Hide();
+                }
+            }
+        }
 
-        public void ShowToolTipp()
+
+
+        private void ShowTooltip()
         {
             this.gameObject.SetActive(true);
 
@@ -33,7 +80,7 @@ namespace LD48
             this.titleTime.text = string.Format("");
         }
 
-        public void ShowToolTipp(List<MachineInfo> machineInfo)
+        private void ShowTooltip(List<MachineInfo> machineInfo)
         {
             string buildingName = machineInfo[0].name;
 
@@ -75,7 +122,7 @@ namespace LD48
             this.productionTime.text = string.Format("{0} Ticks", machineInfo[0].production[0].tickCost);
         }
 
-        public void ShowToolTipp(MachineInfo machineInfo)
+        private void ShowTooltip(MachineInfo machineInfo)
         {
             string buildingName = machineInfo.name;
             Production production = machineInfo.production[0];
@@ -126,8 +173,8 @@ namespace LD48
             this.titleTime.text = "Time:";
             this.productionTime.text = string.Format("{0} Ticks", production.tickCost);            
         }
-        
-        public void ShowToolTippConveyer()
+
+        private void ShowTooltipConveyer()
         {
             this.gameObject.SetActive(true);
 
@@ -143,7 +190,7 @@ namespace LD48
             this.productionTime.text = string.Format("");
         }
 
-        public void HideToolTipp()
+        private void Hide()
         {
             this.gameObject.SetActive(false);
         }

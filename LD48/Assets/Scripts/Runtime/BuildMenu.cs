@@ -33,7 +33,7 @@ namespace LD48
         [SerializeField] StoryProgressor storyProgressor;
 
         [SerializeField]
-        BuidlingToolTip buidlingToolTip;
+        BuildingTooltip buildingTooltip;
 
         [SerializeField]
         ClickSounds clickSoundAudioSource;
@@ -45,11 +45,8 @@ namespace LD48
 
         private bool isTier2BuildingsActive;
         private bool isTier3BuildingsActive;
-        
-        BuildingSizeSO tileToPlace;
-        int buildingWidth;
-        int buildingHeight;
 
+        BuildingSizeSO tileToPlace;
 
         Vector2 mousePosition;
         Vector3 worldPosition;
@@ -80,11 +77,11 @@ namespace LD48
                 {
                     if (isTier2BuildingsActive)
                     {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0); 
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
                     }
                     else
                     {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0,0,0); 
+                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
                     }
                 }
             }
@@ -133,7 +130,7 @@ namespace LD48
                 doBulldoze = false;
                 tileToPlace?.ResetRotate();
                 this.ResetAllBuildButtons();
-                this.buidlingToolTip.HideToolTipp();
+                buildingTooltip.ShowOrHideTooltip(null);
             }
 
             //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
@@ -141,7 +138,7 @@ namespace LD48
             //    tileToPlace?.DoRotate();
             //}
 
-            this.checkNumberKeysToBuild();
+            this.CheckNumberKeysToBuild();
 
             mousePosition = Input.mousePosition;
             worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -162,17 +159,17 @@ namespace LD48
                 {
                     if (clickedToPlace)
                     {
-                        this.BulldozeBuilding(null, cell);
+                        this.BulldozeBuilding(cell);
                     }
                 }
-                else if (this.buildingHeight > 0 && this.buildingWidth > 0 && this.CheckCanBuild(cell))
+                else if (tileToPlace != null && tileToPlace.height > 0 && tileToPlace.width > 0 && this.CheckCanBuild(cell))
                 {
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
-                        this.BuildBuilding(this.tileToPlace?.GetTileRotation(), cell);
+                        this.BuildBuilding(this.tileToPlace.GetTileRotation(), cell);
                     }
-                    else if (tileToPlace != null)
+                    else
                     {
                         tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetTileRotation());
                     }
@@ -183,9 +180,9 @@ namespace LD48
 
         private bool CheckCanBuild(Vector3Int cell)
         {
-            for (int x = 0; x < this.buildingWidth; x++)
+            for (int x = 0; x < tileToPlace.width; x++)
             {
-                for (int y = 0; y < this.buildingHeight; y++)
+                for (int y = 0; y < tileToPlace.height; y++)
                 {
                     Vector3Int currentCell = new Vector3Int(cell.x + x, cell.y + y, cell.z);
 
@@ -231,7 +228,7 @@ namespace LD48
             return true; // if no other object was found
         }
 
-        private void BulldozeBuilding(TileBase tileToPlace, Vector3Int cellLocation)
+        private void BulldozeBuilding(Vector3Int cellLocation)
         {
             if (cellLocation.x >= -1 && cellLocation.x <= 1 && cellLocation.y >= -1 && cellLocation.y <= 1)
             {
@@ -274,7 +271,7 @@ namespace LD48
             {
                 needToDeleteEmptys = true;
             }
-            
+
             for (int x = 0; x < 2; x++)
             {
                 for (int y = 0; y < 2; y++)
@@ -324,9 +321,9 @@ namespace LD48
             this.UpdateMachines();
 
             // if the building is larger than 1x1, then place something at the other positions
-            for (int x = 0; x < this.buildingWidth; x++)
+            for (int x = 0; x < this.tileToPlace.width; x++)
             {
-                for (int y = 0; y < this.buildingHeight; y++)
+                for (int y = 0; y < this.tileToPlace.height; y++)
                 {
                     if (x != 0 || y != 0) // if not the base spawn cell
                     {
@@ -349,44 +346,7 @@ namespace LD48
             this.ResetAllBuildButtons(); // new button was selected
             this.tileToPlace = buildingSO;
 
-            if (buildingSO.machineInfo != null)
-            {
-                if (buildingSO.machineInfo.Count == 1)
-                {
-                    if (buildingSO.machineInfo[0].production.Count > 0)
-                    {
-                        this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo[0]);
-                    }
-                }
-                else if (buildingSO.machineInfo.Count > 1)
-                {
-                    this.buidlingToolTip.ShowToolTipp(buildingSO.machineInfo);
-                }
-                else if (buildingSO.rotations.Count == 3)
-                {
-                    // conveyers
-                    this.buidlingToolTip.ShowToolTippConveyer();
-                }
-                else if (buildingSO.tile == null)
-                {
-                    this.buidlingToolTip.ShowToolTipp();
-                }
-                else
-                {
-                    this.buidlingToolTip.HideToolTipp();
-                }
-            }
-            else
-            {
-                if (buildingSO.tile == null)
-                {
-                    this.buidlingToolTip.ShowToolTipp();
-                }
-                else
-                {
-                    this.buidlingToolTip.HideToolTipp();
-                }
-            }
+            buildingTooltip.ShowOrHideTooltip(buildingSO);
 
             if (this.tileToPlace.tile == null)
             {
@@ -399,8 +359,6 @@ namespace LD48
 
             this.tileToPlace?.ResetRotate();
 
-            this.buildingWidth = buildingSO.width;
-            this.buildingHeight = buildingSO.height;
         }
 
         public void ActiveTier2Buildings()
@@ -430,85 +388,75 @@ namespace LD48
             }
         }
 
-        private void checkNumberKeysToBuild()
+        private void CheckNumberKeysToBuild()
         {
-            int index = -1;
-
             if (Input.GetKeyDown(KeyCode.X))
             {
-                index = 0;
+                HandleBuildKeyInput(0);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                index = 1;
+                HandleBuildKeyInput(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                index = 2;
+                HandleBuildKeyInput(2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                index = 3;
+                HandleBuildKeyInput(3);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                index = 4;
+                HandleBuildKeyInput(4);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                index = 5;
+                HandleBuildKeyInput(5);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                index = 6;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                index = 7;
-            }
+        }
 
-            if (index >= 0)
+        void HandleBuildKeyInput(int index)
+        {
+            if (numberKeysToBuild.Count > index)
             {
-                if (numberKeysToBuild.Count > index)
+                if (this.numberKeysToBuildButtonScript.Count > index)
                 {
-                    if (this.numberKeysToBuildButtonScript.Count > index)
+                    if (!isTier2BuildingsActive)
                     {
-                        if (!isTier2BuildingsActive)
+                        foreach (Button btn in tier2Buttons)
                         {
-                            foreach (Button btn in tier2Buttons)
+                            if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
                             {
-                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
-                                {
-                                    // button is in still unlocked tier 2 => prevent
-                                    return;
-                                }
+                                // button is in still unlocked tier 2 => prevent
+                                return;
                             }
                         }
+                    }
 
-                        if (!isTier3BuildingsActive)
+                    if (!isTier3BuildingsActive)
+                    {
+                        foreach (Button btn in tier3Buttons)
                         {
-                            foreach (Button btn in tier3Buttons)
+                            if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
                             {
-                                if (btn.GetComponent<SingleBuildButton>().Equals(numberKeysToBuildButtonScript[index]))
-                                {
-                                    // button is in still unlocked tier 2 => prevent
-                                    return;
-                                }
+                                // button is in still unlocked tier 2 => prevent
+                                return;
                             }
                         }
+                    }
 
-                        this.SetBuildingSelected(numberKeysToBuild[index]);
-                        this.numberKeysToBuildButtonScript[index].ToggleSelected();
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough Buttons defined in the List for the number selection");
-                    }
+                    this.SetBuildingSelected(numberKeysToBuild[index]);
+                    this.numberKeysToBuildButtonScript[index].ToggleSelected();
                 }
                 else
                 {
-                    Debug.Log("Not enough Numbers to ButtonsizeSO defined in the List for the number selection");
+                    Debug.Log("Not enough Buttons defined in the List for the number selection");
                 }
+            }
+            else
+            {
+                Debug.Log("Not enough Numbers to ButtonsizeSO defined in the List for the number selection");
             }
         }
     }
