@@ -47,9 +47,6 @@ namespace LD48
         private bool isTier3BuildingsActive;
         
         BuildingSizeSO tileToPlace;
-        int buildingWidth;
-        int buildingHeight;
-
 
         Vector2 mousePosition;
         Vector3 worldPosition;
@@ -162,10 +159,10 @@ namespace LD48
                 {
                     if (clickedToPlace)
                     {
-                        this.BulldozeBuilding(null, cell);
+                        this.BulldozeBuilding(cell);
                     }
                 }
-                else if (this.buildingHeight > 0 && this.buildingWidth > 0 && this.CheckCanBuild(cell))
+                else if (tileToPlace.height > 0 && tileToPlace.width > 0 && this.CheckCanBuild(cell))
                 {
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
@@ -183,9 +180,9 @@ namespace LD48
 
         private bool CheckCanBuild(Vector3Int cell)
         {
-            for (int x = 0; x < this.buildingWidth; x++)
+            for (int x = 0; x < tileToPlace.width; x++)
             {
-                for (int y = 0; y < this.buildingHeight; y++)
+                for (int y = 0; y < tileToPlace.height; y++)
                 {
                     Vector3Int currentCell = new Vector3Int(cell.x + x, cell.y + y, cell.z);
 
@@ -231,7 +228,7 @@ namespace LD48
             return true; // if no other object was found
         }
 
-        private void BulldozeBuilding(TileBase tileToPlace, Vector3Int cellLocation)
+        private void BulldozeBuilding(Vector3Int cellLocation)
         {
             if (cellLocation.x >= -1 && cellLocation.x <= 1 && cellLocation.y >= -1 && cellLocation.y <= 1)
             {
@@ -324,9 +321,9 @@ namespace LD48
             this.UpdateMachines();
 
             // if the building is larger than 1x1, then place something at the other positions
-            for (int x = 0; x < this.buildingWidth; x++)
+            for (int x = 0; x < this.tileToPlace.width; x++)
             {
-                for (int y = 0; y < this.buildingHeight; y++)
+                for (int y = 0; y < this.tileToPlace.height; y++)
                 {
                     if (x != 0 || y != 0) // if not the base spawn cell
                     {
@@ -399,8 +396,6 @@ namespace LD48
 
             this.tileToPlace?.ResetRotate();
 
-            this.buildingWidth = buildingSO.width;
-            this.buildingHeight = buildingSO.height;
         }
 
         public void ActiveTier2Buildings()
