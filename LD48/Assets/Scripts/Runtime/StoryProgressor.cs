@@ -212,7 +212,7 @@ namespace LD48
             {
                 if (currentStoryText.Count > indexStoryText)
                 {
-                    textPressSpace.gameObject.SetActive(false);
+                    // textPressSpace.gameObject.SetActive(false);
                     textTypeWriterInstance = TextTypeWriter.AddWriter_Static(this.textArea, currentStoryText[indexStoryText], characterSpeed, audioSource, TextAnimationComplete);
                     
                     //this.textArea.text = currentStoryText[indexStoryText];
