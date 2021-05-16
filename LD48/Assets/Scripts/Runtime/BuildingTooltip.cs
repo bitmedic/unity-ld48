@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace LD48
 {
-    public class BuidlingToolTip : MonoBehaviour
+    public class BuildingTooltip : MonoBehaviour
     {
         public Text titleText;
         public Text titleInput;

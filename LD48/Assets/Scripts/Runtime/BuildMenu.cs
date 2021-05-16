@@ -33,7 +33,7 @@ namespace LD48
         [SerializeField] StoryProgressor storyProgressor;
 
         [SerializeField]
-        BuidlingToolTip buildingTooltip;
+        BuildingTooltip buildingTooltip;
 
         [SerializeField]
         ClickSounds clickSoundAudioSource;

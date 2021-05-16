@@ -31843,7 +31843,7 @@ MonoBehaviour:
   - {fileID: 577654180}
   assemblyManager: {fileID: 1085196834}
   storyProgressor: {fileID: 1170465629}
-  buidlingToolTip: {fileID: 1595946257}
+  buildingTooltip: {fileID: 1595946257}
   clickSoundAudioSource: {fileID: 311856187}
   tier2Buttons:
   - {fileID: 1008325660}
