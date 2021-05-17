@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -56,6 +57,8 @@ namespace LD48
         bool clickedToPlace = false;
 
 
+        [SerializeField] Toggle helpButton;
+
         private void Start()
         {
             // place rocket at 0,0
@@ -71,35 +74,12 @@ namespace LD48
         // Update is called once per frame
         void Update()
         {
-            if (tier2Buttons.Count > 0)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                foreach (Button btn in tier2Buttons)
-                {
-                    if (isTier2BuildingsActive)
-                    {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
-                    }
-                    else
-                    {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
-                    }
-                }
+                HandleEscKey();
             }
 
-            if (tier3Buttons.Count > 0)
-            {
-                foreach (Button btn in tier3Buttons)
-                {
-                    if (isTier3BuildingsActive)
-                    {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
-                    }
-                    else
-                    {
-                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
-                    }
-                }
-            }
+            ShowHideUnlockedBuildings();
 
             // go into placing mode as long as mouse button 0 is down
             if (Input.GetMouseButtonDown(0))
@@ -125,12 +105,7 @@ namespace LD48
             // if right click -> end building mode
             if (Input.GetMouseButtonDown(1))
             {
-                tileToPlace = null;
-                clickedToPlace = false;
-                doBulldoze = false;
-                tileToPlace?.ResetRotate();
-                this.ResetAllBuildButtons();
-                buildingTooltip.ShowOrHideTooltip(null);
+                CancelBuildMode();
             }
 
             //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
@@ -174,6 +149,69 @@ namespace LD48
                         tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetTileRotation());
                     }
                     // else do nothing for now
+                }
+            }
+        }
+
+        private void CancelBuildMode()
+        {
+            tileToPlace = null;
+            clickedToPlace = false;
+            doBulldoze = false;
+            tileToPlace?.ResetRotate();
+            this.ResetAllBuildButtons();
+            buildingTooltip.ShowOrHideTooltip(null);
+        }
+
+        private void HandleEscKey()
+        {
+            if (helpButton.isOn)
+            {
+                helpButton.isOn = false;
+            }
+            else if (storyProgressor.isTextShown)
+            {
+                storyProgressor.ShowNextText();
+            }
+            else if (tileToPlace != null)
+            {
+                CancelBuildMode();
+            }
+            else
+            {
+                Debug.Log("Esc pressed, but nothing to do");
+            }
+        }
+
+        private void ShowHideUnlockedBuildings()
+        {
+            if (tier2Buttons.Count > 0)
+            {
+                foreach (Button btn in tier2Buttons)
+                {
+                    if (isTier2BuildingsActive)
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
+                    }
+                    else
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+                    }
+                }
+            }
+
+            if (tier3Buttons.Count > 0)
+            {
+                foreach (Button btn in tier3Buttons)
+                {
+                    if (isTier3BuildingsActive)
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 0);
+                    }
+                    else
+                    {
+                        btn.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+                    }
                 }
             }
         }

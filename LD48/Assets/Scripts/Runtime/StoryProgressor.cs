@@ -199,7 +199,7 @@ namespace LD48
             this.mainMenu = mm;
         }
 
-        private void ShowNextText()
+        public void ShowNextText()
         {
             this.indexStoryText++;
 

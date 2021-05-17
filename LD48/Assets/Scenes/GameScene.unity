@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 143053105}
   - component: {fileID: 143053104}
   m_Layer: 5
-  m_Name: Controls
+  m_Name: HelpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31849,6 +31849,7 @@ MonoBehaviour:
   - {fileID: 1008325660}
   tier3Buttons:
   - {fileID: 653989414}
+  helpButton: {fileID: 143053104}
 --- !u!114 &1738956435
 MonoBehaviour:
   m_ObjectHideFlags: 0
