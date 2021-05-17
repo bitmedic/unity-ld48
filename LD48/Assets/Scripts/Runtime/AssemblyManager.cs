@@ -25,19 +25,23 @@ namespace LD48
         private const string key_conveyer_NE_SE = "conveyors_anim_nese";
         private const string key_conveyer_NE_NW = "conveyors_anim_nenw";
 
-        [Header("Static References")] public Tilemap tilemap;
+        [Header("Static References")]
+        public Tilemap tilemap;
         public Tilemap tilemapTerrain;
         public Tilemap tilemapBoxes;
         public Transform particleParent;
         public Vector2Int minTilemapCoordinates;
         public Vector2Int maxTilemapCoordinates;
 
-        [Space] public StringMachineInfoDictionary machinery;
+        [Space] 
+        
+        public StringMachineInfoDictionary machinery;
         public StringTileDictionary resources;
         public List<string> ignoreTileTypes;
         public List<ResourceNodeSO> resourceNodes;
 
-        [Header("Configuration")] public float tickSpeed = 0.2f;
+        [Header("Configuration")]
+        public float tickSpeed = 0.2f;
 
         [Header("Runtime Info")] public AssemblyLine assembly;
         private AssemblyLine previousAssembly;
@@ -100,7 +104,7 @@ namespace LD48
 
             MatchAllMachines();
 
-            Debug.Log("Detected the following tile types: " + string.Join(", ", machineTypes));
+            // Debug.Log("Detected the following tile types: " + string.Join(", ", machineTypes));
             if (unmappedMachineTypes.Count > 0) Debug.LogError("Failed to map the following tile types: " + string.Join(", ", unmappedMachineTypes));
         }
 

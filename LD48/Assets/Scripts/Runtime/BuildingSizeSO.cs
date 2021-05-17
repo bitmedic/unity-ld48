@@ -21,31 +21,30 @@ namespace LD48
             rotation = 0;
         }
 
-        public void DoRotate()
+        public void DoRotate(int order = 1)
         {
-            rotation++;
-
-            if (rotations == null || rotation > rotations.Count)
+            rotation = rotation + order;
+            if (rotation < 0)
             {
-                rotation = 0;
+                rotation += rotations.Count;
             }
+            else if (rotation >= rotations.Count)
+            {
+                rotation -= rotations.Count;
+            }
+
         }
 
-        public TileBase GetTileRotation()
+        public TileBase GetRotatedTile()
         {
-            if (rotation == 0)
+            if (rotations.Count == 0)
             {
                 return this.tile;
             }
             else
             {
-                if (rotation - 1 <= this.rotations.Count)
-                {
-                    return this.rotations[rotation - 1];
-                }
+                return rotations[rotation];
             }
-
-            return this.tile;
         }
     }
 }

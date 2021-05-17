@@ -108,10 +108,15 @@ namespace LD48
                 CancelBuildMode();
             }
 
-            //if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
-            //{
-            //    tileToPlace?.DoRotate();
-            //}
+            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.R))
+            {
+                tileToPlace?.DoRotate(1);
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Q))
+            {
+                tileToPlace?.DoRotate(-1);
+            }
 
             this.CheckNumberKeysToBuild();
 
@@ -134,7 +139,15 @@ namespace LD48
                 {
                     if (clickedToPlace)
                     {
-                        this.BulldozeBuilding(cell);
+                        bool bulldozingConveyor = this.undirectionalConveyors.IsTileConveyor(tilemapFactory.GetTile(cell));
+                        if (bulldozingConveyor)
+                        {
+                            this.undirectionalConveyors.RemoveConveyor(cell);
+                        }
+                        else
+                        {
+                            this.BulldozeBuilding(cell);
+                        }
                     }
                 }
                 else if (tileToPlace != null && tileToPlace.height > 0 && tileToPlace.width > 0 && this.CheckCanBuild(cell))
@@ -142,11 +155,11 @@ namespace LD48
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
-                        this.BuildBuilding(this.tileToPlace.GetTileRotation(), cell);
+                        this.BuildBuilding(this.tileToPlace.GetRotatedTile(), cell);
                     }
                     else
                     {
-                        tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetTileRotation());
+                        tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetRotatedTile());
                     }
                     // else do nothing for now
                 }
@@ -348,7 +361,7 @@ namespace LD48
 
             if (this.undirectionalConveyors.IsTileConveyor(tileToPlace))
             {
-                this.undirectionalConveyors.BuildNewConveyor(cellLocation);
+                this.undirectionalConveyors.BuildNewConveyor(cellLocation, tileToPlace);
             }
             else
             {
