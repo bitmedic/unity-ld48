@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15457,28 +15457,35 @@ MonoBehaviour:
     have a chance to survive.
   - 'Good luck ... '
   storyTextAfterLanding:
-  - 'You made it! The drill is ready to go. We could not bring fuel though. '
-  - "Build a small drill to gather resources from the asteroid\u2019s surface. Put
-    it on a blue-sparkled ice field to gather water. You should be able to easily
-    find some. "
+  - "Whoa, what a landing! \nTime is ticking, but we have a chance. The rocket drill
+    is ready to start. We have no fuel, though..."
+  - "Build a miner to gather resources from the asteroid\u2019s surface. Put it on
+    a blue-sparkled ice field to gather water.\nYou should be able to easily find
+    some..."
   - 'Then build conveyor belts and transport it to a refinery to make hydrogen. Get
-    the hydrogen to the rocket to fuel the drill. Good luck! '
+    the hydrogen to the rocket to fuel the rocket drill.
+
+    Good luck! '
   storyTextAfterTier1:
-  - Good! The drill started working. But we need Iron to dig deeper and deeper. Build
-    another small drill on an iron node. They are rather gray-ish.
-  - 'Once the raw ore has been processed bring it to the drill as well. Hurry, we
-    don''t have much time left. '
+  - 'Good!
+
+    The rocket drill started working. We probably need more of the blue
+    stuff, but it is a good start...'
+  - We also need steel to dig deeper. Build more miners on iron fields. They are
+    rather gray-ish...
+  - Once the raw ore has been processed, bring it to the rocket drill as well. Hurry,
+    we don't have much time left!
   storyTextAfterTier2:
-  - 'Perfect! Now we can dig deep enough to deploy the explosives.  '
-  - 'But I have bad news from the scientists. We waited too long. The asteroid is
-    getting too close to earth. '
-  - 'To save earth we need more explosives quickly. Luckily this asteroid contains
-    phosphore we can use. Put that and steel plates in the Armory to build explosives. '
+  - "Perfect! \nNow we can dig deep enough to deploy the explosives..."
+  - But I have bad news from the scientists. We waited too long. The asteroid is
+    getting too close to earth...
+  - To save earth we need more explosives quickly. Luckily this asteroid contains
+    phosphore we can use. Put that and steel plates in the Armory to build explosives...
   - "You don\u2019t want to miss a thing! Good luck! "
   storyTextAfterTier3:
   - Seems like you get the hang of it. Keep on mining the resources. The more the
-    better. Once you have enough boom stuff and dug deep enough you will know what
-    to do.
+    better. Once we have enough boom stuff and dug deep enough, you will know what
+    to do...
   - Good luck! You are our only hope now!
   storyVictory:
   - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
