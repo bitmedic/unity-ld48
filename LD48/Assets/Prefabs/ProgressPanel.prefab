@@ -2275,19 +2275,20 @@ MonoBehaviour:
   drillProgressText: {fileID: 1886184202}
   steelProgressBar: {fileID: 8290505094090492913}
   steelProgress: 0
-  steelGoal: 120
+  steelGoal: 350
   hydroProgressBar: {fileID: 1695387932}
   hydroProgress: 0
-  hydroGoal: 240
+  hydroGoal: 650
   tntProgressBar: {fileID: 572105330}
   tntProgress: 0
-  tntGoal: 150
+  tntGoal: 250
   tntProgressText: {fileID: 2037169948}
   impactBar: {fileID: 1715030328}
   impactTimeLeft: 48
   impactTimeTotal: 600
   impactProgressText: {fileID: 1954741902}
   story: {fileID: 0}
+  oneMinuteWarningAnimator: {fileID: 0}
   launchButtonPanel: {fileID: 5428868759750608456}
 --- !u!1 &8637553597826248739
 GameObject:

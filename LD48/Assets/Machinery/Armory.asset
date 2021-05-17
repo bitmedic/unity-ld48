@@ -15,14 +15,13 @@ MonoBehaviour:
   name: Armory
   key: factory_0
   productionEffect: {fileID: 8359940585463587625, guid: 00113e3ded440294fa084418e3ab44ec, type: 3}
-  prodctionEffectOffsetY: -0.36
   maxInputPorts: 8
   maxOutputPorts: 8
   production:
   - material: explosives
     amount: 1
     strategy: 1
-    tickCost: 6
+    tickCost: 4
     formula:
       reorderableList:
         canAdd: 1
@@ -52,7 +51,7 @@ MonoBehaviour:
       _keys:
       - phosphor
       - steel
-      _values: 0600000004000000
+      _values: 0800000002000000
   totalInputCapacity: 0
   totalOutputCapacity: 5
   inputCapacity:
