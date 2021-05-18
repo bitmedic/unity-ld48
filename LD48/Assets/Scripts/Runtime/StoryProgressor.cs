@@ -15,6 +15,7 @@ namespace LD48
         [TextArea] public List<string> storyTextAfterTier1;
         [TextArea] public List<string> storyTextAfterTier2;
         [TextArea] public List<string> storyTextAfterTier3;
+        [TextArea] public List<string> storyPressButtonNow;
         [TextArea] public List<string> storyVictory;
         [TextArea] public List<string> storyDefeat;
 
@@ -45,6 +46,7 @@ namespace LD48
         private bool hasTier1Triggered = false;
         private bool hasTier2Triggered = false;
         private bool hasTier3Triggered = false;
+        private bool hasPressButtonNowTriggered = false;
         private bool hasVictoryTriggered = false;
         private bool hasDefeatTriggered = false;
 
@@ -159,6 +161,17 @@ namespace LD48
             {
                 this.hasTier3Triggered = true;
                 this.enumStoryStep = StoryStep.AfterTier3;
+                indexStoryText = -1;
+                this.ShowNextText();
+            }
+        }
+        
+        public void TriggerPressButtonNow()
+        {
+            if (!this.hasPressButtonNowTriggered)
+            {
+                this.hasPressButtonNowTriggered = true;
+                this.enumStoryStep = StoryStep.PressButtonNow;
                 indexStoryText = -1;
                 this.ShowNextText();
             }
@@ -283,6 +296,7 @@ namespace LD48
         AfterTier1,
         AfterTier2,
         AfterTier3,
+        PressButtonNow,
         Victory,
         Defeat
     }

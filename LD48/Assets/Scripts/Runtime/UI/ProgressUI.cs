@@ -83,6 +83,7 @@ namespace LD48
             if (drillProgressPct >= 100 && tntProgressPct >= 100)
             {
                 launchButtonPanel.SetActive(true);
+                story.TriggerPressButtonNow();
             }
 
             if (impactTimeLeft <= 0)
