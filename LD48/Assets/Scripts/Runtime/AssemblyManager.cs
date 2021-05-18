@@ -155,64 +155,64 @@ namespace LD48
                 // TODO get name form scriptableObject?
                 if (m.info.key.Equals(key_conveyer_SE_NW))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
+                    SetBuildingInput(m, NextPosSE(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosNW(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_SW_NE))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get going to machine
+                    SetBuildingInput(m, NextPosSW(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosNE(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_NW_SE))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
+                    SetBuildingInput(m, NextPosNW(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosSE(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_NE_SW))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                    SetBuildingInput(m, NextPosNE(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosSW(m.position)); // get going to machine
                 }
 
                 if (m.info.key.Equals(key_conveyer_SE_NE))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get going to machine
+                    SetBuildingInput(m, NextPosSE(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosNE(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_SE_SW))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                    SetBuildingInput(m, NextPosSE(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosSW(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_SW_SE))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
+                    SetBuildingInput(m, NextPosSW(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosSE(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_SW_NW))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
+                    SetBuildingInput(m, NextPosSW(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosNW(m.position)); // get going to machine
                 }
                 if (m.info.key.Equals(key_conveyer_NW_NE))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get going to machine
+                    SetBuildingInput(m, NextPosNW(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosNE(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_NW_SW))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x - 1, m.position.y)); // get going to machine
+                    SetBuildingInput(m, NextPosNW(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosSW(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_NE_SE))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y - 1)); // get going to machine
+                    SetBuildingInput(m, NextPosNE(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosSE(m.position)); // get going to machine
                 }
                 else if (m.info.key.Equals(key_conveyer_NE_NW))
                 {
-                    SetBuildingInput(m, new Vector2Int(m.position.x + 1, m.position.y)); // get coming from machine
-                    SetBuildingOutput(m, new Vector2Int(m.position.x, m.position.y + 1)); // get going to machine
+                    SetBuildingInput(m, NextPosNE(m.position)); // get coming from machine
+                    SetBuildingOutput(m, NextPosNW(m.position)); // get going to machine
                 }
 
                 if (m.info.key.Equals(key_drill))
@@ -240,6 +240,26 @@ namespace LD48
 
                     previousAssembly.machines.Remove(previousMachine);
                 }
+            }
+
+            static Vector2Int NextPosSE(Vector3Int pos)
+            {
+                return new Vector2Int(pos.x, pos.y - 1);
+            }
+
+            static Vector2Int NextPosSW(Vector3Int pos)
+            {
+                return new Vector2Int(pos.x - 1, pos.y);
+            }
+
+            static Vector2Int NextPosNW(Vector3Int pos)
+            {
+                return new Vector2Int(pos.x, pos.y + 1);
+            }
+
+            static Vector2Int NextPosNE(Vector3Int pos)
+            {
+                return new Vector2Int(pos.x + 1, pos.y);
             }
         }
 
