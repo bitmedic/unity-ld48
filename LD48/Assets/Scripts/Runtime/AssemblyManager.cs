@@ -6,6 +6,8 @@ namespace LD48
 {
     public class AssemblyManager : MonoBehaviour
     {
+        public bool experimentalMergers = true;
+
         private const string key_rocket = "baseanimtile";
         private const string key_drill = "drillanimtile";
         private const string key_refinery = "factory_0";
@@ -157,21 +159,45 @@ namespace LD48
                 {
                     SetBuildingInput(m, NextPosSE(m.position)); // get coming from machine
                     SetBuildingOutput(m, NextPosNW(m.position)); // get going to machine
+                    if (experimentalMergers)
+                    {
+                        // side inputs
+                        SetBuildingInput(m, NextPosNE(m.position));
+                        SetBuildingInput(m, NextPosSW(m.position));
+                    }
                 }
                 else if (m.info.key.Equals(key_conveyer_SW_NE))
                 {
                     SetBuildingInput(m, NextPosSW(m.position)); // get coming from machine
                     SetBuildingOutput(m, NextPosNE(m.position)); // get going to machine
+                    if (experimentalMergers)
+                    {
+                        // side inputs
+                        SetBuildingInput(m, NextPosNW(m.position));
+                        SetBuildingInput(m, NextPosSE(m.position));
+                    }
                 }
                 else if (m.info.key.Equals(key_conveyer_NW_SE))
                 {
                     SetBuildingInput(m, NextPosNW(m.position)); // get coming from machine
                     SetBuildingOutput(m, NextPosSE(m.position)); // get going to machine
+                    if (experimentalMergers)
+                    {
+                        // side inputs
+                        SetBuildingInput(m, NextPosNE(m.position));
+                        SetBuildingInput(m, NextPosSW(m.position));
+                    }
                 }
                 else if (m.info.key.Equals(key_conveyer_NE_SW))
                 {
                     SetBuildingInput(m, NextPosNE(m.position)); // get coming from machine
                     SetBuildingOutput(m, NextPosSW(m.position)); // get going to machine
+                    if (experimentalMergers)
+                    {
+                        // side inputs
+                        SetBuildingInput(m, NextPosNW(m.position));
+                        SetBuildingInput(m, NextPosSE(m.position));
+                    }
                 }
 
                 if (m.info.key.Equals(key_conveyer_SE_NE))

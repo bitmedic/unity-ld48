@@ -14834,6 +14834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a618725399890ad45b4e720eaa050151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  experimentalMergers: 1
   tilemap: {fileID: 2093935345}
   tilemapTerrain: {fileID: 1725880354}
   tilemapBoxes: {fileID: 1065165756}
@@ -31888,7 +31889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 2093935345}
-  conveyor_dot: {fileID: 11400000, guid: 9185ed7f94447fc46b3f21291823c6c6, type: 2}
   conveyor_straight_nwse: {fileID: 11400000, guid: 5f0bc1d0d4731364a8725cf4df5a7f36, type: 2}
   conveyor_straight_nesw: {fileID: 11400000, guid: 85c623cb80571394190e5dede1a0a0b8, type: 2}
   conveyor_straight_senw: {fileID: 11400000, guid: 204d263021367a1429a53d018fc66b98, type: 2}
