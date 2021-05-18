@@ -276,7 +276,7 @@ namespace LD48
             return null;
         }
 
-        private bool IsTileConveyor(TileBase conveyor)
+        public bool IsTileConveyor(TileBase conveyor)
         {
             //if (conveyor == null)
             //{

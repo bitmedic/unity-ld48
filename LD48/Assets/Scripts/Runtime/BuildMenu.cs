@@ -250,7 +250,8 @@ namespace LD48
                     }
 
                     // check if cell has no factory field
-                    if (tilemapFactory.HasTile(currentCell))
+                    if (tilemapFactory.HasTile(currentCell) && 
+                        !this.undirectionalConveyors.IsTileConveyor(tilemapFactory.GetTile(currentCell)))
                     {
                         return false;
                     }
@@ -356,15 +357,20 @@ namespace LD48
                 return;
             }
 
-            // build
-            clickSoundAudioSource.PlayBuildSound();
-
             if (this.undirectionalConveyors.IsTileConveyor(tileToPlace))
             {
+                TileBase oldTile = tilemapFactory.GetTile(cellLocation);
                 this.undirectionalConveyors.BuildNewConveyor(cellLocation, tileToPlace);
+                TileBase newTile = tilemapFactory.GetTile(cellLocation);
+
+                if (oldTile == null || !oldTile.Equals(newTile))
+                {
+                    clickSoundAudioSource.PlayBuildSound();
+                }
             }
             else
             {
+                clickSoundAudioSource.PlayBuildSound();
                 tilemapFactory.SetTile(cellLocation, tileToPlace);
             }
 
