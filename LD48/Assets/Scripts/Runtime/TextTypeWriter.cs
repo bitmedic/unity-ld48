@@ -9,13 +9,13 @@ namespace LD48
     public class TextTypeWriter : MonoBehaviour
     {
         private static TextTypeWriter instance;
-        private List<TextTypeWriterSingle> textTypeWriterSinlgeList;
+        private List<TextTypeWriterSingle> textTypeWriterSingleList;
 
 
         private void Awake()
         {
             instance = this;
-            textTypeWriterSinlgeList = new List<TextTypeWriterSingle>();
+            textTypeWriterSingleList = new List<TextTypeWriterSingle>();
         }
 
         public static TextTypeWriterSingle AddWriter_Static(Text uiText, string textToWrite, float timePerCharacter, AudioSource audioSource, Action onComplete)
@@ -27,7 +27,7 @@ namespace LD48
         private TextTypeWriterSingle AddWriter(Text uiText, string textToWrite, float timePerCharacter, AudioSource audioSource, Action onComplete)
         {
             TextTypeWriterSingle ttws = new TextTypeWriterSingle(uiText, textToWrite, timePerCharacter, audioSource, onComplete);
-            textTypeWriterSinlgeList.Add(ttws);
+            textTypeWriterSingleList.Add(ttws);
             return ttws;
         }
 
@@ -38,11 +38,11 @@ namespace LD48
 
         private void RemoveWriter(Text uiText)
         {
-            for(int i = 0; i < textTypeWriterSinlgeList.Count; i++)
+            for(int i = 0; i < textTypeWriterSingleList.Count; i++)
             {
-                if (textTypeWriterSinlgeList[i].GetText().Equals(uiText))
+                if (textTypeWriterSingleList[i].GetText().Equals(uiText))
                 {
-                    textTypeWriterSinlgeList.RemoveAt(i);
+                    textTypeWriterSingleList.RemoveAt(i);
                     i--;
                 }
             }
@@ -50,12 +50,12 @@ namespace LD48
 
         private void Update()
         {
-            for (int i = 0; i < textTypeWriterSinlgeList.Count; i++)
+            for (int i = 0; i < textTypeWriterSingleList.Count; i++)
             {
-                bool destroyInstance = textTypeWriterSinlgeList[i].Update();
+                bool destroyInstance = textTypeWriterSingleList[i].Update();
                 if (destroyInstance) 
                 {
-                    textTypeWriterSinlgeList.RemoveAt(i);
+                    textTypeWriterSingleList.RemoveAt(i);
                     i--;
                 }
             }
