@@ -162,8 +162,21 @@ namespace LD48
                     if (experimentalMergers)
                     {
                         // side inputs
-                        SetBuildingInput(m, NextPosNE(m.position));
-                        SetBuildingInput(m, NextPosSW(m.position));
+                        Vector2Int nextPosNE = NextPosNE(m.position);
+                        TileBase nextTileNE = tilemap.GetTile((Vector3Int)nextPosNE);
+                        if (nextTileNE != null && nextTileNE.name.EndsWith("SW"))
+                        {
+                            SetBuildingInput(m, nextPosNE);
+                        }
+
+
+                        Vector2Int nextPosSW = NextPosSW(m.position);
+                        TileBase nextTileSW = tilemap.GetTile((Vector3Int)nextPosSW);
+                        if (nextTileSW != null && nextTileSW.name.EndsWith("NE"))
+                        {
+                            SetBuildingInput(m, nextPosSW);
+                        }
+
                     }
                 }
                 else if (m.info.key.Equals(key_conveyer_SW_NE))
@@ -173,8 +186,20 @@ namespace LD48
                     if (experimentalMergers)
                     {
                         // side inputs
-                        SetBuildingInput(m, NextPosNW(m.position));
-                        SetBuildingInput(m, NextPosSE(m.position));
+                        Vector2Int nextPosNW = NextPosNW(m.position);
+                        TileBase nextTileNW = tilemap.GetTile((Vector3Int)nextPosNW);
+                        if (nextTileNW != null && nextTileNW.name.EndsWith("SE"))
+                        {
+                            SetBuildingInput(m, nextPosNW);
+                        }
+
+
+                        Vector2Int nextPosSE = NextPosSE(m.position);
+                        TileBase nextTileSE = tilemap.GetTile((Vector3Int)nextPosSE);
+                        if (nextTileSE != null && nextTileSE.name.EndsWith("NW"))
+                        {
+                            SetBuildingInput(m, nextPosSE);
+                        }
                     }
                 }
                 else if (m.info.key.Equals(key_conveyer_NW_SE))
@@ -184,8 +209,21 @@ namespace LD48
                     if (experimentalMergers)
                     {
                         // side inputs
-                        SetBuildingInput(m, NextPosNE(m.position));
-                        SetBuildingInput(m, NextPosSW(m.position));
+                        Vector2Int nextPosNE = NextPosNE(m.position);
+                        TileBase nextTileNE = tilemap.GetTile((Vector3Int)nextPosNE);
+                        if (nextTileNE != null && nextTileNE.name.EndsWith("SW"))
+                        {
+                            SetBuildingInput(m, nextPosNE);
+                        }
+
+
+                        Vector2Int nextPosSW = NextPosSW(m.position);
+                        TileBase nextTileSW = tilemap.GetTile((Vector3Int)nextPosSW);
+                        if (nextTileSW != null && nextTileSW.name.EndsWith("NE"))
+                        {
+                            SetBuildingInput(m, nextPosSW);
+                        }
+
                     }
                 }
                 else if (m.info.key.Equals(key_conveyer_NE_SW))
@@ -195,8 +233,20 @@ namespace LD48
                     if (experimentalMergers)
                     {
                         // side inputs
-                        SetBuildingInput(m, NextPosNW(m.position));
-                        SetBuildingInput(m, NextPosSE(m.position));
+                        Vector2Int nextPosNW = NextPosNW(m.position);
+                        TileBase nextTileNW = tilemap.GetTile((Vector3Int)nextPosNW);
+                        if (nextTileNW != null && nextTileNW.name.EndsWith("SE"))
+                        {
+                            SetBuildingInput(m, nextPosNW);
+                        }
+
+
+                        Vector2Int nextPosSE = NextPosNE(m.position);
+                        TileBase nextTileSE = tilemap.GetTile((Vector3Int)nextPosSE);
+                        if (nextTileSE != null && nextTileSE.name.EndsWith("NW"))
+                        {
+                            SetBuildingInput(m, nextPosSE);
+                        }
                     }
                 }
 
