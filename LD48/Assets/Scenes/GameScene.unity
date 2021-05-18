@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414735, b: 0.1210785, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15489,6 +15489,9 @@ MonoBehaviour:
     better. Once we have enough boom stuff and dug deep enough, you will know what
     to do...
   - Good luck! You are our only hope now!
+  storyPressButtonNow:
+  - "Great, this should be all we need. \nNow press the red button and hope for the
+    best..."
   storyVictory:
   - "You saved us! And you even made it out alive. In the name of all of humanki\u2026
     wait! The celebration is starting down here. I\u2019ll talk to you later. Bye!  "

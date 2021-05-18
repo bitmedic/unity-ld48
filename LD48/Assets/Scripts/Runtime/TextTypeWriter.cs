@@ -67,10 +67,14 @@ namespace LD48
         private AudioSource audiosource;
         private Action onComplete;
         private Text uiText;
+
         private string textToWrite;
+        //private string rawTextToWrite;
         private int characterIndex;
         private float timePerCharacter;
         private float timer;
+
+        private bool isTagOpen = false;
 
         public TextTypeWriterSingle(Text uiText, string textToWrite, float timePerCharacter, AudioSource audioSource, Action onComplete)
         {
@@ -78,6 +82,7 @@ namespace LD48
             this.audiosource = audioSource;
             this.uiText = uiText;
             this.textToWrite = textToWrite;
+            //this.rawTextToWrite = GetRawText(textToWrite);
             this.timePerCharacter = timePerCharacter;
             this.characterIndex = 0;
         }
@@ -91,8 +96,29 @@ namespace LD48
                 {
                     timer += timePerCharacter;
                     characterIndex++;
+
+                    if (textToWrite.Substring(characterIndex-1, 1).Equals("<"))
+                    {
+                        int indextEndTag = textToWrite.IndexOf('>', characterIndex);
+                        if (indextEndTag > 0)
+                        {
+                            if (textToWrite.Substring(characterIndex, 1).Equals("/"))
+                            {
+                                isTagOpen = false;
+                            }
+                            else
+                            {
+                                isTagOpen = true;
+                            }
+
+                            characterIndex = indextEndTag + 2;
+                        }
+                    }
+
                     string text = textToWrite.Substring(0, characterIndex);
-                    text += "<color=#00000000>" + textToWrite.Substring(characterIndex) + "</color>";
+                    if (isTagOpen) text += "</color>";
+                    
+                    text += "<color=#00000000>" + GetRawText(textToWrite.Substring(characterIndex)) + "</color>";
 
                     if (characterIndex % 2 == 0)
                     {
@@ -130,6 +156,29 @@ namespace LD48
             characterIndex = textToWrite.Length;
             if (onComplete != null) onComplete();
             TextTypeWriter.RemoveWriter_Static(uiText);
+        }
+
+        private String GetRawText(string text)
+        {
+            string remainingText = text;
+            string rawText = string.Empty;
+
+            int nextTagEnd = 0;
+            int nextTagStart = remainingText.IndexOf('<');
+
+            while (nextTagStart >= 0)
+            {
+                rawText += remainingText.Substring(0, nextTagStart);
+
+                nextTagEnd = remainingText.IndexOf('>') + 1;
+                remainingText = remainingText.Substring(nextTagEnd);
+
+                nextTagStart = remainingText.IndexOf('<');
+            }
+
+            rawText += remainingText;
+
+            return rawText;
         }
     }
 }
