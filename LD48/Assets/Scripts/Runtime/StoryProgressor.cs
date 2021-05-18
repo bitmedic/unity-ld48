@@ -231,6 +231,7 @@ namespace LD48
                         SceneManager.LoadScene(0);
                     }
 
+                    textTypeWriterInstance.WriteAllAndDestroy(); // this also stops the sound
                     this.isTextShown = false;
                     this.frameTextArea.gameObject.SetActive(false);
                 }
