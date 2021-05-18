@@ -15459,9 +15459,10 @@ MonoBehaviour:
   storyTextAfterLanding:
   - "Whoa, what a landing! \nTime is ticking, but we have a chance. The rocket drill
     is ready to start. We have no fuel, though..."
-  - "Build a miner to gather resources from the asteroid\u2019s surface. Put it on
-    a blue-sparkled ice field to gather water.\nYou should be able to easily find
-    some..."
+  - 'Build a miner on a blue-sparkled ice field to gather water.
+
+    You should
+    be able to easily find some...'
   - 'Then build conveyor belts and transport it to a refinery to make hydrogen. Get
     the hydrogen to the rocket to fuel the rocket drill.
 
