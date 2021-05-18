@@ -15457,8 +15457,8 @@ MonoBehaviour:
     have a chance to survive.
   - 'Good luck ... '
   storyTextAfterLanding:
-  - "<color=#FF0000FF>Whoa</color>, what a landing! \nTime is ticking, but we have
-    a chance. The rocket drill is ready to start. We have no fuel, though..."
+  - "Whoa, what a landing! \nTime is ticking, but we have a chance. The rocket drill
+    is ready to start. We have no fuel, though..."
   - "Build a miner to gather resources from the asteroid\u2019s surface. Put it on
     a blue-sparkled ice field to gather water.\nYou should be able to easily find
     some..."
@@ -15933,7 +15933,7 @@ Tilemap:
     m_Data: {r: 2.0864677, g: 2.0864677, b: 2.0864677, a: 2.0864677}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6}
   m_Origin: {x: -20, y: -19, z: -2}
   m_Size: {x: 28, y: 36, z: 3}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 2}
