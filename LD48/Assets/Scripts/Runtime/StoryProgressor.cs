@@ -215,11 +215,12 @@ namespace LD48
         public void ShowNextText()
         {
             this.indexStoryText++;
+            
+            List<string> currentStoryText = this.GetCurrentStory();
 
             this.isTextShown = true;
             this.frameTextArea.gameObject.SetActive(true);
 
-            List<string> currentStoryText = this.GetCurrentStory();
 
             if (currentStoryText != null)
             {
@@ -258,35 +259,26 @@ namespace LD48
 
         private List<string> GetCurrentStory()
         {
-            if (enumStoryStep.Equals(StoryStep.Intro))
+            switch(enumStoryStep)
             {
-                return this.storyTextIntro;
+                case StoryStep.Intro:
+                    return this.storyTextIntro;
+                case StoryStep.AfterLanding:
+                    return this.storyTextAfterLanding;
+                case StoryStep.AfterTier1:
+                    return this.storyTextAfterTier1;
+                case StoryStep.AfterTier2:
+                    return this.storyTextAfterTier2;
+                case StoryStep.AfterTier3:
+                    return this.storyTextAfterTier3;
+                case StoryStep.PressButtonNow:
+                    return this.storyPressButtonNow;
+                case StoryStep.Victory:
+                    return this.storyVictory;
+                case StoryStep.Defeat:
+                    return this.storyDefeat;
             }
-            if (enumStoryStep.Equals(StoryStep.AfterLanding))
-            {
-                return this.storyTextAfterLanding;
-            }
-            if (enumStoryStep.Equals(StoryStep.AfterTier1))
-            {
-                return this.storyTextAfterTier1;
-            }
-            if (enumStoryStep.Equals(StoryStep.AfterTier2))
-            {
-                return this.storyTextAfterTier2;
-            }
-            if (enumStoryStep.Equals(StoryStep.AfterTier3))
-            {
-                return this.storyTextAfterTier3;
-            }
-            if (enumStoryStep.Equals(StoryStep.Victory))
-            {
-                return this.storyVictory;
-            }
-            if (enumStoryStep.Equals(StoryStep.Defeat))
-            {
-                return this.storyDefeat;
-            }
-            return null;
+            throw new ArgumentOutOfRangeException();
         }
     }
 
