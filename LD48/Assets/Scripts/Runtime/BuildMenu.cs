@@ -52,9 +52,11 @@ namespace LD48
         Vector2 mousePosition;
         Vector3 worldPosition;
         Vector3Int cell;
+        Vector3Int lastPreview;
 
         bool doBulldoze = false;
         bool clickedToPlace = false;
+
 
 
         [SerializeField] Toggle helpButton;
@@ -128,8 +130,6 @@ namespace LD48
             cell.y--;
             cell.z = 0;
 
-            tilemapBuildPreview.ClearAllTiles();
-
             if (tilemapTerrain.HasTile(cell))
             {
                 // if the tile exists on the asteroid
@@ -155,11 +155,17 @@ namespace LD48
                     // if nothing is placed here on the factory layer
                     if (clickedToPlace)
                     {
+                        tilemapBuildPreview.ClearAllTiles();
                         this.BuildBuilding(this.tileToPlace.GetRotatedTile(), cell);
                     }
                     else
                     {
+                        if (lastPreview != cell)
+                        {
+                            tilemapBuildPreview.ClearAllTiles();
+                        }
                         tilemapBuildPreview.SetTile(cell, this.tileToPlace.GetRotatedTile());
+                        lastPreview = cell;
                     }
                     // else do nothing for now
                 }
