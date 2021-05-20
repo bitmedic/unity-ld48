@@ -180,6 +180,7 @@ namespace LD48
             tileToPlace?.ResetRotate();
             this.ResetAllBuildButtons();
             buildingTooltip.ShowOrHideTooltip(null);
+            tilemapBuildPreview.ClearAllTiles();
         }
 
         private void HandleEscKey()
