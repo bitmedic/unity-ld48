@@ -152,10 +152,13 @@ namespace LD48
 
         public void WriteAllAndDestroy()
         {
-            uiText.text = textToWrite;
-            characterIndex = textToWrite.Length;
-            if (onComplete != null) onComplete();
-            TextTypeWriter.RemoveWriter_Static(uiText);
+            if (uiText)
+            {
+                uiText.text = textToWrite;
+                characterIndex = textToWrite.Length;
+                if (onComplete != null) onComplete();
+                TextTypeWriter.RemoveWriter_Static(uiText);
+            }
         }
 
         private String GetRawText(string text)
