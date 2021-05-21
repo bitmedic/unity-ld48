@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace LD48
 {
@@ -59,7 +60,8 @@ namespace LD48
 
 
 
-        [SerializeField] Toggle helpButton;
+        [SerializeField] GameObject helpPanel;
+        [SerializeField] GameObject confirmExit;
 
         private void Start()
         {
@@ -185,9 +187,9 @@ namespace LD48
 
         private void HandleEscKey()
         {
-            if (helpButton.isOn)
+            if (helpPanel.activeSelf)
             {
-                helpButton.isOn = false;
+                helpPanel.SetActive(false);
             }
             else if (storyProgressor.isTextShown)
             {
@@ -197,9 +199,13 @@ namespace LD48
             {
                 CancelBuildMode();
             }
+            else if (confirmExit.activeSelf)
+            {
+                confirmExit.SetActive(false);
+            }
             else
             {
-                Debug.Log("Esc pressed, but nothing to do");
+                confirmExit.SetActive(true);
             }
         }
 
@@ -523,6 +529,11 @@ namespace LD48
             {
                 Debug.Log("Not enough Numbers to ButtonsizeSO defined in the List for the number selection");
             }
+        }
+
+        public void ReturnToTitleScreen()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

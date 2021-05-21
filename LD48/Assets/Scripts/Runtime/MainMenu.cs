@@ -8,24 +8,55 @@ namespace LD48
 {
     public class MainMenu : MonoBehaviour
     {
-        public Text StartText;
         public Animator animator;
         public Animator animatorCredits;
         public StoryProgressor story;
+        public GameObject helpPanel;
 
         private void Start()
         {
             //earth.position = new Vector3(-347, -264, 0);
+
+#if UNITY_WEBGL
+            transform.Find("Buttons/ButtonExit").gameObject.SetActive(false);
+#endif
+
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (helpPanel.activeSelf)
+                {
+                    this.HideHelp();
+                }
+            }
         }
 
         public void StartGame()
         {
-            StartText.text = "Save us!";
+            transform.Find("Buttons")?.gameObject.SetActive(false);
             
             animator.SetTrigger("startAnimation");
             animatorCredits.SetTrigger("startAnimation");
             StartCoroutine(WaitAndStartStory());
 
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit(); // ignored in editor
+        }
+
+        public void ShowHelp()
+        {
+            helpPanel.SetActive(true);
+        }
+
+        public void HideHelp()
+        {
+            helpPanel.SetActive(false);
         }
 
         IEnumerator WaitAndStartStory()
