@@ -35,14 +35,10 @@ namespace LD48
                 {
                     this.ShowTooltip(buildingSO.machineInfo);
                 }
-                else if (buildingSO.rotations.Count == 3)
+                else if (buildingSO.rotations.Count > 0)
                 {
                     // conveyers
                     this.ShowTooltipConveyer();
-                }
-                else if (buildingSO.tile == null)
-                {
-                    this.ShowTooltip();
                 }
                 else
                 {

@@ -735,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -743,7 +743,7 @@ PrefabInstance:
       objectReference: {fileID: 1738956434}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBuildingSelected
+      value: HandleBuildKeyInput
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -752,10 +752,10 @@ PrefabInstance:
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 37d7b0e9bd5976f49a0c8b7ce03478b4, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: LD48.BuildingSizeSO, LD48.Runtime
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5216069877687668799, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Pivot.x
@@ -4366,7 +4366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4374,19 +4374,23 @@ PrefabInstance:
       objectReference: {fileID: 1738956434}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBuildingSelected
+      value: HandleBuildKeyInput
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LD48.BuildMenu, LD48.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: a5f69a3c718449440acb0e8251125619, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: LD48.BuildingSizeSO, LD48.Runtime
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5216069877687668799, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Pivot.x
@@ -4649,7 +4653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4657,19 +4661,23 @@ PrefabInstance:
       objectReference: {fileID: 1738956434}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBuildingSelected
+      value: HandleBuildKeyInput
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LD48.BuildMenu, LD48.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 2ec2fe0e781edc040b55dc9e83730432, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: LD48.BuildingSizeSO, LD48.Runtime
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5216069877687668799, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Pivot.x
@@ -7177,7 +7185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7185,19 +7193,23 @@ PrefabInstance:
       objectReference: {fileID: 1738956434}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBuildingSelected
+      value: HandleBuildKeyInput
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LD48.BuildMenu, LD48.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 8928e3dc4914a6c4f9b2113c26464e69, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: LD48.BuildingSizeSO, LD48.Runtime
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5216069877687668799, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Pivot.x
@@ -8828,7 +8840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8836,19 +8848,23 @@ PrefabInstance:
       objectReference: {fileID: 1738956434}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBuildingSelected
+      value: HandleBuildKeyInput
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LD48.BuildMenu, LD48.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 8a87d6c80b6662543a8e227997a3fc16, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: LD48.BuildingSizeSO, LD48.Runtime
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5216069877687668799, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Pivot.x
@@ -33099,7 +33115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -33107,19 +33123,23 @@ PrefabInstance:
       objectReference: {fileID: 1738956434}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBuildingSelected
+      value: HandleBuildKeyInput
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LD48.BuildMenu, LD48.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 6960fdf08e9edee478f4ba381bfa59b0, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3687891140938435984, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: LD48.BuildingSizeSO, LD48.Runtime
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5216069877687668799, guid: 2fb64805e1ed81d4eb90890a4a6b2d99, type: 3}
       propertyPath: m_Pivot.x

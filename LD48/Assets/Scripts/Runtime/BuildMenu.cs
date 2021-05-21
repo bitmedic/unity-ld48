@@ -480,8 +480,9 @@ namespace LD48
             }
         }
 
-        void HandleBuildKeyInput(int index)
+        public void HandleBuildKeyInput(int index)
         {
+            tilemapBuildPreview.ClearAllTiles();
             if (numberKeysToBuild.Count > index)
             {
                 if (this.numberKeysToBuildButtonScript.Count > index)
