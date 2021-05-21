@@ -3200,7 +3200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23.600012, y: 30}
+  m_AnchoredPosition: {x: -23.600037, y: 30}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &274836166
@@ -4436,7 +4436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.11, y: 12.5}
+  m_AnchoredPosition: {x: 5.1099854, y: 12.5}
   m_SizeDelta: {x: 217.43, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &762366183
@@ -6491,7 +6491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.1138, y: -22.5}
+  m_AnchoredPosition: {x: 5.1137695, y: -22.5}
   m_SizeDelta: {x: 217.43, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957553713
@@ -19648,7 +19648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1595946256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19667,11 +19667,11 @@ RectTransform:
   m_Father: {fileID: 1738956438}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -859.2999, y: 162.20001}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 14, y: 106}
   m_SizeDelta: {x: 250, y: 120}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1595946257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30272,7 +30272,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ec2fe0e781edc040b55dc9e83730432, type: 2}
   - {fileID: 11400000, guid: 8928e3dc4914a6c4f9b2113c26464e69, type: 2}
   - {fileID: 11400000, guid: 8a87d6c80b6662543a8e227997a3fc16, type: 2}
-  - {fileID: 11400000, guid: 9896e02871d84274caee8d5adc63adf1, type: 2}
+  - {fileID: 11400000, guid: a5f69a3c718449440acb0e8251125619, type: 2}
   numberKeysToBuildButtonScript:
   - {fileID: 39787124}
   - {fileID: 1527766991}
@@ -30809,7 +30809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.1125, y: -40}
+  m_AnchoredPosition: {x: 5.112488, y: -40}
   m_SizeDelta: {x: 217.43, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906114556
